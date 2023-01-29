@@ -19,16 +19,19 @@ namespace DefaultNamespace
 
         private void ExecuteCharacterAction(BattleCharacterBase character)
         {
-            _targets.Clear();
-            var action = character.GetAction();
+            BattleActionBase action = character.GetAction();
+            if (action == null)
+                return;
 
+            _targets.Clear();
             if (action is ITargetsSelf)
                 _targets.Add(action.GetCaster);
 
             if (action is ITargetsOpposingCharacter)
                 _targets.Add(action.GetCaster == playerCharacter ? playerCharacter : enemyCharacter);
 
-            action.ExecuteAction(_targets);
+            if (_targets.Count > 0)
+                action.ExecuteAction(_targets);
         }
     }
 }

@@ -8,6 +8,8 @@ namespace DefaultNamespace.BattleActions
     public class AttackAction : BattleActionBase, ITargetsOpposingCharacter
     {
         [SerializeField] private float AttackPoints;
+        [SerializeField] private DamageType damageType;
+
 
         public override bool ExecuteAction(List<BattleCharacterBase> targets)
         {
