@@ -4,6 +4,14 @@ namespace DefaultNamespace
 {
     public abstract class BattleActionBase
     {
-        public abstract void Initialize(BattleCharacterBase caster, List<BattleCharacterBase> targets);
+        private BattleCharacterBase caster = null;
+        private List<BattleCharacterBase> targets = null;
+
+
+        public virtual void Initialize(BattleCharacterBase caster, List<BattleCharacterBase> targets)   
+        {
+            this.caster = caster;
+            this.targets = targets;
+        }
     }
 }
