@@ -7,6 +7,8 @@ namespace Assets.Scripts.SkillTree
 {
     public class RuneTree
     {
+        public event Action<List<SkillRuneSentence>> AddedNewSkill = delegate{ };
+
         public ITree<RuneNodeData> tree = NodeTree<RuneNodeData>.NewTree();
 
 
@@ -19,14 +21,13 @@ namespace Assets.Scripts.SkillTree
                 addSentence(sentence);
         }
 
-        public void addSentence(SkillRuneSentence sentence)
+        public void addSentenceWithoutNotify(SkillRuneSentence sentence)
         {
             if (sentence.RuneKeys.Count == 0)
                 throw new Exception("Chel...,there is no keys");
             
             if (sentence.RuneSkillInfo == null)
                 throw new ArgumentNullException("Chel..., skill is null");
-
 
             INode<RuneNodeData> curNode = tree.Root;
             for (int i = 0; i < sentence.RuneKeys.Count; i++)
@@ -44,6 +45,12 @@ namespace Assets.Scripts.SkillTree
                     curNode.Data.runeSkillInfo = sentence.RuneSkillInfo;
                 }
             }
+        }
+        private void addSentence(SkillRuneSentence sentence)
+        {
+            addSentenceWithoutNotify(sentence);
+
+            AddedNewSkill(new List<SkillRuneSentence>() {sentence});
         }
     }
 }
