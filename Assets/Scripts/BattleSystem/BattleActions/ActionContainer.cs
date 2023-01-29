@@ -2,8 +2,7 @@ using UnityEngine;
 
 namespace BattleSystem.BattleActions
 {
-    public class ActionsContainer : ScriptableObject
+    public class ActionContainer : ScriptableObject
     {
-        
     }
 }

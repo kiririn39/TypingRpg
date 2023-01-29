@@ -11,6 +11,11 @@ namespace DefaultNamespace.BattleActions
 
         public override bool ExecuteAction(List<BattleCharacterBase> targets)
         {
+            foreach (var battleCharacterBase in targets)
+            {
+                //battleCharacterBase.DamagePhysical += DefencePoints
+            }
+
             throw new System.NotImplementedException();
         }
 
