@@ -1,12 +1,17 @@
-using UnityEngine;
+using DefaultNamespace.BattleActions;
 
 namespace DefaultNamespace
 {
     public class PlayerCharacter : BattleCharacterBase
     {
-        public override BattleActionBase GetNextAction()
+        public override BattleActionBase GetAction()
         {
-            throw new System.NotImplementedException();
+            return new IdleAction();
+        }
+
+        public override BattleActionBase GenerateNextAction()
+        {
+            return new IdleAction();
         }
     }
 }

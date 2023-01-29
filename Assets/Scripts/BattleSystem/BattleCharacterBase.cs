@@ -1,6 +1,8 @@
 using DefaultNamespace.BattleActions;
 using DefaultNamespace.Context;
 using System;
+using System.Collections.Generic;
+using DefaultNamespace.BattleActions;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -15,9 +17,10 @@ namespace DefaultNamespace
         public float ArmorPhysical    { get; private set; }
         public float ArmorMagical     { get; private set; }
         public int   CooldownReduce   { get; private set; }
+        
+        protected BattleActionBase battleAction;
 
-
-        public abstract BattleActionBase GetNextAction();
+        [SerializeField] protected List<BattleActionBase> actions = new List<BattleActionBase>{new AttackAction()};
 
         public virtual BattleActionResult ApplyBattleAction(BattleActionBase battleActionBase)
         {
@@ -35,5 +38,11 @@ namespace DefaultNamespace
 
             return battleActionResult;
         }
+
+        public abstract BattleActionBase GetAction();
+        public abstract BattleActionBase GenerateNextAction();
+        public bool CaInterruptCurrentAction() => battleAction is IInterrruptable;
+
+        public virtual void InterruptCurrentAction() => (battleAction as IInterrruptable)?.Interrupt();
     }
 }
