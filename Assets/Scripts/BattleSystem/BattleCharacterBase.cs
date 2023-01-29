@@ -22,26 +22,9 @@ namespace DefaultNamespace
 
         [SerializeField] protected List<BattleActionBase> actions = new List<BattleActionBase>{new AttackAction()};
 
-        public virtual BattleActionResult ApplyBattleAction(BattleActionBase battleActionBase)
-        {
-            BattleActionResult battleActionResult = new BattleActionResult();
-            switch (battleActionBase)
-            {
-            case IdleAction idleAction:
-                break;
-            case PhysicAttackAction physicAttackAction:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(battleActionBase));
-
-            }
-
-            return battleActionResult;
-        }
-
         public abstract BattleActionBase GetAction();
         public abstract BattleActionBase GenerateNextAction();
-        public bool CaInterruptCurrentAction() => battleAction is IInterrruptable;
+        public bool CanInterruptCurrentAction() => battleAction is IInterrruptable;
 
         public virtual void InterruptCurrentAction() => (battleAction as IInterrruptable)?.Interrupt();
     }
