@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class GameBattleSystem : MonoBehaviour
     {
-        [SerializeField] private PlayerCharacter playerCharacter;
-        [SerializeField] private EnemyCharacter enemyCharacter;
+        [SerializeField] private BattleCharacter playerCharacter;
+        [SerializeField] private BattleCharacter enemyCharacter;
 
-        private readonly List<BattleCharacterBase> _targets = new();
+        private readonly List<BattleCharacter> _targets = new();
 
 
         private void Update()
@@ -17,21 +18,27 @@ namespace DefaultNamespace
             ExecuteCharacterAction(enemyCharacter);
         }
 
-        private void ExecuteCharacterAction(BattleCharacterBase character)
+        private void ExecuteCharacterAction(BattleCharacter character)
         {
             BattleActionBase action = character.GetAction();
             if (action == null)
                 return;
 
+            Debug.Log($"Character {character.name}, action {action}");
+
             _targets.Clear();
             if (action is ITargetsSelf)
-                _targets.Add(action.GetCaster);
+                _targets.Add(action.Caster);
 
             if (action is ITargetsOpposingCharacter)
-                _targets.Add(action.GetCaster == playerCharacter ? playerCharacter : enemyCharacter);
+                _targets.Add(action.Caster == playerCharacter ? playerCharacter : enemyCharacter);
 
-            if (_targets.Count > 0)
-                action.ExecuteAction(_targets);
+            if (!_targets.Any())
+                return;
+
+            bool hasFinished = action.ExecuteAction(_targets);
+            if (hasFinished)
+                character.GenerateNextAction();
         }
     }
 }

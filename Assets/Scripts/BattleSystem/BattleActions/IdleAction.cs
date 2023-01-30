@@ -6,14 +6,16 @@ namespace DefaultNamespace.BattleActions
     [Serializable]
     public class IdleAction : BattleActionBase, ITargetsSelf, IInterrruptable
     {
-        public override bool ExecuteAction(List<BattleCharacterBase> targets)
+        public override bool ExecuteAction(List<BattleCharacter> targets)
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public void Interrupt()
         {
             throw new System.NotImplementedException();
         }
+
+        public override BattleActionBase Clone() => new IdleAction();
     }
 }

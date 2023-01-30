@@ -1,21 +1,30 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     [Serializable]
-    public abstract class BattleActionBase
+    public class BattleActionBase
     {
-        protected BattleCharacterBase Caster;
+        [HideInInspector] public BattleCharacter Caster;
+        protected float InitializationTimestamp;
 
-        public BattleCharacterBase GetCaster => Caster;
-
-        public void Initialize(BattleCharacterBase caster)
+        public virtual void Initialize(BattleCharacter Caster)
         {
-            Caster = caster;
+            this.Caster = Caster;
+            InitializationTimestamp = Time.time;
         }
 
-        public abstract bool ExecuteAction(List<BattleCharacterBase> targets);
+        public virtual bool ExecuteAction(List<BattleCharacter> targets)
+        {
+            return false;
+        }
+
+        public virtual BattleActionBase Clone()
+        {
+            return null;
+        }
     }
 
     public interface ITargetsSelf

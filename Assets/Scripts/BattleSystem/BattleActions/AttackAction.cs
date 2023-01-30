@@ -8,17 +8,31 @@ namespace DefaultNamespace.BattleActions
     public class AttackAction : BattleActionBase, ITargetsOpposingCharacter
     {
         [SerializeField] private float AttackPoints;
-        //[SerializeField] private DamageType damageType;
+        [SerializeField] private float ExecutionDelay;
 
 
-        public override bool ExecuteAction(List<BattleCharacterBase> targets)
+        public override bool ExecuteAction(List<BattleCharacter> targets)
         {
+            if (InitializationTimestamp + ExecutionDelay > Time.time)
+                return false;
+
             foreach (var battleCharacterBase in targets)
             {
+                Debug.Log($"Caster {Caster} Attacking {battleCharacterBase}");
                 //battleCharacterBase. -= AttackPoints;
             }
 
-            throw new System.NotImplementedException();
+            return true;
+        }
+
+        public override BattleActionBase Clone()
+        {
+            return new AttackAction
+            {
+                Caster = base.Caster,
+                AttackPoints = this.AttackPoints,
+                ExecutionDelay = this.ExecutionDelay,
+            };
         }
     }
 }

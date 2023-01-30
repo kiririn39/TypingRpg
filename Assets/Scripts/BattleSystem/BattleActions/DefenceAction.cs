@@ -9,7 +9,7 @@ namespace DefaultNamespace.BattleActions
     {
         [SerializeField] private float DefencePoints;
 
-        public override bool ExecuteAction(List<BattleCharacterBase> targets)
+        public override bool ExecuteAction(List<BattleCharacter> targets)
         {
             foreach (var battleCharacterBase in targets)
             {
@@ -22,6 +22,15 @@ namespace DefaultNamespace.BattleActions
         public void Interrupt()
         {
             throw new System.NotImplementedException();
+        }
+
+        public override BattleActionBase Clone()
+        {
+            return new DefenceAction
+            {
+                Caster = base.Caster,
+                DefencePoints = this.DefencePoints
+            };
         }
     }
 }
