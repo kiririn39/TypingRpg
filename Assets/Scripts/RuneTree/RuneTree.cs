@@ -7,26 +7,34 @@ namespace Assets.Scripts.SkillTree
 {
     public class RuneTree
     {
-        public event Action<List<SkillRuneSentence>> AddedNewSkill = delegate{ };
+        public event Action<List<RuneSentenceForBattleAction>> OnNewSkillsAdded = delegate{ };
 
         public ITree<RuneNodeData> tree = NodeTree<RuneNodeData>.NewTree();
 
 
-        public void addSentences( IEnumerable<SkillRuneSentence> sentences )
+        public void clear()
+        {
+            tree.Clear();
+        }
+
+        public void addSentences( IEnumerable<RuneSentenceForBattleAction> sentences )
         {
             if (!sentences.Any())
                 return;
 
-            foreach (SkillRuneSentence sentence in sentences)
-                addSentence(sentence);
+            sentences = sentences.ToList();
+            foreach (RuneSentenceForBattleAction sentence in sentences)
+                addSentenceWithoutNotify(sentence);
+
+            OnNewSkillsAdded(sentences.ToList() );
         }
 
-        public void addSentenceWithoutNotify(SkillRuneSentence sentence)
+        public void addSentenceWithoutNotify(RuneSentenceForBattleAction sentence)
         {
             if (sentence.RuneKeys.Count == 0)
                 throw new Exception("Chel...,there is no keys");
             
-            if (sentence.RuneSkillInfo == null)
+            if (sentence.RuneBattleActionInfo == null)
                 throw new ArgumentNullException("Chel..., skill is null");
 
             INode<RuneNodeData> curNode = tree.Root;
@@ -35,22 +43,25 @@ namespace Assets.Scripts.SkillTree
                 RuneKey runeKey = sentence.RuneKeys[i];
                 INode<RuneNodeData> nextNode = curNode.DirectChildren.Nodes.FirstOrDefault(it => it.Data.runeKey == runeKey);
                 if (nextNode == null)
-                    curNode = curNode.AddChild(new RuneNodeData() {runeKey = runeKey, runeSkillInfo = sentence.RuneSkillInfo});
+                    curNode = curNode.AddChild(new RuneNodeData() {runeKey = runeKey});
+                else
+                    curNode = nextNode;
 
                 if (i == sentence.RuneKeys.Count - 1)
                 {
-                    if (curNode.Data.runeSkillInfo != null)
+                    if (curNode.Data.RuneBattleActionInfo != null)
                         throw new Exception("Chel, wtf, tut vje e skill");
 
-                    curNode.Data.runeSkillInfo = sentence.RuneSkillInfo;
+                    curNode.Data.RuneBattleActionInfo = sentence.RuneBattleActionInfo;
                 }
             }
         }
-        private void addSentence(SkillRuneSentence sentence)
+
+        private void addSentence(RuneSentenceForBattleAction sentence)
         {
             addSentenceWithoutNotify(sentence);
 
-            AddedNewSkill(new List<SkillRuneSentence>() {sentence});
+            OnNewSkillsAdded(new List<RuneSentenceForBattleAction>() {sentence});
         }
     }
 }
