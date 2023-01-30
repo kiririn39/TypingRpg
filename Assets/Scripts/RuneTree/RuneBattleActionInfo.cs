@@ -6,5 +6,8 @@ namespace Assets.Scripts.SkillTree
     {
         public string name = "";
         public BattleActionBase battleActionBase = null;
+
+
+        public override string ToString() => $"{nameof(name)}: {name}, {nameof(battleActionBase)}: ({battleActionBase})";
     }
 }

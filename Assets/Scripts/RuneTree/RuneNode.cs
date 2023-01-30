@@ -21,5 +21,6 @@ namespace Assets.Scripts.SkillTree
             return Equals((RuneNodeData)obj);
         }
         public override int GetHashCode() => HashCode.Combine((int)runeKey, RuneBattleActionInfo);
+        public override string ToString() => $"{nameof(runeKey)}: {runeKey.ToString()}, {nameof(RuneBattleActionInfo)}: {RuneBattleActionInfo}";
     }
 }
