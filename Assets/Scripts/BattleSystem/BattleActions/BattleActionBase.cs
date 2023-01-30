@@ -5,12 +5,26 @@ using UnityEngine;
 namespace DefaultNamespace
 {
     [Serializable]
-    public abstract class BattleActionBase
+    public class BattleActionBase
     {
-        [HideInInspector] public BattleCharacterBase Caster;
+        [HideInInspector] public BattleCharacter Caster;
+        protected float InitializationTimestamp;
 
-        public abstract bool ExecuteAction(List<BattleCharacterBase> targets);
-        public abstract BattleActionBase Clone();
+        public virtual void Initialize(BattleCharacter Caster)
+        {
+            this.Caster = Caster;
+            InitializationTimestamp = Time.time;
+        }
+
+        public virtual bool ExecuteAction(List<BattleCharacter> targets)
+        {
+            return false;
+        }
+
+        public virtual BattleActionBase Clone()
+        {
+            return null;
+        }
     }
 
     public interface ITargetsSelf

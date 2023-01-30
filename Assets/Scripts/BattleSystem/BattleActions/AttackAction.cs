@@ -8,11 +8,17 @@ namespace DefaultNamespace.BattleActions
     public class AttackAction : BattleActionBase, ITargetsOpposingCharacter
     {
         [SerializeField] private float AttackPoints;
+        [SerializeField] private float ExecutionDelay;
 
-        public override bool ExecuteAction(List<BattleCharacterBase> targets)
+
+        public override bool ExecuteAction(List<BattleCharacter> targets)
         {
+            if (InitializationTimestamp + ExecutionDelay > Time.time)
+                return false;
+
             foreach (var battleCharacterBase in targets)
             {
+                Debug.Log($"Caster {Caster} Attacking {battleCharacterBase}");
                 //battleCharacterBase. -= AttackPoints;
             }
 
@@ -24,7 +30,8 @@ namespace DefaultNamespace.BattleActions
             return new AttackAction
             {
                 Caster = base.Caster,
-                AttackPoints = this.AttackPoints
+                AttackPoints = this.AttackPoints,
+                ExecutionDelay = this.ExecutionDelay,
             };
         }
     }
