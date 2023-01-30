@@ -8,8 +8,6 @@ namespace DefaultNamespace.BattleActions
     public class AttackAction : BattleActionBase, ITargetsOpposingCharacter
     {
         [SerializeField] private float AttackPoints;
-        //[SerializeField] private DamageType damageType;
-
 
         public override bool ExecuteAction(List<BattleCharacterBase> targets)
         {
@@ -18,7 +16,16 @@ namespace DefaultNamespace.BattleActions
                 //battleCharacterBase. -= AttackPoints;
             }
 
-            throw new System.NotImplementedException();
+            return true;
+        }
+
+        public override BattleActionBase Clone()
+        {
+            return new AttackAction
+            {
+                Caster = base.Caster,
+                AttackPoints = this.AttackPoints
+            };
         }
     }
 }

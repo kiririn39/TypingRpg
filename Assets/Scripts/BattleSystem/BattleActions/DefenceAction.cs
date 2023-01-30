@@ -23,5 +23,14 @@ namespace DefaultNamespace.BattleActions
         {
             throw new System.NotImplementedException();
         }
+
+        public override BattleActionBase Clone()
+        {
+            return new DefenceAction
+            {
+                Caster = base.Caster,
+                DefencePoints = this.DefencePoints
+            };
+        }
     }
 }

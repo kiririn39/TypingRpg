@@ -1,21 +1,16 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     [Serializable]
     public abstract class BattleActionBase
     {
-        protected BattleCharacterBase Caster;
-
-        public BattleCharacterBase GetCaster => Caster;
-
-        public void Initialize(BattleCharacterBase caster)
-        {
-            Caster = caster;
-        }
+        [HideInInspector] public BattleCharacterBase Caster;
 
         public abstract bool ExecuteAction(List<BattleCharacterBase> targets);
+        public abstract BattleActionBase Clone();
     }
 
     public interface ITargetsSelf

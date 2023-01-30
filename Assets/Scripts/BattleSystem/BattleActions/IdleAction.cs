@@ -15,5 +15,7 @@ namespace DefaultNamespace.BattleActions
         {
             throw new System.NotImplementedException();
         }
+
+        public override BattleActionBase Clone() => new IdleAction();
     }
 }

@@ -25,10 +25,10 @@ namespace DefaultNamespace
 
             _targets.Clear();
             if (action is ITargetsSelf)
-                _targets.Add(action.GetCaster);
+                _targets.Add(action.Caster);
 
             if (action is ITargetsOpposingCharacter)
-                _targets.Add(action.GetCaster == playerCharacter ? playerCharacter : enemyCharacter);
+                _targets.Add(action.Caster == playerCharacter ? playerCharacter : enemyCharacter);
 
             if (_targets.Count > 0)
                 action.ExecuteAction(_targets);
