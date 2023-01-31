@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Common
 {
@@ -72,5 +73,11 @@ namespace Common
         }
         
         public static T[] asArray<T>( this T item ) => new T[] { item };
+
+        public static IEnumerable<Type> GetAllInheritorsOf<T>() where T : class
+        {
+            return Assembly.GetAssembly(typeof(T)).GetTypes()
+                .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T)));
+        }
     }
 }

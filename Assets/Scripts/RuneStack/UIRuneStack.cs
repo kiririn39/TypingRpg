@@ -13,6 +13,7 @@ namespace RuneStack
         public event Action<List<RuneKey>> OnStackChanged = delegate{};
 
 
+        [SerializeField] private bool isAutoUse = false;
         [SerializeField] private List<UIRuneKey> uiRuneKeys = new List<UIRuneKey>();
         [SerializeField] private UIBattleActionIcon uiResultBattleAction = null;
 
@@ -68,7 +69,7 @@ namespace RuneStack
 
         private void Update()
         {
-            if (runeBattleActionInfo != null && availableAsNextRuneKeys != null && !availableAsNextRuneKeys.Any())
+            if (isAutoUse && runeBattleActionInfo != null && availableAsNextRuneKeys != null && !availableAsNextRuneKeys.Any())
                 tryUseBattleAction();
 
             handleInput();

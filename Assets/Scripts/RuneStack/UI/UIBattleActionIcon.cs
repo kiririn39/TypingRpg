@@ -1,5 +1,6 @@
 using DefaultNamespace;
 using DefaultNamespace.BattleActions;
+using Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,12 @@ public class UIBattleActionIcon : MonoBehaviour
     public void init(BattleActionBase battleActionBase)
     {
         if (imgBattleAction)
-            imgBattleAction.color = getColorForBattleAction(battleActionBase);
+            imgBattleAction.sprite = getSpriteForBattleAction(battleActionBase);
+    }
+
+    private Sprite getSpriteForBattleAction(BattleActionBase battleActionBase)
+    {
+        return ResourcesManager.Instance.getSpriteForBattleAction(battleActionBase?.GetType());
     }
 
     private Color getColorForBattleAction(BattleActionBase battleActionBase)//TEMP FOR TEST

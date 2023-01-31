@@ -155,7 +155,7 @@ namespace Assets.Scripts.SkillTree
                     , RuneKey.W
                     , RuneKey.E
                 }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "first", battleActionBase = new AttackAction()}
+                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "first", battleActionBase = new IdleAction()}
             },
             new RuneSequenceForBattleAction()
             {
@@ -165,7 +165,7 @@ namespace Assets.Scripts.SkillTree
                     , RuneKey.O
                     , RuneKey.P
                 }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "second", battleActionBase = new AttackAction()}
+                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "second", battleActionBase = new DefenceAction()}
             },
             new RuneSequenceForBattleAction()
             {
