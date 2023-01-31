@@ -12,6 +12,9 @@ public class UIPanelRunes : MonoBehaviour
 
    private void Awake()
    {
+      uiRuneTree.init();
+
       uiRuneStack.init(uiRuneTree.RuneTree);
+      uiRuneStack.OnStackChanged += runes => uiRuneTree.trySelectSequence(runes);
    }
 }

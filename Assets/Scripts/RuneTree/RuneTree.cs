@@ -18,7 +18,7 @@ namespace Assets.Scripts.SkillTree
             tree.Clear();
         }
 
-        public void addSequence( IEnumerable<RuneSequenceForBattleAction> sequences )
+        public void addSequences( IEnumerable<RuneSequenceForBattleAction> sequences )
         {
             if (!sequences.Any())
                 return;
@@ -28,6 +28,13 @@ namespace Assets.Scripts.SkillTree
                 addSequenceWithoutNotify(sentence);
 
             OnNewSkillsAdded(sequences.ToList() );
+        }
+
+        public void addSequence(RuneSequenceForBattleAction sequence)
+        {
+            addSequenceWithoutNotify(sequence);
+
+            OnNewSkillsAdded(new List<RuneSequenceForBattleAction>() {sequence});
         }
 
         public void addSequenceWithoutNotify(RuneSequenceForBattleAction sequence)
@@ -58,6 +65,8 @@ namespace Assets.Scripts.SkillTree
         public bool isSequenceValid(IEnumerable<RuneKey> runeKeys, out RuneBattleActionInfo runeBattleActionInfo)
         {
             runeBattleActionInfo = null;
+            if (runeKeys == null || !runeKeys.Any())
+                return false;
 
             List<RuneKey> runeKeysList = runeKeys.ToList();
             INode<RuneNodeData> curNode = tree.Root;
@@ -85,13 +94,6 @@ namespace Assets.Scripts.SkillTree
             }
 
             return curNode.DirectChildren.Values.Select(it => it.runeKey).ToList();
-        }
-
-        private void addSentence(RuneSequenceForBattleAction sequence)
-        {
-            addSequenceWithoutNotify(sequence);
-
-            OnNewSkillsAdded(new List<RuneSequenceForBattleAction>() {sequence});
         }
     }
 }

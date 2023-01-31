@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80beed23db8adce459b648aa054aa956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiRuneKey: {fileID: 5636669542855507717}
+  uiRuneKey: {fileID: 3202852229625897432}
   imgSelectedOutline: {fileID: 2343413337034122513}
   imgLineConnectorToParent: {fileID: 1977417977708572998}
 --- !u!1 &6903514348491551432
@@ -303,14 +303,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7858643462179218566, guid: 4d8577eed54d46441969cb44ca539e9a, type: 3}
+      propertyPath: m_fontSize
+      value: 26.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8577eed54d46441969cb44ca539e9a, type: 3}
---- !u!114 &5636669542855507717 stripped
+--- !u!114 &3202852229625897432 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2184549449617592243, guid: 4d8577eed54d46441969cb44ca539e9a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8942666795299000686, guid: 4d8577eed54d46441969cb44ca539e9a, type: 3}
   m_PrefabInstance: {fileID: 5794000989787861174}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

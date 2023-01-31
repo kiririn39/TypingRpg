@@ -24,12 +24,16 @@ namespace Assets.Scripts.SkillTree
         private Dictionary<RuneNodeData, UIRuneNode> DataAndUIPairs = new Dictionary<RuneNodeData, UIRuneNode>();
 
 
-        private void Awake()
+        public void init()
         {
             btnSelectRandomBranch.onClick.AddListener( () => selectRandomBranch() );
-
-            RuneTree.OnNewSkillsAdded += newSkills => StartCoroutine(updateRuneTreeUI());
-            RuneTree.addSequence(mockSentences);
+            
+            RuneTree.OnNewSkillsAdded += newSkills =>
+            {
+                trySelectSequence(ArraySegment<RuneKey>.Empty);
+                StartCoroutine(updateRuneTreeUI());
+            };
+            RuneTree.addSequences(mockSentences);
         }
 
         private void unselectAllRunes()
@@ -61,14 +65,42 @@ namespace Assets.Scripts.SkillTree
             }
         }
 
+        public RuneBattleActionInfo trySelectSequence( IEnumerable<RuneKey> sequence )
+        {
+            unselectAllRunes();
+
+            if (sequence == null || !sequence.Any())
+                return null;
+
+            List<RuneKey> sequenceList = sequence?.ToList();
+            bool isValid = RuneTree.isSequenceValid(sequenceList, out RuneBattleActionInfo runeBattleActionInfo);
+            if (!isValid)
+            {
+                Debug.LogError($"Trying to select invalid sequence in {nameof(UIRuneTree)}");
+                return null;
+            }
+
+            INode<RuneNodeData> curNode = RuneTree.tree.Root;
+            for (int i = 0; i < sequenceList.Count; i++)
+            {
+                curNode = curNode.DirectChildren.Nodes.FirstOrDefault(it => it.Data?.runeKey == sequenceList[i]);
+                DataAndUIPairs.safeGet(curNode?.Data)?.setRuneSelected(true);
+            }
+
+            //StartCoroutine(updateRuneTreeUI());
+            return runeBattleActionInfo;
+        }
+
         private IEnumerator updateRuneTreeUI()
         {
             int nodeGlobalIndex = 0;
             DataAndUIPairs.Clear();;
-            for (int i = 0; i < trRootForRows.childCount; i++)
-                Destroy(trRootForRows.GetChild(i));
+            while (trRootForRows.childCount > 0)
+            {
+                Destroy(trRootForRows.GetChild(0));
+                yield return null;
+            }
 
-            
             IEnumerable<(UIRuneNode parentUI, INode<RuneNodeData> node)> curRowToDraw = RuneTree.tree.Root.DirectChildren.Nodes.Select(x => (null as UIRuneNode, x) ).ToList();
             do
             {
@@ -81,13 +113,12 @@ namespace Assets.Scripts.SkillTree
                     nextRowToDraw.AddRange(node.DirectChildren.Nodes.Select(y => (nodeUI, y)));
                 }
 
-                yield return new WaitForSeconds(0.1f);
                 curRowToDraw = nextRowToDraw;
             } while (curRowToDraw.Any());
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForEndOfFrame();
             foreach (UIRuneNode uiRuneNode in PoolRuneTreeNodes)
-                uiRuneNode.reinit();
+                uiRuneNode.init();
 
             UIRuneNode getOrCreateRuneTreeNodeUI( Transform spawnRoot )
             {
@@ -102,7 +133,7 @@ namespace Assets.Scripts.SkillTree
             UIRuneNode drawNode(Transform spawnRoot, UIRuneNode parent, RuneNodeData data)
             {
                 UIRuneNode curNodeUI = getOrCreateRuneTreeNodeUI(spawnRoot);
-                curNodeUI.init(parent?.transform, data);
+                curNodeUI.preinit(parent?.transform, data);
                     
                 nodeGlobalIndex++;
                 return curNodeUI;

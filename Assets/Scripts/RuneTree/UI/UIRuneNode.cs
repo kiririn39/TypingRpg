@@ -18,16 +18,16 @@ public class UIRuneNode : MonoBehaviour
     private bool isSelected = false;
 
 
-    public void init(Transform parentTransform, RuneNodeData runeNodeData )
+    public void preinit(Transform parentTransform, RuneNodeData runeNodeData )
     {
         this.parentRectTransform = parentTransform as RectTransform;
         this.runeNodeData        = runeNodeData;
 
+        imgLineConnectorToParent.enabled = false;
         setRuneSelected(false);
-        reinit();
     }
 
-    public void reinit()
+    public void init()
     {
         uiRuneKey.init(runeNodeData.runeKey);
 
