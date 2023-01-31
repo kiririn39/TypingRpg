@@ -1,4 +1,5 @@
 ﻿using Common;
+using DefaultNamespace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace Assets.Scripts.SkillTree
 {
     public class RuneTree
     {
-        public event Action<List<RuneSentenceForBattleAction>> OnNewSkillsAdded = delegate{ };
+        public event Action<List<RuneSequenceForBattleAction>> OnNewSkillsAdded = delegate{ };
 
         public ITree<RuneNodeData> tree = NodeTree<RuneNodeData>.NewTree();
 
@@ -17,51 +18,80 @@ namespace Assets.Scripts.SkillTree
             tree.Clear();
         }
 
-        public void addSentences( IEnumerable<RuneSentenceForBattleAction> sentences )
+        public void addSequence( IEnumerable<RuneSequenceForBattleAction> sequences )
         {
-            if (!sentences.Any())
+            if (!sequences.Any())
                 return;
 
-            sentences = sentences.ToList();
-            foreach (RuneSentenceForBattleAction sentence in sentences)
-                addSentenceWithoutNotify(sentence);
+            sequences = sequences.ToList();
+            foreach (RuneSequenceForBattleAction sentence in sequences)
+                addSequenceWithoutNotify(sentence);
 
-            OnNewSkillsAdded(sentences.ToList() );
+            OnNewSkillsAdded(sequences.ToList() );
         }
 
-        public void addSentenceWithoutNotify(RuneSentenceForBattleAction sentence)
+        public void addSequenceWithoutNotify(RuneSequenceForBattleAction sequence)
         {
-            if (sentence.RuneKeys.Count == 0)
+            if (sequence.RuneKeys.Count == 0)
                 throw new Exception("Chel...,there is no keys");
             
-            if (sentence.RuneBattleActionInfo == null)
+            if (sequence.RuneBattleActionInfo == null)
                 throw new ArgumentNullException("Chel..., skill is null");
 
             INode<RuneNodeData> curNode = tree.Root;
-            for (int i = 0; i < sentence.RuneKeys.Count; i++)
+            for (int i = 0; i < sequence.RuneKeys.Count; i++)
             {
-                RuneKey runeKey = sentence.RuneKeys[i];
+                RuneKey runeKey = sequence.RuneKeys[i];
                 INode<RuneNodeData> nextNode = curNode.DirectChildren.Nodes.FirstOrDefault(it => it.Data.runeKey == runeKey);
-                if (nextNode == null)
-                    curNode = curNode.AddChild(new RuneNodeData() {runeKey = runeKey});
-                else
-                    curNode = nextNode;
+                curNode = nextNode ?? curNode.AddChild(new RuneNodeData() {runeKey = runeKey});
 
-                if (i == sentence.RuneKeys.Count - 1)
-                {
-                    if (curNode.Data.RuneBattleActionInfo != null)
-                        throw new Exception("Chel, wtf, tut vje e skill");
+                if (i < sequence.RuneKeys.Count - 1)
+                    continue;
 
-                    curNode.Data.RuneBattleActionInfo = sentence.RuneBattleActionInfo;
-                }
+                if (curNode.Data.RuneBattleActionInfo != null)
+                    throw new Exception("Chel, wtf, tut vje e skill");
+
+                curNode.Data.RuneBattleActionInfo = sequence.RuneBattleActionInfo;
             }
         }
 
-        private void addSentence(RuneSentenceForBattleAction sentence)
+        public bool isSequenceValid(IEnumerable<RuneKey> runeKeys, out RuneBattleActionInfo runeBattleActionInfo)
         {
-            addSentenceWithoutNotify(sentence);
+            runeBattleActionInfo = null;
 
-            OnNewSkillsAdded(new List<RuneSentenceForBattleAction>() {sentence});
+            List<RuneKey> runeKeysList = runeKeys.ToList();
+            INode<RuneNodeData> curNode = tree.Root;
+            for (int i = 0; i < runeKeysList.Count; i++)
+            {
+                curNode = curNode.DirectChildren.Nodes.FirstOrDefault(it => it.Data?.runeKey == runeKeysList[i]);
+                if (curNode == null)
+                    return false;
+            }
+
+            runeBattleActionInfo = curNode.Data.RuneBattleActionInfo;
+            return true;
+        }
+        
+        /// <returns>null if sequence invalid and empty array when it is end of branch</returns>
+        public IEnumerable<RuneKey> getNextValidRuneKeys(IEnumerable<RuneKey> runeKeys)
+        {
+            List<RuneKey> runeKeysList = runeKeys.ToList();
+            INode<RuneNodeData> curNode = tree.Root;
+            for (int i = 0; i < runeKeysList.Count; i++)
+            {
+                curNode = curNode.DirectChildren.Nodes.FirstOrDefault(it => it.Data?.runeKey == runeKeysList[i]);
+                if (curNode == null)
+                    return null;
+            }
+
+            return curNode.DirectChildren.Values.Select(it => it.runeKey).ToList();
+        }
+
+        private void addSentence(RuneSequenceForBattleAction sequence)
+        {
+            addSequenceWithoutNotify(sequence);
+
+            OnNewSkillsAdded(new List<RuneSequenceForBattleAction>() {sequence});
         }
     }
 }

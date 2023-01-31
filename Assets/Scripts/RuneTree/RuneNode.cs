@@ -6,6 +6,8 @@ namespace Assets.Scripts.SkillTree
 {
     public class RuneNodeData
     {
+        private Guid Guid = Guid.NewGuid();
+
         public RuneKey runeKey = RuneKey.NONE;
         public RuneBattleActionInfo RuneBattleActionInfo;
 
@@ -20,7 +22,8 @@ namespace Assets.Scripts.SkillTree
                 return false;
             return Equals((RuneNodeData)obj);
         }
-        public override int GetHashCode() => HashCode.Combine((int)runeKey, RuneBattleActionInfo);
-        public override string ToString() => $"{nameof(runeKey)}: {runeKey.ToString()}, {nameof(RuneBattleActionInfo)}: {RuneBattleActionInfo}";
+        public override int GetHashCode() => Guid.GetHashCode();
+
+        public override string ToString() => $"{nameof(runeKey)}: {runeKey}, {nameof(RuneBattleActionInfo)}: {RuneBattleActionInfo}, {nameof(Guid)}: {Guid}";
     }
 }

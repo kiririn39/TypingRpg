@@ -70,5 +70,7 @@ namespace Common
                 }
             ).ToList();
         }
+        
+        public static T[] asArray<T>( this T item ) => new T[] { item };
     }
 }

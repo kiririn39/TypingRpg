@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.SkillTree
 {
-    public class RuneSentenceForBattleAction
+    public class RuneSequenceForBattleAction
     {
         public List<RuneKey> RuneKeys = new List<RuneKey>();
         public RuneBattleActionInfo RuneBattleActionInfo = null;

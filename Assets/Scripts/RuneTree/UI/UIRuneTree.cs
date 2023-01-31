@@ -29,7 +29,7 @@ namespace Assets.Scripts.SkillTree
             btnSelectRandomBranch.onClick.AddListener( () => selectRandomBranch() );
 
             RuneTree.OnNewSkillsAdded += newSkills => StartCoroutine(updateRuneTreeUI());
-            RuneTree.addSentences(mockSentences);
+            RuneTree.addSequence(mockSentences);
         }
 
         private void unselectAllRunes()
@@ -47,12 +47,15 @@ namespace Assets.Scripts.SkillTree
         {
             unselectAllRunes();
 
-            maxDepth = Random.Range(1, 10);
-            var curNode = RuneTree.tree.Root;
-            int curDepth = 0;
-            while (curNode != null && curDepth < maxDepth )
+            maxDepth = Random.Range(1, 6);
+            var curNode = RuneTree.tree.Root.DirectChildren.Nodes.ToList().randomElement();
+            int curDepth = 1;
+            Debug.Log($"maxDepth is {maxDepth}");
+            while (curNode != null && curDepth <= maxDepth)
             {
                 DataAndUIPairs.safeGet(curNode.Data)?.setRuneSelected(true);
+                Debug.Log($"CurData: {curNode.Data}, UI is null: {DataAndUIPairs.safeGet(curNode.Data) is null}");
+
                 curNode = curNode.DirectChildren.Nodes.ToList().randomElement();
                 curDepth++;
             }
@@ -60,7 +63,6 @@ namespace Assets.Scripts.SkillTree
 
         private IEnumerator updateRuneTreeUI()
         {
-            Debug.Log(System.Reflection.MethodBase.GetCurrentMethod().Name);
             int nodeGlobalIndex = 0;
             DataAndUIPairs.Clear();;
             for (int i = 0; i < trRootForRows.childCount; i++)
@@ -112,9 +114,9 @@ namespace Assets.Scripts.SkillTree
         
         
 
-        List<RuneSentenceForBattleAction> mockSentences = new List<RuneSentenceForBattleAction>()
+        List<RuneSequenceForBattleAction> mockSentences = new List<RuneSequenceForBattleAction>()
         {
-            new RuneSentenceForBattleAction()
+            new RuneSequenceForBattleAction()
             {
                 RuneKeys = new List<RuneKey>()
                 {
@@ -124,7 +126,7 @@ namespace Assets.Scripts.SkillTree
                 }
                 , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "first", battleActionBase = new AttackAction()}
             },
-            new RuneSentenceForBattleAction()
+            new RuneSequenceForBattleAction()
             {
                 RuneKeys = new List<RuneKey>()
                 {
@@ -134,7 +136,7 @@ namespace Assets.Scripts.SkillTree
                 }
                 , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "second", battleActionBase = new AttackAction()}
             },
-            new RuneSentenceForBattleAction()
+            new RuneSequenceForBattleAction()
             {
                 RuneKeys = new List<RuneKey>()
                 {
@@ -148,7 +150,7 @@ namespace Assets.Scripts.SkillTree
                 }
                 , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "third", battleActionBase = new AttackAction()}
             },
-            new RuneSentenceForBattleAction()
+            new RuneSequenceForBattleAction()
             {
                 RuneKeys = new List<RuneKey>()
                 {

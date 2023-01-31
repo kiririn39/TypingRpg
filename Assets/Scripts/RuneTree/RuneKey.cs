@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.SkillTree
@@ -14,6 +17,15 @@ namespace Assets.Scripts.SkillTree
         I = 4,
         O = 5,
         P = 6,
+    }
+
+    public static class RuneKeyHelper
+    {
+        public static IEnumerable<RuneKey> allValues = 
+            Enum.GetValues(typeof(RuneKey))
+                .Cast<RuneKey>()
+                .Where(it => it != RuneKey.NONE)
+                .ToArray();
     }
 
     public static class RuneKeyExtensions

@@ -54,7 +54,7 @@ public class UIRuneNode : MonoBehaviour
             imgLineConnectorToParent.color = isSelected ? Color.green : Color.gray;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         if (parentRectTransform == null)
             return;
