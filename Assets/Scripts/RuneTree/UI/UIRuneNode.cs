@@ -12,6 +12,7 @@ public class UIRuneNode : MonoBehaviour
 
     [SerializeField] private Image imgSelectedOutline = null;
     [SerializeField] private Image imgLineConnectorToParent = null;
+    [SerializeField] private UIBattleActionIcon battleActionIcon = null;
 
     private RectTransform parentRectTransform = null;
     private RuneNodeData runeNodeData = null;
@@ -25,11 +26,14 @@ public class UIRuneNode : MonoBehaviour
 
         imgLineConnectorToParent.enabled = false;
         setRuneSelected(false);
+        battleActionIcon.gameObject.SetActive(false);
     }
 
     public void init()
     {
         uiRuneKey.init(runeNodeData.runeKey);
+        battleActionIcon.gameObject.SetActive(runeNodeData.RuneBattleActionInfo?.battleActionBase != null);
+        battleActionIcon.init(runeNodeData?.RuneBattleActionInfo?.battleActionBase);
 
         bool isParentExist = parentRectTransform != null;
 

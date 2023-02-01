@@ -20,6 +20,7 @@ namespace Assets.Scripts.SkillTree
         [SerializeField] private Transform trRootForRows = null;
         [SerializeField] private List<UIRuneNode> PoolRuneTreeNodes = new List<UIRuneNode>();
         [SerializeField] private Button btnSelectRandomBranch = null;
+        [SerializeField] private Button btnUpdateParentLines = null;
 
         private Dictionary<RuneNodeData, UIRuneNode> DataAndUIPairs = new Dictionary<RuneNodeData, UIRuneNode>();
 
@@ -27,6 +28,7 @@ namespace Assets.Scripts.SkillTree
         public void init()
         {
             btnSelectRandomBranch.onClick.AddListener( () => selectRandomBranch() );
+            btnUpdateParentLines.onClick.AddListener( updateParentLines );
             
             RuneTree.OnNewSkillsAdded += newSkills =>
             {
@@ -45,6 +47,11 @@ namespace Assets.Scripts.SkillTree
                 DataAndUIPairs.safeGet(node.Data)?.setRuneSelected( false );
                 node.DirectChildren.Nodes.forEach(unselectRecursively);
             }
+        }
+
+        private void updateParentLines()
+        {
+            PoolRuneTreeNodes.forEach(it => it.init());
         }
 
         public void selectRandomBranch(int maxDepth = 999)
@@ -94,7 +101,7 @@ namespace Assets.Scripts.SkillTree
         private IEnumerator updateRuneTreeUI()
         {
             int nodeGlobalIndex = 0;
-            DataAndUIPairs.Clear();;
+            DataAndUIPairs.Clear();
             while (trRootForRows.childCount > 0)
             {
                 Destroy(trRootForRows.GetChild(0));
@@ -186,8 +193,40 @@ namespace Assets.Scripts.SkillTree
                 RuneKeys = new List<RuneKey>()
                 {
                     RuneKey.Q
+                    , RuneKey.W
+                    , RuneKey.E
+
+                    , RuneKey.Q
+                    , RuneKey.W
+                    , RuneKey.E
+                }
+                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "third", battleActionBase = new AttackAction()}
+            },
+            new RuneSequenceForBattleAction()
+            {
+                RuneKeys = new List<RuneKey>()
+                {
+                    RuneKey.Q
+                    , RuneKey.W
+                    , RuneKey.E
+
+                    , RuneKey.E
+                    , RuneKey.W
+                    , RuneKey.Q
+                }
+                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "third", battleActionBase = new AttackAction()}
+            },
+            new RuneSequenceForBattleAction()
+            {
+                RuneKeys = new List<RuneKey>()
+                {
+                    RuneKey.Q
                     , RuneKey.Q
                     , RuneKey.Q
+                    , RuneKey.Q
+                    , RuneKey.W
+                    , RuneKey.E
+                    , RuneKey.I
                 }
                 , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "fifth", battleActionBase = new AttackAction()}
             }
