@@ -17,10 +17,14 @@ namespace Assets.Scripts.SkillTree
 
         [SerializeField] private UIRuneNode goUIRuneNode = null;
         [SerializeField] private GameObject goRowForNodes = null;
+
         [SerializeField] private Transform trRootForRows = null;
         [SerializeField] private List<UIRuneNode> PoolRuneTreeNodes = new List<UIRuneNode>();
         [SerializeField] private Button btnSelectRandomBranch = null;
         [SerializeField] private Button btnUpdateParentLines = null;
+        
+        [SerializeField] private bool isGenerateTreeUI = false;
+        [SerializeField] private bool isDeleteLayoutsAfterGenerateTreeUI = false;
 
         private Dictionary<RuneNodeData, UIRuneNode> DataAndUIPairs = new Dictionary<RuneNodeData, UIRuneNode>();
 
@@ -33,7 +37,7 @@ namespace Assets.Scripts.SkillTree
             RuneTree.OnNewSkillsAdded += newSkills =>
             {
                 trySelectSequence(ArraySegment<RuneKey>.Empty);
-                StartCoroutine(updateRuneTreeUI());
+                StartCoroutine(initRuneTreeUI());
             };
             RuneTree.addSequences(mockSentences);
         }
@@ -98,21 +102,29 @@ namespace Assets.Scripts.SkillTree
             return runeBattleActionInfo;
         }
 
-        private IEnumerator updateRuneTreeUI()
+        private IEnumerator initRuneTreeUI()
         {
             int nodeGlobalIndex = 0;
             DataAndUIPairs.Clear();
-            while (trRootForRows.childCount > 0)
+            if (isGenerateTreeUI)
             {
-                Destroy(trRootForRows.GetChild(0));
-                yield return null;
+                PoolRuneTreeNodes.forEach(it => Destroy(it.gameObject));
+                PoolRuneTreeNodes.Clear();
+                while (trRootForRows.childCount > 0)
+                {
+                    Destroy(trRootForRows.GetChild(0));
+                    yield return null;
+                }
             }
 
+
+            List<Transform> uiRowsTransforms = new List<Transform>();
             IEnumerable<(UIRuneNode parentUI, INode<RuneNodeData> node)> curRowToDraw = RuneTree.tree.Root.DirectChildren.Nodes.Select(x => (null as UIRuneNode, x) ).ToList();
             do
             {
                 List<(UIRuneNode parentUI, INode<RuneNodeData> node)> nextRowToDraw = new List<(UIRuneNode parentUI, INode<RuneNodeData> node)>();
                 Transform uiRow = Instantiate(goRowForNodes, trRootForRows).GetComponent<Transform>();
+                uiRowsTransforms.Add(uiRow);
                 foreach ((UIRuneNode parentUI, INode<RuneNodeData> node) in curRowToDraw)
                 {
                     UIRuneNode nodeUI = drawNode(uiRow, parentUI, node.Data);
@@ -127,6 +139,20 @@ namespace Assets.Scripts.SkillTree
             foreach (UIRuneNode uiRuneNode in PoolRuneTreeNodes)
                 uiRuneNode.init();
 
+            if (isDeleteLayoutsAfterGenerateTreeUI)
+            {
+                Destroy(trRootForRows.GetComponent<LayoutGroup>());
+                foreach (Transform rowTransform in uiRowsTransforms)
+                {
+                    Destroy(rowTransform.gameObject.GetComponent<LayoutGroup>());
+                    while (rowTransform.childCount > 0)
+                    {
+                        rowTransform.GetChild(0).SetParent(trRootForRows);
+                    }
+                }
+                uiRowsTransforms.Select(it => it.gameObject).Where(it => it.transform.childCount == 0).forEach(Destroy);
+            }
+
             UIRuneNode getOrCreateRuneTreeNodeUI( Transform spawnRoot )
             {
                 if (PoolRuneTreeNodes.Count > nodeGlobalIndex)
@@ -140,17 +166,21 @@ namespace Assets.Scripts.SkillTree
             UIRuneNode drawNode(Transform spawnRoot, UIRuneNode parent, RuneNodeData data)
             {
                 UIRuneNode curNodeUI = getOrCreateRuneTreeNodeUI(spawnRoot);
-                curNodeUI.preinit(parent?.transform, data);
+                curNodeUI.preinit(data);
+                curNodeUI.setParent(parent);
+                parent?.addChild(curNodeUI);
                     
                 nodeGlobalIndex++;
                 return curNodeUI;
             }
         }
 
-        
 
-        
-        
+
+
+
+
+
 
         List<RuneSequenceForBattleAction> mockSentences = new List<RuneSequenceForBattleAction>()
         {

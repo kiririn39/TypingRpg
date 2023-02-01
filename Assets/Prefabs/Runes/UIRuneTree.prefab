@@ -195,6 +195,8 @@ MonoBehaviour:
   PoolRuneTreeNodes: []
   btnSelectRandomBranch: {fileID: 2399054359414334299}
   btnUpdateParentLines: {fileID: 8553378198186767052}
+  isGenerateTreeUI: 1
+  isDeleteLayoutsAfterGenerateTreeUI: 0
 --- !u!222 &2334911827767549696
 CanvasRenderer:
   m_ObjectHideFlags: 0
