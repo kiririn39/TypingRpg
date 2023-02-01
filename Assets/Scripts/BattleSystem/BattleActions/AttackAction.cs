@@ -19,7 +19,7 @@ namespace DefaultNamespace.BattleActions
             foreach (var battleCharacterBase in targets)
             {
                 Debug.Log($"Caster {Caster} Attacking {battleCharacterBase}");
-                //battleCharacterBase. -= AttackPoints;
+                battleCharacterBase.DealDamage(AttackPoints);
             }
 
             return true;

@@ -1,18 +1,25 @@
+using System;
 using System.Collections.Generic;
 using BattleSystem.BattleActions;
-using DefaultNamespace.BattleActions;
 using UnityEngine;
+using Utilities;
 
 namespace DefaultNamespace
 {
     public class BattleCharacter : MonoBehaviour
     {
         [SerializeField] [SerializeReference] protected BattleCharacterController controller;
+        [SerializeField] [SerializeReference] protected ProgressBar healthBar;
         [SerializeField] [SerializeReference] protected List<ActionModificatorBase> actionModificators;
 
         public float HealthPoints;
         protected BattleActionBase battleAction;
 
+
+        private void Awake()
+        {
+            healthBar.MaxValue = HealthPoints;
+        }
 
         public BattleActionBase GetAction()
         {
@@ -32,6 +39,8 @@ namespace DefaultNamespace
         public void DealDamage(float value)
         {
             HealthPoints -= value;
+
+            healthBar.SetValue(HealthPoints);
         }
 
         public bool CanInterruptCurrentAction() => battleAction is IInterrruptable;

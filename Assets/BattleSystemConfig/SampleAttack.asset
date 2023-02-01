@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action:
     Caster: {fileID: 0}
-    AttackPoints: 10
+    AttackPoints: 1
     ExecutionDelay: 3
