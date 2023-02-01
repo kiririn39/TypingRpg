@@ -1,11 +1,9 @@
-using System;
-using DefaultNamespace;
+using UnityEngine;
 
 namespace BattleSystem.BattleActions
 {
-    [Serializable]
-    public abstract class ActionModificatorBase
+    public abstract class ActionModificatorBase : ScriptableObject
     {
-        public abstract void ModifyAction(BattleActionBase action);
+        //public abstract void ModifyAction(BattleActionBase action);
     }
 }

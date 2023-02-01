@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using BattleSystem.BattleActions;
 using UnityEngine;
 
 namespace DefaultNamespace.BattleActions
@@ -7,8 +9,8 @@ namespace DefaultNamespace.BattleActions
     [Serializable]
     public class AttackAction : BattleActionBase, ITargetsOpposingCharacter
     {
-        [SerializeField] private float AttackPoints;
-        [SerializeField] private float ExecutionDelay;
+        public float AttackPoints;
+        public float ExecutionDelay;
 
 
         public override bool ExecuteAction(List<BattleCharacter> targets)
@@ -19,7 +21,14 @@ namespace DefaultNamespace.BattleActions
             foreach (var battleCharacterBase in targets)
             {
                 Debug.Log($"Caster {Caster} Attacking {battleCharacterBase}");
-                battleCharacterBase.DealDamage(AttackPoints);
+                var physicalAttackDefences =
+                    battleCharacterBase.GetActionModificators().OfType<PhysicalAttackDefence>();
+                var attackPoint = AttackPoints;
+
+                foreach (var attackDefence in physicalAttackDefences)
+                    attackPoint *= attackDefence.defencePercentage;
+
+                battleCharacterBase.DealDamage(attackPoint);
             }
 
             return true;

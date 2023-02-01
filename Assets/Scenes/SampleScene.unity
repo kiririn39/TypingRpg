@@ -575,11 +575,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1056249871}
   healthBar: {fileID: 1764266099}
-  actionModificators: []
+  actionModificators:
+  - {fileID: 11400000, guid: 740fc2efac1cb4a49b65654a55eeb19d, type: 2}
   HealthPoints: 10
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &1056249871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,9 +830,6 @@ MonoBehaviour:
   healthBar: {fileID: 1951518289}
   actionModificators: []
   HealthPoints: 10
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &2048500203
 MonoBehaviour:
   m_ObjectHideFlags: 0

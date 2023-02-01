@@ -26,7 +26,8 @@ namespace DefaultNamespace
             return null;
         }
 
-        public override string ToString() => $"{nameof(Caster)}: {Caster?.GetType().Name}, {nameof(InitializationTimestamp)}: {InitializationTimestamp}";
+        public override string ToString() =>
+            $"{nameof(Caster)}: {Caster?.GetType().Name}, {nameof(InitializationTimestamp)}: {InitializationTimestamp}";
     }
 
     public interface ITargetsSelf
