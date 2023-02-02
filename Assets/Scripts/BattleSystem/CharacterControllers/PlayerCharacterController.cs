@@ -33,6 +33,8 @@ namespace DefaultNamespace
                 action = possibleActions
                     .FirstOrDefault(actionContainer => actionContainer.CloneAction().GetType() == nextActionType)
                     .CloneAction();
+
+                nextBattleAction = null;
             }
 
             action.Initialize(character);
