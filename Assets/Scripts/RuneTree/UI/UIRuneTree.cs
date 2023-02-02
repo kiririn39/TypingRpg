@@ -31,7 +31,7 @@ namespace Assets.Scripts.SkillTree
 
         public void init()
         {
-            btnUpdateParentLines.onClick.AddListener( updateParentLines );
+            btnUpdateParentLines?.onClick.AddListener( updateParentLines );
             
             RuneTree.OnNewSkillsAdded += newSkills =>
             {
