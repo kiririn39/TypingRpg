@@ -31,7 +31,7 @@ public class ParalaxObject : MonoBehaviour
 
 
     float newX = calcNewCoordinate(_defaultPos.x, transform.localPosition.x, borders.x, sensitivity.x * delta );
-    transform.DOLocalMove(transform.localPosition.setX(newX), 0.3f);
+    transform.DOLocalMove(transform.localPosition.setX(newX), 2.0f).SetEase(Ease.InOutCubic);
 
     float calcNewCoordinate(float defaultPos, float curPos, float maxShifting, float rawDelta)
     {

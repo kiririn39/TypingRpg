@@ -19,6 +19,8 @@ namespace Managers
 
         private Vector3 _current_node_pos;
 
+        private ParalaxObjectsController _paralax_objects_controller;
+
         private Dictionary<int, UIMapNode> _nodes_with_ids = new Dictionary<int, UIMapNode>();
 
 
@@ -31,7 +33,7 @@ namespace Managers
                 ui_map_node.init(stage);
                 StageManager.Instance.stageChangeStarted += ui_map_node.onStageChangeStarted;
                 RectTransform rect_transform = ui_map_node.transform as RectTransform;
-                rect_transform.anchoredPosition += new Vector2(300 * (stage.id + 1), rect_transform.anchoredPosition.y);
+                rect_transform.anchoredPosition += new Vector2(150 * (stage.id + 1), rect_transform.anchoredPosition.y);
                 _nodes_with_ids[stage.id] = ui_map_node;
                 if (node_type == NodeType.CURRENT)
                 {
@@ -58,6 +60,7 @@ namespace Managers
             sequence.Append(player_jump_up_tween);
             var lol = uiNodesHolder.DOAnchorPosX(_current_node_pos.x * -1, 2.0f).SetEase(Ease.InOutCubic);
             lol.onPlay += disableNodeIcon;
+            lol.onPlay += () => _paralax_objects_controller.move(-15000.0f);
             sequence.Append(lol);
             var player_drop_down_tween = uiPlayerToken.DOAnchorPosY(-10, 1.0f).SetEase(Ease.OutCubic);
             player_drop_down_tween.onComplete += StageManager.Instance.invokeStageChangeFinished;
@@ -92,6 +95,7 @@ namespace Managers
         private void Start()
         {
             StageManager.Instance.stageChangeStarted += onStageChangeStarted;
+            _paralax_objects_controller = FindObjectOfType<ParalaxObjectsController>();
         }
     }
 }
