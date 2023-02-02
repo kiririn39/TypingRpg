@@ -1,5 +1,6 @@
 ﻿using Common;
 using DefaultNamespace.BattleActions;
+using Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace Assets.Scripts.SkillTree
                 trySelectSequence(ArraySegment<RuneKey>.Empty);
                 StartCoroutine(initRuneTreeUI());
             };
-            RuneTree.addSequences(mockSentences);
+            RuneTree.addSequences(PlayerDatabase.Instance.myCurrentSkillSentences);
         }
 
         private void unselectAllRunes()
@@ -112,7 +113,7 @@ namespace Assets.Scripts.SkillTree
                 PoolRuneTreeNodes.Clear();
                 while (trRootForRows.childCount > 0)
                 {
-                    Destroy(trRootForRows.GetChild(0));
+                    Destroy(trRootForRows.GetChild(0).gameObject);
                     yield return null;
                 }
             }
@@ -174,92 +175,5 @@ namespace Assets.Scripts.SkillTree
                 return curNodeUI;
             }
         }
-
-
-
-
-
-
-
-
-        List<RuneSequenceForBattleAction> mockSentences = new List<RuneSequenceForBattleAction>()
-        {
-            new RuneSequenceForBattleAction()
-            {
-                RuneKeys = new List<RuneKey>()
-                {
-                    RuneKey.Q
-                    , RuneKey.W
-                    , RuneKey.E
-                }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "first", battleActionBase = new IdleAction()}
-            },
-            new RuneSequenceForBattleAction()
-            {
-                RuneKeys = new List<RuneKey>()
-                {
-                    RuneKey.I
-                    , RuneKey.O
-                    , RuneKey.P
-                }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "second", battleActionBase = new DefenceAction()}
-            },
-            new RuneSequenceForBattleAction()
-            {
-                RuneKeys = new List<RuneKey>()
-                {
-                    RuneKey.Q
-                    , RuneKey.W
-                    , RuneKey.E
-
-                    , RuneKey.I
-                    , RuneKey.O
-                    , RuneKey.P
-                }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "third", battleActionBase = new AttackAction()}
-            },
-            new RuneSequenceForBattleAction()
-            {
-                RuneKeys = new List<RuneKey>()
-                {
-                    RuneKey.Q
-                    , RuneKey.W
-                    , RuneKey.E
-
-                    , RuneKey.Q
-                    , RuneKey.W
-                    , RuneKey.E
-                }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "third", battleActionBase = new AttackAction()}
-            },
-            new RuneSequenceForBattleAction()
-            {
-                RuneKeys = new List<RuneKey>()
-                {
-                    RuneKey.Q
-                    , RuneKey.W
-                    , RuneKey.E
-
-                    , RuneKey.E
-                    , RuneKey.W
-                    , RuneKey.Q
-                }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "third", battleActionBase = new AttackAction()}
-            },
-            new RuneSequenceForBattleAction()
-            {
-                RuneKeys = new List<RuneKey>()
-                {
-                    RuneKey.Q
-                    , RuneKey.Q
-                    , RuneKey.Q
-                    , RuneKey.Q
-                    , RuneKey.W
-                    , RuneKey.E
-                    , RuneKey.I
-                }
-                , RuneBattleActionInfo = new RuneBattleActionInfo() {name = "fifth", battleActionBase = new AttackAction()}
-            }
-        };
     }
 }

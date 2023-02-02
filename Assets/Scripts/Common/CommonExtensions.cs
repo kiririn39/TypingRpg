@@ -79,5 +79,19 @@ namespace Common
             return Assembly.GetAssembly(typeof(T)).GetTypes()
                 .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T)));
         }
+
+        public static T safeGet<T>( this IReadOnlyList<T> arr, int idx, bool last_if_overflow = true )
+        {
+            if ( idx < 0 )
+                return default;
+
+            if ( arr == null || arr.Count == 0 )
+                return default;
+
+            if ( idx >= arr.Count )
+                return last_if_overflow ? arr[arr.Count - 1] : default;
+
+            return arr[idx];
+        }
     }
 }

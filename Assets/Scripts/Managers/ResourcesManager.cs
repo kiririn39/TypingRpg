@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using Assets.Scripts.SkillTree;
+using Common;
 using DefaultNamespace;
 using DefaultNamespace.BattleActions;
 using System;
@@ -11,6 +12,7 @@ namespace Managers
 {
     public class ResourcesManager : MonoBehaviour
     {
+        #region Sprites
         [Serializable]
         public class SpriteForBattleAction
         {
@@ -32,12 +34,12 @@ namespace Managers
             public Sprite    sprite;
         }
 
+        [SerializeField] private Sprite undefinedBattleActionIcon = null;
+
         [SerializeField] private List<SpriteForBattleAction> imgsBattleActionIcon =
             CommonExtensions.GetAllInheritorsOf<BattleActionBase>()
                 .Select(it => new SpriteForBattleAction(it.Name, null))
                 .ToList();
-
-        [SerializeField] private Sprite undefinedBattleActionIcon = null;
 
         [SerializeField] private List<SpriteForMapNode> imgsMapNodeIcon = new List<SpriteForMapNode>();
 
@@ -60,11 +62,15 @@ namespace Managers
             return sprite ? sprite : undefinedBattleActionIcon;
 
         }
+        #endregion
 
         #region Localization
 
         public string getSkillTitle(BattleActionBase battleActionBase)
         {
+            if (battleActionBase == null)
+                return "NULL";
+
             return $"Skill title for {battleActionBase.GetType().Name}";
             //TODO
             switch (battleActionBase)
@@ -81,9 +87,12 @@ namespace Managers
             }
         }
 
-        public string getSkillDescription(BattleActionBase battleActionBase)
+        public string getSkillDescription(BattleActionBase battleActionBase, List<RuneKey> runeKeys)
         {
-            return $"Skill description for {battleActionBase.GetType().Name}";
+            if (battleActionBase == null)
+                return "NULL";
+
+            return $"Skill description for {battleActionBase.GetType().Name}\n[{string.Join("", runeKeys)}]";
             //TODO
             switch (battleActionBase)
             {
@@ -99,6 +108,7 @@ namespace Managers
             }
         }
         #endregion
+
 
         #region Singleton
         public static ResourcesManager Instance { get; private set; }

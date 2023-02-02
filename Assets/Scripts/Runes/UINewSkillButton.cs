@@ -16,19 +16,21 @@ public class UINewSkillButton : MonoBehaviour
 
    private bool onClickInited = false;
    private Action onClickAction = null;
+   private RuneSequenceForBattleAction runeSequenceForBattleAction = null;
 
 
-   public void init(RuneBattleActionInfo battleActionInfo, Action onClickAction)
+   public void init(RuneSequenceForBattleAction runeSequenceForBattleAction, Action onClickAction)
    {
       this.onClickAction = onClickAction;
-      if (onClickInited)
+      this.runeSequenceForBattleAction = runeSequenceForBattleAction;
+      if (!onClickInited)
       {
          btnConfirm.onClick.AddListener(() => this.onClickAction?.Invoke());
          onClickInited = true;
       }
 
-      txtTitle      .text = ResourcesManager.Instance.getSkillTitle      (battleActionInfo?.battleActionBase);
-      txtDescription.text = ResourcesManager.Instance.getSkillDescription(battleActionInfo?.battleActionBase);
-      imgBattleActionIcon.init(battleActionInfo?.battleActionBase);
+      txtTitle      .text = ResourcesManager.Instance.getSkillTitle      (runeSequenceForBattleAction.RuneBattleActionInfo.battleActionBase);
+      txtDescription.text = ResourcesManager.Instance.getSkillDescription(runeSequenceForBattleAction.RuneBattleActionInfo.battleActionBase, runeSequenceForBattleAction.RuneKeys);
+      imgBattleActionIcon.init(runeSequenceForBattleAction.RuneBattleActionInfo.battleActionBase);
    }
 }
