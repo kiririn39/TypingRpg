@@ -1,4 +1,5 @@
 using Assets.Scripts.SkillTree;
+using DefaultNamespace;
 using Managers;
 using RuneStack;
 using System;
@@ -9,6 +10,9 @@ using UnityEngine.UI;
 
 public class UIPanelRunes : MonoBehaviour
 {
+   public event Action<RuneBattleActionInfo> OnUseBattleAction = delegate{}; 
+
+
    [SerializeField] private UIRuneStack        uiRuneStack     = null;
    [SerializeField] private UIRuneTree         uiRuneTree      = null;
    [SerializeField] private UINewSkillSelector uiSkillSelector = null;
@@ -22,11 +26,12 @@ public class UIPanelRunes : MonoBehaviour
 
       uiRuneStack.init(uiRuneTree.RuneTree);
       uiRuneStack.OnStackChanged += runes => uiRuneTree.trySelectSequence(runes);
+      uiRuneStack.OnUseBattleAction += skill => OnUseBattleAction(skill);
 
       uiSkillSelector.gameObject.SetActive(false);
       uiSkillSelector.OnSkillSelected += onSkillSelectedInPanel;
 
-      btnCheatNewLvl.onClick.AddListener(openNewSkillSelectorPanel);
+      btnCheatNewLvl?.onClick.AddListener(openNewSkillSelectorPanel);
    }
 
    public void openNewSkillSelectorPanel()
