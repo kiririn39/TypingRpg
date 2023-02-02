@@ -51,11 +51,11 @@ namespace Managers
         {
             Sequence sequence = DOTween.Sequence();
             sequence.Pause();
-            var player_jump_up_tween = uiPlayerToken.DOLocalMoveY(70, 0.5f).SetEase(Ease.OutBounce);
+            var player_jump_up_tween = uiPlayerToken.DOAnchorPosY(30, 0.5f).SetEase(Ease.OutBounce);
             player_jump_up_tween.onComplete += enableNodeIcon;
             sequence.Append(player_jump_up_tween);
             sequence.Append(uiNodesHolder.DOAnchorPosX(_current_node_pos.x * -1 , 2.0f).SetEase(Ease.InOutCubic));
-            var player_drop_down_tween = uiPlayerToken.DOLocalMoveY(0, 1.0f).SetEase(Ease.OutCubic);
+            var player_drop_down_tween = uiPlayerToken.DOAnchorPosY(-10, 1.0f).SetEase(Ease.OutCubic);
             player_drop_down_tween.onPlay += disableNodeIcon;
             sequence.Append(player_drop_down_tween);
             sequence.Play();
