@@ -29,7 +29,7 @@ namespace Managers
                 UIMapNode ui_map_node = Instantiate(uiMapNodePrefab, uiNodesHolder);
                 NodeType node_type = stage.getNodeType();
                 ui_map_node.init(stage);
-                StageManager.Instance.stageChanged += ui_map_node.onStageChanged;
+                StageManager.Instance.stageChangeStarted += ui_map_node.onStageChangeStarted;
                 RectTransform rect_transform = ui_map_node.transform as RectTransform;
                 rect_transform.anchoredPosition += new Vector2(300 * (stage.id + 1), rect_transform.anchoredPosition.y);
                 _nodes_with_ids[stage.id] = ui_map_node;
@@ -40,7 +40,7 @@ namespace Managers
             }
         }
 
-        private void onStageChanged()
+        private void onStageChangeStarted()
         {
             if (_nodes_with_ids.Count <= StageManager.Instance.curStageIndex)
                 return;
@@ -60,6 +60,7 @@ namespace Managers
             lol.onPlay += disableNodeIcon;
             sequence.Append(lol);
             var player_drop_down_tween = uiPlayerToken.DOAnchorPosY(-10, 1.0f).SetEase(Ease.OutCubic);
+            player_drop_down_tween.onComplete += StageManager.Instance.invokeStageChangeFinished;
             sequence.Append(player_drop_down_tween);
             sequence.Play();
 
@@ -90,7 +91,7 @@ namespace Managers
 
         private void Start()
         {
-            StageManager.Instance.stageChanged += onStageChanged;
+            StageManager.Instance.stageChangeStarted += onStageChangeStarted;
         }
     }
 }

@@ -15,7 +15,7 @@ public class UIPanelRunes : MonoBehaviour
 
    [SerializeField] private UIRuneStack        uiRuneStack     = null;
    [SerializeField] private UIRuneTree         uiRuneTree      = null;
-   [SerializeField] private UINewSkillSelector uiSkillSelector = null;
+   [SerializeField] public  UINewSkillSelector uiSkillSelector = null;
 
    [SerializeField] private Button btnCheatNewLvl = null;
 

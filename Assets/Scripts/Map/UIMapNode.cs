@@ -24,7 +24,7 @@ namespace Map
             gameObject.SetActive(true);
         }
 
-        public void onStageChanged()
+        public void onStageChangeStarted()
         {
             setColour();
         }
