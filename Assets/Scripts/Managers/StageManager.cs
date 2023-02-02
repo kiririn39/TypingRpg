@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using Map;
 using UnityEditor;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace Managers
 
 
         private List<Stage> stages = new List<Stage>();
+
+        private GameBattleSystem gameBattleSystem;
 
         public int curStageIndex { get; private set; } = -1;
 
@@ -38,6 +41,10 @@ namespace Managers
                 ui_panel_runes.openNewSkillSelectorPanel();
                 ui_panel_runes.uiSkillSelector.OnSkillSelected += _ => nextStage();
             }
+            else
+            {
+                gameBattleSystem.StartBattle();
+            }
         }
 
         private void Awake()
@@ -62,6 +69,8 @@ namespace Managers
         {
             MapManager.Instance.spawnMap(stages);
             nextStage();
+            gameBattleSystem = FindObjectOfType<GameBattleSystem>();
+            gameBattleSystem.OnBattleEnded += _ => nextStage();
         }
     }
 }
