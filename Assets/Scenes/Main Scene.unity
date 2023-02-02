@@ -1093,6 +1093,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1491222956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7209202344686921208, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+  m_PrefabInstance: {fileID: 7209202346148521044}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89efc3e27b664ce5868f165291292e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1588533564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1285,6 +1296,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PanelRunes
       objectReference: {fileID: 0}
+    - target: {fileID: 978161621271734146, guid: e6c3c1a4d2ce4984eaf368d3e008c95d, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1491222956}
     - target: {fileID: 2007641713324902753, guid: e6c3c1a4d2ce4984eaf368d3e008c95d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

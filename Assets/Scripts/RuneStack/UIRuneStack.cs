@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.SkillTree;
+using DefaultNamespace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,14 @@ using RuneKey=Assets.Scripts.SkillTree.RuneKey;
 
 namespace RuneStack
 {
-    public class UIRuneStack : MonoBehaviour
+    public class UIRuneStack : MonoBehaviour, UIRuneStack.ISkillTrigger
     {
+        public interface ISkillTrigger
+        {
+            event Action<RuneBattleActionInfo> OnUseBattleAction;
+        }
+
+
         public event Action<RuneBattleActionInfo> OnUseBattleAction = delegate{};
         public event Action<List<RuneKey>> OnStackChanged = delegate{};
 
@@ -16,6 +23,7 @@ namespace RuneStack
         [SerializeField] private bool isAutoUse = false;
         [SerializeField] private List<UIRuneKey> uiRuneKeys = new List<UIRuneKey>();
         [SerializeField] private UIBattleActionIcon uiResultBattleAction = null;
+        [SerializeField] private BattleCharacterController playerController = null;
 
         private RuneBattleActionInfo runeBattleActionInfo = null;
         private List<RuneKey> selectedRuneKeys = new List<RuneKey>();
@@ -26,6 +34,8 @@ namespace RuneStack
 
         public void init(RuneTree runeTree)
         {
+            playerController.init(this);
+
             this.runeTree = runeTree;
             updateData();
             updateUI();
