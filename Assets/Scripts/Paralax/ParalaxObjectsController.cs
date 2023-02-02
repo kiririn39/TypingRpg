@@ -1,4 +1,5 @@
 using Common;
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -13,8 +14,11 @@ public class ParalaxObjectsController : MonoBehaviour
   #region Private Fields
   private ParalaxObject[] _shiftingObjects = null;
   #endregion
-  
 
+  private void Awake()
+  {
+    init();
+  }
   #region Public Methods
   public void init()
   {

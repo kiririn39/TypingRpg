@@ -1,4 +1,5 @@
 using Common;
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -30,7 +31,7 @@ public class ParalaxObject : MonoBehaviour
 
 
     float newX = calcNewCoordinate(_defaultPos.x, transform.localPosition.x, borders.x, sensitivity.x * delta );
-    transform.localPosition = transform.localPosition.setX(newX);
+    transform.DOLocalMove(transform.localPosition.setX(newX), 0.3f);
 
     float calcNewCoordinate(float defaultPos, float curPos, float maxShifting, float rawDelta)
     {
