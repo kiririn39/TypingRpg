@@ -4,6 +4,7 @@ using DefaultNamespace.BattleActions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Map;
 using UnityEngine;
 
 namespace Managers
@@ -24,12 +25,21 @@ namespace Managers
             }
         }
 
+        [Serializable]
+        public class SpriteForMapNode
+        {
+            public StageType stageType;
+            public Sprite    sprite;
+        }
+
         [SerializeField] private List<SpriteForBattleAction> imgsBattleActionIcon =
             CommonExtensions.GetAllInheritorsOf<BattleActionBase>()
                 .Select(it => new SpriteForBattleAction(it.Name, null))
                 .ToList();
 
         [SerializeField] private Sprite undefinedBattleActionIcon = null;
+
+        [SerializeField] private List<SpriteForMapNode> imgsMapNodeIcon = new List<SpriteForMapNode>();
 
         public Sprite getSpriteForBattleAction(Type type)
         {
@@ -42,6 +52,13 @@ namespace Managers
                 return sprite;
 
             return undefinedBattleActionIcon;
+        }
+
+        public Sprite getSpriteForMapNode(StageType type)
+        {
+            Sprite sprite = imgsMapNodeIcon.FirstOrDefault(x => x.stageType == type)?.sprite;
+            return sprite ? sprite : undefinedBattleActionIcon;
+
         }
 
         #region Localization

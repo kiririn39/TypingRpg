@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8400572854367007759
 MonoBehaviour:
@@ -52,3 +52,8 @@ MonoBehaviour:
   - className: IdleAction
     sprite: {fileID: 21300000, guid: 39e345247bb706741a05e34522f9230b, type: 3}
   undefinedBattleActionIcon: {fileID: 21300000, guid: 1c27262a16d8e8740a330f38aca6b1a6, type: 3}
+  imgsMapNodeIcon:
+  - stageType: 0
+    sprite: {fileID: 21300000, guid: a05b0e35dfa3a0647a426fce3225187c, type: 3}
+  - stageType: 1
+    sprite: {fileID: 21300000, guid: a32b45a0129f71d418a401f563f95e0d, type: 3}
