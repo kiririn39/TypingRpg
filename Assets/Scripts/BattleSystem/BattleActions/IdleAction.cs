@@ -6,9 +6,9 @@ namespace DefaultNamespace.BattleActions
     [Serializable]
     public class IdleAction : BattleActionBase, ITargetsSelf, IInterrruptable
     {
-        public override bool ExecuteAction(List<BattleCharacter> targets)
+        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
         {
-            return true;
+            return GameBattleSystem.InProgressAction;
         }
 
         public void Interrupt()

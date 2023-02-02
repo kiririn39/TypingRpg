@@ -16,9 +16,9 @@ namespace DefaultNamespace
             InitializationTimestamp = Time.time;
         }
 
-        public virtual bool ExecuteAction(List<BattleCharacter> targets)
+        public virtual ActionResultBase ExecuteAction(List<BattleCharacter> targets)
         {
-            return false;
+            return GameBattleSystem.FinishedAction;
         }
 
         public virtual BattleActionBase Clone()
@@ -41,5 +41,10 @@ namespace DefaultNamespace
     public interface IInterrruptable
     {
         public void Interrupt();
+    }
+
+    public interface IEffect
+    {
+        void SetAllEffectsLookup(List<BattleActionBase> battleEffects);
     }
 }

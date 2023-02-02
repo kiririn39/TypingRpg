@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using BattleSystem.BattleActions.Containers;
-using DefaultNamespace.BattleActions;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -14,7 +13,8 @@ namespace DefaultNamespace
 
         public BattleActionBase GenerateNextAction()
         {
-            var action = possibleActions.Select(container => container.CloneAction()).OfType<AttackAction>().First();
+            var action = possibleActions.Select(container => container.CloneAction()).OrderBy(_ => Random.Range(-1, 1))
+                .First();
 
             action.Initialize(character);
 

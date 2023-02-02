@@ -13,14 +13,14 @@ namespace DefaultNamespace.BattleActions
         public float ExecutionDelay;
 
 
-        public override bool ExecuteAction(List<BattleCharacter> targets)
+        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
         {
             if (InitializationTimestamp + ExecutionDelay > Time.time)
-                return false;
+                return GameBattleSystem.InProgressAction;
 
             foreach (var battleCharacterBase in targets)
             {
-                Debug.Log($"Caster {Caster} Attacking {battleCharacterBase}");
+                Debug.Log($"Caster {Caster.name} Attacking {battleCharacterBase.name}");
                 var physicalAttackDefences =
                     battleCharacterBase.GetActionModificators().OfType<PhysicalAttackDefence>();
                 var attackPoint = AttackPoints;
@@ -31,7 +31,7 @@ namespace DefaultNamespace.BattleActions
                 battleCharacterBase.DealDamage(attackPoint);
             }
 
-            return true;
+            return GameBattleSystem.FinishedAction;
         }
 
         public override BattleActionBase Clone()
