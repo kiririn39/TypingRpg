@@ -8,7 +8,7 @@ namespace DefaultNamespace
     {
     }
 
-    public abstract class PlayerLostResult : BattleResult
+    public class PlayerLostResult : BattleResult
     {
     }
 }

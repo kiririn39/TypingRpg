@@ -51,6 +51,8 @@ namespace DefaultNamespace
             }
 
             ExecutePassives();
+
+            TryFinishBattle();
         }
 
         private void ExecuteAction(BattleCharacter character, BattleActionBase action)
@@ -90,6 +92,21 @@ namespace DefaultNamespace
                 var effect = passiveAction as IEffect;
                 effect.SetAllEffectsLookup(_passiveActions);
                 ExecuteAction(passiveAction.Caster, passiveAction);
+            }
+        }
+
+        private void TryFinishBattle()
+        {
+            if (playerCharacter.HealthPoints <= 0.0f)
+            {
+                PauseBattle();
+                OnBattleEnded.Invoke(new PlayerLostResult());
+            }
+
+            if (enemyCharacter.HealthPoints <= 0.0f)
+            {
+                PauseBattle();
+                OnBattleEnded.Invoke(new PlayerVictoryResult());
             }
         }
     }
