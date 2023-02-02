@@ -1,15 +1,13 @@
-using System;
 using System.Collections.Generic;
 using BattleSystem.BattleActions;
 using UnityEngine;
-using Utilities;
 
 namespace DefaultNamespace
 {
     public class BattleCharacter : MonoBehaviour
     {
         [SerializeField] [SerializeReference] protected BattleCharacterController controller;
-        [SerializeField] [SerializeReference] protected ProgressBar healthBar;
+        [SerializeField] [SerializeReference] public CharacterStatusBar statusBar;
         [SerializeField] [SerializeReference] protected List<ActionModificatorBase> actionModificators;
 
         public float HealthPoints;
@@ -18,7 +16,7 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            healthBar.MaxValue = HealthPoints;
+            statusBar.SetMaxHealth(HealthPoints);
         }
 
         public BattleActionBase GetAction()
@@ -40,7 +38,7 @@ namespace DefaultNamespace
         {
             HealthPoints -= value;
 
-            healthBar.SetValue(HealthPoints);
+            statusBar.SetCurrentHealth(HealthPoints);
         }
 
         public bool CanInterruptCurrentAction() => battleAction is IInterrruptable;

@@ -22,5 +22,15 @@ namespace Utilities
 
             bar.size = scale;
         }
+
+        public void SetValueNormalized(float value)
+        {
+            var widthFactor = Mathf.Clamp(value, 0.0f, 1.0f);
+
+            var scale = bar.size;
+            scale.x = widthFactor;
+
+            bar.size = scale;
+        }
     }
 }

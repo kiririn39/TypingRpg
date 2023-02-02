@@ -70,8 +70,9 @@ namespace DefaultNamespace
 
         private void ExecutePassives()
         {
-            foreach (var passiveAction in _passiveActions)
+            for (var index = 0; index < _passiveActions.Count; index++)
             {
+                var passiveAction = _passiveActions[index];
                 var effect = passiveAction as IEffect;
                 effect.SetAllEffectsLookup(_passiveActions);
                 ExecuteAction(passiveAction.Caster, passiveAction);

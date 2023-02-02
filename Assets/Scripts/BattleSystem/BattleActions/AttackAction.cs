@@ -15,7 +15,10 @@ namespace DefaultNamespace.BattleActions
 
         public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
         {
-            if (InitializationTimestamp + ExecutionDelay > Time.time)
+            float completesAt = InitializationTimestamp + ExecutionDelay;
+
+            Caster.statusBar.SetCurrentDelayNormalized((Time.time - InitializationTimestamp) / ExecutionDelay);
+            if (completesAt > Time.time)
                 return GameBattleSystem.InProgressAction;
 
             foreach (var battleCharacterBase in targets)
@@ -42,6 +45,10 @@ namespace DefaultNamespace.BattleActions
                 AttackPoints = this.AttackPoints,
                 ExecutionDelay = this.ExecutionDelay,
             };
+        }
+
+        private void UpdateCharacterStatusBar(BattleCharacter character, float normalizedValue)
+        {
         }
     }
 }

@@ -14,7 +14,10 @@ namespace DefaultNamespace
 
         public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
         {
-            if (InitializationTimestamp + ExecutionDelay > Time.time)
+            float completesAt = InitializationTimestamp + ExecutionDelay;
+
+            Caster.statusBar.SetCurrentDelayNormalized((Time.time - InitializationTimestamp) / ExecutionDelay);
+            if (completesAt > Time.time)
                 return GameBattleSystem.InProgressAction;
 
             var poisonEffect = PoisonEffect.Clone();

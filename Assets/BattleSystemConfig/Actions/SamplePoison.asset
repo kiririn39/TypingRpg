@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poisonEffect:
     Caster: {fileID: 0}
-    ExecutionDelay: 4
+    ExecutionDelay: 10
     PoisonEffect:
       Caster: {fileID: 0}
       AttackPoints: 0.5

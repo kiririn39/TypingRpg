@@ -8,7 +8,7 @@ namespace DefaultNamespace.BattleActions
     {
         public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
         {
-            return GameBattleSystem.InProgressAction;
+            return GameBattleSystem.FinishedAction;
         }
 
         public void Interrupt()

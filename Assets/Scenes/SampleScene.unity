@@ -442,7 +442,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1056249871}
-  healthBar: {fileID: 1764266099}
+  statusBar: {fileID: 1764266099}
   actionModificators:
   - {fileID: 11400000, guid: 740fc2efac1cb4a49b65654a55eeb19d, type: 2}
   HealthPoints: 10
@@ -707,24 +707,24 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1764266099 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6516685350527256069, guid: 28f5508d1db834feeb0822db1579d035, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3983278660411398153, guid: 28f5508d1db834feeb0822db1579d035, type: 3}
   m_PrefabInstance: {fileID: 1571773843}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69924b84f5b347bfad5a15bac418e0e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a1cbab40553432ca766330da0865bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1951518289 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6516685350527256069, guid: 28f5508d1db834feeb0822db1579d035, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3983278660411398153, guid: 28f5508d1db834feeb0822db1579d035, type: 3}
   m_PrefabInstance: {fileID: 37258502}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69924b84f5b347bfad5a15bac418e0e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a1cbab40553432ca766330da0865bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2048500198
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2048500203}
-  healthBar: {fileID: 1951518289}
+  statusBar: {fileID: 1951518289}
   actionModificators: []
   HealthPoints: 10
 --- !u!114 &2048500203
