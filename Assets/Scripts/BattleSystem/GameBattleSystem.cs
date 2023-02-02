@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,19 @@ namespace DefaultNamespace
         public static readonly FinishedActionResult FinishedAction = new FinishedActionResult();
         public static readonly InProcessActionResult InProgressAction = new InProcessActionResult();
 
+        public Action<BattleResult> OnBattleEnded;
+
+
+        public void StartBattle()
+        {
+            enabled = true;
+            _passiveActions.Clear();
+        }
+
+        public void PauseBattle()
+        {
+            enabled = false;
+        }
 
         private void Update()
         {
