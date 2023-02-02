@@ -54,6 +54,7 @@ public class UIRuneNode : MonoBehaviour
     public void setParent(UIRuneNode parent)
     {
         this.parent = parent;
+        setRuneSelected(isSelected);
     }
 
     public void addChild(UIRuneNode child)

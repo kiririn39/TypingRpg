@@ -21,7 +21,6 @@ namespace Assets.Scripts.SkillTree
 
         [SerializeField] private Transform trRootForRows = null;
         [SerializeField] private List<UIRuneNode> PoolRuneTreeNodes = new List<UIRuneNode>();
-        [SerializeField] private Button btnSelectRandomBranch = null;
         [SerializeField] private Button btnUpdateParentLines = null;
         
         [SerializeField] private bool isGenerateTreeUI = false;
@@ -32,7 +31,6 @@ namespace Assets.Scripts.SkillTree
 
         public void init()
         {
-            btnSelectRandomBranch.onClick.AddListener( () => selectRandomBranch() );
             btnUpdateParentLines.onClick.AddListener( updateParentLines );
             
             RuneTree.OnNewSkillsAdded += newSkills =>
@@ -59,23 +57,23 @@ namespace Assets.Scripts.SkillTree
             PoolRuneTreeNodes.forEach(it => it.init());
         }
 
-        public void selectRandomBranch(int maxDepth = 999)
-        {
-            unselectAllRunes();
-
-            maxDepth = Random.Range(1, 6);
-            var curNode = RuneTree.tree.Root.DirectChildren.Nodes.ToList().randomElement();
-            int curDepth = 1;
-            Debug.Log($"maxDepth is {maxDepth}");
-            while (curNode != null && curDepth <= maxDepth)
-            {
-                DataAndUIPairs.safeGet(curNode.Data)?.setRuneSelected(true);
-                Debug.Log($"CurData: {curNode.Data}, UI is null: {DataAndUIPairs.safeGet(curNode.Data) is null}");
-
-                curNode = curNode.DirectChildren.Nodes.ToList().randomElement();
-                curDepth++;
-            }
-        }
+        // public void selectRandomBranch(int maxDepth = 999)
+        // {
+        //     unselectAllRunes();
+        //
+        //     maxDepth = Random.Range(1, 6);
+        //     var curNode = RuneTree.tree.Root.DirectChildren.Nodes.ToList().randomElement();
+        //     int curDepth = 1;
+        //     Debug.Log($"maxDepth is {maxDepth}");
+        //     while (curNode != null && curDepth <= maxDepth)
+        //     {
+        //         DataAndUIPairs.safeGet(curNode.Data)?.setRuneSelected(true);
+        //         Debug.Log($"CurData: {curNode.Data}, UI is null: {DataAndUIPairs.safeGet(curNode.Data) is null}");
+        //
+        //         curNode = curNode.DirectChildren.Nodes.ToList().randomElement();
+        //         curDepth++;
+        //     }
+        // }
 
         public RuneBattleActionInfo trySelectSequence( IEnumerable<RuneKey> sequence )
         {
@@ -107,17 +105,17 @@ namespace Assets.Scripts.SkillTree
         {
             int nodeGlobalIndex = 0;
             DataAndUIPairs.Clear();
+            trRootForRows.GetComponent<LayoutGroup>().enabled = true;
             if (isGenerateTreeUI)
             {
                 PoolRuneTreeNodes.forEach(it => Destroy(it.gameObject));
                 PoolRuneTreeNodes.Clear();
-                while (trRootForRows.childCount > 0)
+                for (int i = trRootForRows.childCount - 1; i >= 0; i--)
                 {
-                    Destroy(trRootForRows.GetChild(0).gameObject);
-                    yield return null;
+                    Destroy(trRootForRows.GetChild(i).gameObject);
                 }
             }
-
+            yield return new WaitForEndOfFrame();
 
             List<Transform> uiRowsTransforms = new List<Transform>();
             IEnumerable<(UIRuneNode parentUI, INode<RuneNodeData> node)> curRowToDraw = RuneTree.tree.Root.DirectChildren.Nodes.Select(x => (null as UIRuneNode, x) ).ToList();
@@ -142,7 +140,7 @@ namespace Assets.Scripts.SkillTree
 
             if (isDeleteLayoutsAfterGenerateTreeUI)
             {
-                Destroy(trRootForRows.GetComponent<LayoutGroup>());
+                trRootForRows.GetComponent<LayoutGroup>().enabled = false;
                 foreach (Transform rowTransform in uiRowsTransforms)
                 {
                     Destroy(rowTransform.gameObject.GetComponent<LayoutGroup>());
