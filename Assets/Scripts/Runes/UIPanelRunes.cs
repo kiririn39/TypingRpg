@@ -1,14 +1,20 @@
 using Assets.Scripts.SkillTree;
+using Managers;
 using RuneStack;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIPanelRunes : MonoBehaviour
 {
-   [SerializeField] private UIRuneStack uiRuneStack = null;
-   [SerializeField] private UIRuneTree  uiRuneTree  = null;
+   [SerializeField] private UIRuneStack        uiRuneStack     = null;
+   [SerializeField] private UIRuneTree         uiRuneTree      = null;
+   [SerializeField] private UINewSkillSelector uiSkillSelector = null;
+
+   [SerializeField] private Button btnCheatNewLvl = null;
+
 
    private void Awake()
    {
@@ -16,5 +22,23 @@ public class UIPanelRunes : MonoBehaviour
 
       uiRuneStack.init(uiRuneTree.RuneTree);
       uiRuneStack.OnStackChanged += runes => uiRuneTree.trySelectSequence(runes);
+
+      uiSkillSelector.gameObject.SetActive(false);
+      uiSkillSelector.OnSkillSelected += onSkillSelectedInPanel;
+
+      btnCheatNewLvl.onClick.AddListener(openNewSkillSelectorPanel);
+   }
+
+   public void openNewSkillSelectorPanel()
+   {
+      uiSkillSelector.gameObject.SetActive(true);
+      uiSkillSelector.init(PlayerDatabase.Instance.availableSkillsForNextLvl);
+   }
+
+   private void onSkillSelectedInPanel(RuneSequenceForBattleAction newSkill)
+   {
+      uiSkillSelector.gameObject.SetActive(false);
+      PlayerDatabase.Instance.addNewSkill(newSkill);
+      uiRuneTree.RuneTree.addSequence(newSkill);
    }
 }

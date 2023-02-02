@@ -3,6 +3,7 @@ using DefaultNamespace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Assets.Scripts.SkillTree
 {
@@ -40,10 +41,16 @@ namespace Assets.Scripts.SkillTree
         public void addSequenceWithoutNotify(RuneSequenceForBattleAction sequence)
         {
             if (sequence.RuneKeys.Count == 0)
-                throw new Exception("Chel...,there is no keys");
-            
+            {
+                Debug.LogError("Chel..., there is no keys");
+                return;
+            }
+
             if (sequence.RuneBattleActionInfo == null)
-                throw new ArgumentNullException("Chel..., skill is null");
+            {
+                Debug.LogError("Chel..., skill is null");
+                return;
+            }
 
             INode<RuneNodeData> curNode = tree.Root;
             for (int i = 0; i < sequence.RuneKeys.Count; i++)
@@ -56,7 +63,10 @@ namespace Assets.Scripts.SkillTree
                     continue;
 
                 if (curNode.Data.RuneBattleActionInfo != null)
-                    throw new Exception("Chel, wtf, tut vje e skill");
+                {
+                    Debug.LogError("Chel, wtf, tut vje e skill");
+                    return;
+                }
 
                 curNode.Data.RuneBattleActionInfo = sequence.RuneBattleActionInfo;
             }
