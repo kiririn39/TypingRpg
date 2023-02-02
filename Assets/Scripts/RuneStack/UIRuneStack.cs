@@ -4,7 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using RuneKey=Assets.Scripts.SkillTree.RuneKey;
+using UnityEngine.Serialization;
+using RuneKey = Assets.Scripts.SkillTree.RuneKey;
 
 namespace RuneStack
 {
@@ -16,14 +17,15 @@ namespace RuneStack
         }
 
 
-        public event Action<RuneBattleActionInfo> OnUseBattleAction = delegate{};
-        public event Action<List<RuneKey>> OnStackChanged = delegate{};
+        public event Action<RuneBattleActionInfo> OnUseBattleAction = delegate { };
+        public event Action<List<RuneKey>> OnStackChanged = delegate { };
 
 
         [SerializeField] private bool isAutoUse = false;
         [SerializeField] private List<UIRuneKey> uiRuneKeys = new List<UIRuneKey>();
         [SerializeField] private UIBattleActionIcon uiResultBattleAction = null;
-        [SerializeField] private BattleCharacterController playerController = null;
+        [FormerlySerializedAs("playerController")]
+        [SerializeField] private PlayerCharacterController playerControllerBase = null;
 
         private RuneBattleActionInfo runeBattleActionInfo = null;
         private List<RuneKey> selectedRuneKeys = new List<RuneKey>();
@@ -34,7 +36,7 @@ namespace RuneStack
 
         public void init(RuneTree runeTree)
         {
-            playerController.init(this);
+            playerControllerBase.init(this);
 
             this.runeTree = runeTree;
             updateData();
@@ -79,7 +81,8 @@ namespace RuneStack
 
         private void Update()
         {
-            if (isAutoUse && runeBattleActionInfo != null && availableAsNextRuneKeys != null && !availableAsNextRuneKeys.Any())
+            if (isAutoUse && runeBattleActionInfo != null && availableAsNextRuneKeys != null &&
+                !availableAsNextRuneKeys.Any())
                 tryUseBattleAction();
 
             handleInput();
@@ -97,10 +100,10 @@ namespace RuneStack
             {
                 bool curRuneAvailable = i < selectedRuneKeys.Count;
                 uiRuneKeys[i].gameObject.SetActive(curRuneAvailable);
-                if( curRuneAvailable )
+                if (curRuneAvailable)
                     uiRuneKeys[i].init(selectedRuneKeys[i]);
             }
-            
+
             uiResultBattleAction.init(runeBattleActionInfo?.battleActionBase);
         }
 

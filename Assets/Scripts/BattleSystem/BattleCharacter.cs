@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using BattleSystem.BattleActions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
     public class BattleCharacter : MonoBehaviour
     {
-        [SerializeField] [SerializeReference] protected BattleCharacterController controller;
+        [FormerlySerializedAs("controller")]
+        [SerializeField] [SerializeReference] protected BattleCharacterControllerBase controllerBase;
         [SerializeField] [SerializeReference] public CharacterStatusBar statusBar;
         [SerializeField] [SerializeReference] protected List<ActionModificatorBase> actionModificators;
 
@@ -29,7 +31,7 @@ namespace DefaultNamespace
 
         public void GenerateNextAction()
         {
-            battleAction = controller.GenerateNextAction();
+            battleAction = controllerBase.GenerateNextAction();
         }
 
         public List<ActionModificatorBase> GetActionModificators() => actionModificators;
