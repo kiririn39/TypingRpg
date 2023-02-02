@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEngine;
+using Random=System.Random;
 
 namespace Common
 {
@@ -80,7 +82,7 @@ namespace Common
                 .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T)));
         }
 
-        public static T safeGet<T>( this IReadOnlyList<T> arr, int idx, bool last_if_overflow = true )
+        public static T safeGet<T>( this IReadOnlyList<T> arr, int idx, bool lastIfOverflow = true )
         {
             if ( idx < 0 )
                 return default;
@@ -89,9 +91,104 @@ namespace Common
                 return default;
 
             if ( idx >= arr.Count )
-                return last_if_overflow ? arr[arr.Count - 1] : default;
+                return lastIfOverflow ? arr[arr.Count - 1] : default;
 
             return arr[idx];
+        }
+
+        public static Vector3 setX( this Vector3 data, float x )
+        {
+            return new Vector3( x, data.y, data.z );
+        }
+
+        public static Vector3 setY( this Vector3 data, float y )
+        {
+            return new Vector3( data.x, y, data.z );
+        }
+
+        public static Vector3 setZ( this Vector3 data, float z )
+        {
+            return new Vector3( data.x, data.y, z );
+        }
+
+
+        public static Vector2 setX( this Vector2 data, float x )
+        {
+            return new Vector2( x, data.y );
+        }
+
+        public static Vector2 setY( this Vector2 data, float y )
+        {
+            return new Vector2( data.x, y );
+        }
+
+        public static Vector3 setZ( this Vector2 data, float z )
+        {
+            return new Vector3( data.x, data.y, z );
+        }
+        
+        public static long withMin( this in long value, in long inclusiveMinimum )
+        {
+            if ( value < inclusiveMinimum )
+                return inclusiveMinimum;
+
+            return value;
+        }
+
+        public static long withMax( this in long value, in long inclusiveMaximum )
+        {
+            if ( value > inclusiveMaximum )
+                return inclusiveMaximum;
+
+            return value;
+        }
+
+        public static int withMin( this in int value, in int inclusiveMinimum )
+        {
+            if ( value < inclusiveMinimum )
+                return inclusiveMinimum;
+
+            return value;
+        }
+
+        public static int withMax( this in int value, in int inclusiveMaximum )
+        {
+            if ( value > inclusiveMaximum )
+                return inclusiveMaximum;
+
+            return value;
+        }
+
+        public static float withMin( this in float value, in float inclusiveMinimum )
+        {
+            if ( value < inclusiveMinimum )
+                return inclusiveMinimum;
+
+            return value;
+        }
+
+        public static float withMax( this in float value, in float inclusiveMaximum )
+        {
+            if ( value > inclusiveMaximum )
+                return inclusiveMaximum;
+
+            return value;
+        }
+
+        public static double withMin( this in double value, in double inclusiveMinimum )
+        {
+            if ( value < inclusiveMinimum )
+                return inclusiveMinimum;
+
+            return value;
+        }
+
+        public static double withMax( this in double value, in double inclusiveMaximum )
+        {
+            if ( value > inclusiveMaximum )
+                return inclusiveMaximum;
+
+            return value;
         }
     }
 }
