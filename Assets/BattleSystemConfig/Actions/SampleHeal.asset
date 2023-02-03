@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad34b5a8ccd4309b1061342889d7e2e, type: 3}
+  m_Name: SampleHeal
+  m_EditorClassIdentifier: 
+  healEffect:
+    Caster: {fileID: 0}
+    InitializationTimestamp: 0
+    ExecutionDelay: 4
+    HealEffect:
+      Caster: {fileID: 0}
+      InitializationTimestamp: 0
+      HealPoints: 2
+      HealsCount: 3
+      DelayBetweenHeals: 4
+      LastHealTimestamp: 0

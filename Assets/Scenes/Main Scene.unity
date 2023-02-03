@@ -1342,6 +1342,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+      propertyPath: possibleActions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+      propertyPath: possibleActions.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: e429f881dafd145f5a41431af709d8fc, type: 2}
     - target: {fileID: 3837841184218017309, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
       propertyPath: MaxHealthPoints
       value: 35

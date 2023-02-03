@@ -52,6 +52,7 @@ namespace DefaultNamespace
         public void Heal(float value, Type battleActionType )
         {
             HealthPoints += value;
+            HealthPoints = Math.Clamp(HealthPoints, 0, MaxHealthPoints);
 
             statusBar.SetCurrentHealth(HealthPoints);
         }

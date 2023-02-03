@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 namespace BattleSystem.BattleActions
 {
+    [Serializable]
     public class HealEffect : BattleActionBase, IEffect, ITargetsSelf
     {
         public float HealPoints;

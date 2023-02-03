@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
 namespace BattleSystem.BattleActions
 {
+    [Serializable]
     public class HealPrepareAction : BattleActionBase, ITargetsSelf
     {
         public float ExecutionDelay;
