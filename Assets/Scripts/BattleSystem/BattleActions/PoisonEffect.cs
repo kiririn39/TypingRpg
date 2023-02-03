@@ -23,7 +23,7 @@ namespace BattleSystem.BattleActions
             LastAttackTimestamp = InitializationTimestamp;
         }
 
-        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
+        protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
             if (AttacksCount <= 0)
                 return GameBattleSystem.FinishedAction;
@@ -37,7 +37,7 @@ namespace BattleSystem.BattleActions
             if (mostPowerfulPoison == this)
                 foreach (var character in targets)
                 {
-                    character.HealthPoints -= AttackPoints;
+                    character.DealDamage(AttackPoints, GetType());
                     Debug.Log($"Caster {Caster.name} Poisoning {character.name}");
                 }
 

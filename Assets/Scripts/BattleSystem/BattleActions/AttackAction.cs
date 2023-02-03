@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BattleSystem.BattleActions;
+using Common;
 using UnityEngine;
 
 namespace DefaultNamespace.BattleActions
@@ -13,7 +14,7 @@ namespace DefaultNamespace.BattleActions
         public float ExecutionDelay;
 
 
-        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
+        protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
             float completesAt = InitializationTimestamp + ExecutionDelay;
 
@@ -21,6 +22,7 @@ namespace DefaultNamespace.BattleActions
             if (completesAt > Time.time)
                 return GameBattleSystem.InProgressAction;
 
+            Caster.playAnimationForBattleActionAsCaster(this);
             foreach (var battleCharacterBase in targets)
             {
                 Debug.Log($"Caster {Caster.name} Attacking {battleCharacterBase.name}");
@@ -31,7 +33,8 @@ namespace DefaultNamespace.BattleActions
                 foreach (var attackDefence in physicalAttackDefences)
                     attackPoint *= attackDefence.defencePercentage;
 
-                battleCharacterBase.DealDamage(attackPoint);
+                battleCharacterBase.DealDamage(attackPoint, GetType());
+                battleCharacterBase.playAnimationForBattleActionAsTarget(this);
             }
 
             return GameBattleSystem.FinishedAction;
