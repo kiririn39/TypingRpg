@@ -97,6 +97,8 @@ public class BattleCharacterAnimator : MonoBehaviour
             colorSpriteCoroutine = DOTween.Sequence();
             colorSpriteCoroutine.Append(spriteRenderer.DOColor(damageColor, flashOnDamageDuration/2));
             colorSpriteCoroutine.Append(spriteRenderer.DOColor(Color.white, flashOnDamageDuration/2));
+            colorSpriteCoroutine.onComplete += () => spriteRenderer.color = Color.white;
+
             colorSpriteCoroutine.Play();
 
             // Material oldMaterial = spriteRenderer.material;
@@ -114,6 +116,8 @@ public class BattleCharacterAnimator : MonoBehaviour
             colorSpriteCoroutine = DOTween.Sequence();
             colorSpriteCoroutine.Append(spriteRenderer.DOColor(poisonColor, flashOnDamageDuration/2));
             colorSpriteCoroutine.Append(spriteRenderer.DOColor(Color.white, flashOnDamageDuration/2));
+            colorSpriteCoroutine.onComplete += () => spriteRenderer.color = Color.white;
+
             colorSpriteCoroutine.Play();
 
             break;
@@ -130,9 +134,12 @@ public class BattleCharacterAnimator : MonoBehaviour
         case AnimationType.ATTACK:         return "Attack";
         case AnimationType.ATTACK_FORCE:   return "AttackForce";
         case AnimationType.DEFENCE:        return "Defence";
-        case AnimationType.ATTACK_FIRE:    return "MagicFire";
-        case AnimationType.ATTACK_FROST:   return "MagicFrost";
-        case AnimationType.ATTACK_PSYONIC: return "Psyonic";
+        case AnimationType.ATTACK_FIRE:    return "MagicAttackFire";
+        case AnimationType.ATTACK_FROST:   return "MagicAttackFrost";
+        case AnimationType.ATTACK_PSYONIC: return "AttackPsyonic";
+        case AnimationType.ATTACK_POISON:  return "Psyonic";
+        case AnimationType.HEAL:           return "Heal";
+        case AnimationType.DEATH:          return "Death";
         }
 
         return "Idle";

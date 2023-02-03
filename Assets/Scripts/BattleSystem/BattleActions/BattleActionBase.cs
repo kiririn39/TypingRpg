@@ -21,8 +21,6 @@ namespace DefaultNamespace
         public ActionResultBase ExecuteAction(List<BattleCharacter> targets)
         {
             ActionResultBase result = ExecuteActionImpl(targets);
-            Caster.playAnimationForBattleActionAsCaster(this);
-            targets.forEach(it => it.playAnimationForBattleActionAsTarget(this));
             return result;
         }
 

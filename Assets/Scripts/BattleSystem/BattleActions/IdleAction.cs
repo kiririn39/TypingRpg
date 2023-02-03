@@ -8,6 +8,7 @@ namespace DefaultNamespace.BattleActions
     {
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
+            Caster.playAnimationForBattleActionAsCaster(this);
             return GameBattleSystem.FinishedAction;
         }
 

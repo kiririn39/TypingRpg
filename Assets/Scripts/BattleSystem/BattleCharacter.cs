@@ -51,6 +51,11 @@ namespace DefaultNamespace
             statusBar.SetCurrentHealth(HealthPoints);
         }
 
+        public void playAnimation(BattleCharacterAnimator.AnimationType animationType)
+        {
+            battleCharacterAnimator.play(animationType);
+        }
+
         public void playAnimationForBattleActionAsTarget(BattleActionBase battleActionBase)
         {
             if (HealthPoints <= 0)
