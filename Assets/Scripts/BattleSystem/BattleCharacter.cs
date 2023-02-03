@@ -9,6 +9,9 @@ namespace DefaultNamespace
 {
     public class BattleCharacter : MonoBehaviour
     {
+        public event Action<float> onHealthChanged = delegate {};
+
+
         [FormerlySerializedAs("controller")]
         [SerializeField] [SerializeReference] protected BattleCharacterControllerBase controllerBase;
         [SerializeField] [SerializeReference] public CharacterStatusBar statusBar;
@@ -16,13 +19,24 @@ namespace DefaultNamespace
         [SerializeField] [SerializeReference] protected BattleCharacterAnimator battleCharacterAnimator;
 
         public float MaxHealthPoints = 10f;
-        public float HealthPoints { get; private set; }
+
+        private float _HealthPoints = 0;
+        public float HealthPoints
+        {
+            get => _HealthPoints;
+            private set
+            {
+                float delta = value - _HealthPoints;
+                _HealthPoints = value;
+                onHealthChanged(delta);
+            }
+        }
         protected BattleActionBase battleAction;
 
 
         private void Awake()
         {
-            HealthPoints = MaxHealthPoints;
+            _HealthPoints = MaxHealthPoints;
             statusBar.SetMaxHealth(HealthPoints);
             
             //TODO
@@ -90,12 +104,11 @@ namespace DefaultNamespace
             {
               MagicFireAction     magicFireAction     => BattleCharacterAnimator.AnimationType.ATTACK_FIRE
             , MagicFrostAction    magicFrostAction    => BattleCharacterAnimator.AnimationType.ATTACK_FROST
-            , PoisonEffect        poisonEffect        => BattleCharacterAnimator.AnimationType.ATTACK_POISON
             , PsyonicAction       psyonicAction       => BattleCharacterAnimator.AnimationType.ATTACK_PSYONIC
             , AttackAction        attackAction        => BattleCharacterAnimator.AnimationType.ATTACK
             , DefencePrepareAction       defenceAction       => BattleCharacterAnimator.AnimationType.DEFENCE
             , IdleAction          idleAction          => BattleCharacterAnimator.AnimationType.IDLE
-            , PoisonPrepareAction poisonPrepareAction => BattleCharacterAnimator.AnimationType.ATTACK_POISON //???? TODO check is correct
+            , PoisonPrepareAction poisonPrepareAction => BattleCharacterAnimator.AnimationType.ATTACK_POISON
 
             , _ => battleActionBase is ITargetsSelf ? BattleCharacterAnimator.AnimationType.IDLE : BattleCharacterAnimator.AnimationType.ATTACK
             };
