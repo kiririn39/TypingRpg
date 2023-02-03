@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 06b1dc03b9aba9e42937036db0ffb0fc
+guid: b70ae3fc2ddc1c14c8f9d81dbdca049b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_attack_0
+      name: player_magic_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 914aeb7eadc07e340afe77f117e912b0
-      internalID: 1738603750
+      spriteID: 09ec108a0db911e4a90d8434e6d404af
+      internalID: -738039492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_attack_1
+      name: player_magic_attack_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07dc11f2abc02c44cbe4371a20fa04ab
-      internalID: -1160811484
+      spriteID: e100f84bdb002be42b28ca2c58d0e8da
+      internalID: -1009362580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_attack_2
+      name: player_magic_attack_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10232b58d37be39468e25e919ba46fc3
-      internalID: 1457130055
+      spriteID: 861619c242235b04d9a30d63add0d20e
+      internalID: 137026615
       vertices: []
       indices: 
       edges: []
@@ -172,7 +172,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9dbb46d5e6bc49845874d3b856bf2fe3
+    spriteID: 5b33019072d55f1428f427d90abb9ce1
     internalID: 0
     vertices: []
     indices: 
@@ -180,9 +180,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player_attack_0: 1738603750
-      player_attack_1: -1160811484
-      player_attack_2: 1457130055
+      player_magic_attack_0: -738039492
+      player_magic_attack_2: 137026615
+      player_magic_attack_1: -1009362580
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
