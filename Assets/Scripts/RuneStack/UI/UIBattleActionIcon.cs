@@ -29,7 +29,7 @@ public class UIBattleActionIcon : MonoBehaviour
         {
         case AttackAction attackAction:
             return Color.red;
-        case DefenceAction defenceAction:
+        case DefencePrepareAction defenceAction:
             return Color.gray;
         case IdleAction idleAction:
             return Color.green;

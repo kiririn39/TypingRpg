@@ -37,7 +37,7 @@ namespace DefaultNamespace.BattleActions
                 {
                     Debug.Log($"Caster {Caster.name} Attacking {battleCharacterBase.name}");
                     var physicalAttackDefences =
-                        battleCharacterBase.GetActionModificators().OfType<PhysicalAttackDefence>();
+                        battleCharacterBase.actionModificators.OfType<PhysicalAttackDefence>();
                     var attackPoint = AttackPoints;
 
                     foreach (var attackDefence in physicalAttackDefences)

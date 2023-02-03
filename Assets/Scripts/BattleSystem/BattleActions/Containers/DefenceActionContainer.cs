@@ -1,22 +1,23 @@
 using DefaultNamespace;
 using DefaultNamespace.BattleActions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace BattleSystem.BattleActions.Containers
 {
-    [CreateAssetMenu(menuName = "BattleSystem/ActionContainer/DefenceAction")]
+    [CreateAssetMenu(menuName = "BattleSystem/ActionContainer/DefencePrepare")]
     public class DefenceActionContainer : ActionContainerBase
     {
-        [SerializeField] private DefenceAction action;
+        [SerializeField] private DefencePrepareAction prepareAction;
 
         private void OnEnable()
         {
-            if (action != null)
+            if (prepareAction != null)
                 return;
 
-            action = new DefenceAction();
+            prepareAction = new DefencePrepareAction();
         }
 
-        public override BattleActionBase CloneAction() => action.Clone();
+        public override BattleActionBase CloneAction() => prepareAction.Clone();
     }
 }

@@ -77,7 +77,7 @@ namespace Managers
             {
             case AttackAction attackAction:
                 break;
-            case DefenceAction defenceAction:
+            case DefencePrepareAction defenceAction:
                 break;
             case IdleAction idleAction:
                 break;
@@ -98,7 +98,7 @@ namespace Managers
             {
             case AttackAction attackAction:
                 break;
-            case DefenceAction defenceAction:
+            case DefencePrepareAction defenceAction:
                 break;
             case IdleAction idleAction:
                 break;

@@ -12,7 +12,7 @@ namespace DefaultNamespace
         [FormerlySerializedAs("controller")]
         [SerializeField] [SerializeReference] protected BattleCharacterControllerBase controllerBase;
         [SerializeField] [SerializeReference] public CharacterStatusBar statusBar;
-        [SerializeField] [SerializeReference] protected List<ActionModificatorBase> actionModificators;
+        [SerializeField] [SerializeReference] public List<ActionModificatorBase> actionModificators;
         [SerializeField] [SerializeReference] protected BattleCharacterAnimator battleCharacterAnimator;
 
         public float MaxHealthPoints = 10f;
@@ -41,8 +41,6 @@ namespace DefaultNamespace
         {
             battleAction = controllerBase.GenerateNextAction();
         }
-
-        public List<ActionModificatorBase> GetActionModificators() => actionModificators;
 
         public void DealDamage(float value, Type battleActionType )
         {
@@ -87,7 +85,7 @@ namespace DefaultNamespace
             , PoisonEffect        poisonEffect        => BattleCharacterAnimator.AnimationType.ATTACK_POISON
             , PsyonicAction       psyonicAction       => BattleCharacterAnimator.AnimationType.ATTACK_PSYONIC
             , AttackAction        attackAction        => BattleCharacterAnimator.AnimationType.ATTACK
-            , DefenceAction       defenceAction       => BattleCharacterAnimator.AnimationType.DEFENCE
+            , DefencePrepareAction       defenceAction       => BattleCharacterAnimator.AnimationType.DEFENCE
             , IdleAction          idleAction          => BattleCharacterAnimator.AnimationType.IDLE
             , PoisonPrepareAction poisonPrepareAction => BattleCharacterAnimator.AnimationType.ATTACK_POISON //???? TODO check is correct
 
