@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance { get; private set; }
+
     [SerializeField] private List<AudioClipWithType> audioClipsWithTypes = new List<AudioClipWithType>();
     [SerializeField] private AudioSource             skillsAudioSource;
     [SerializeField] private AudioSource             menuAudioSource;
@@ -43,6 +45,20 @@ public class SoundManager : MonoBehaviour
     }
 
     public void playSoundTest(string name) => playSound(Enum.Parse<SoundType>(name));
+
+    public void playClickSound() => playSound(SoundType.CLICK);
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 }
 
 public enum SoundType
@@ -51,9 +67,10 @@ public enum SoundType
 
     SKILL_BEFORE_FIRST,
     BASIC_ATTACK,
-    STRONG_ATTACK,
-    EVASION,
+    STRONG_ATTACK, //add
+    EVASION, //add
     BLOCK,
+    FIREBALL, //add
 
 
     SKILL_AFTER_LAST,

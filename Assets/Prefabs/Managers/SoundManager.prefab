@@ -52,12 +52,16 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: bd8a8c084e992524ea05b1191decdcf0, type: 3}
   - soundType: 3
     audioClip: {fileID: 8300000, guid: 6786107b1e0adbe4193a90a428a97c28, type: 3}
+  - soundType: 4
+    audioClip: {fileID: 8300000, guid: 8847cf2010e7b8040aa82798d596bb54, type: 3}
   - soundType: 5
     audioClip: {fileID: 8300000, guid: b00ca8444430181458d19a546b26d854, type: 3}
-  - soundType: 8
+  - soundType: 9
     audioClip: {fileID: 8300000, guid: 4d22eb1567db83d4a965d657a414dbdf, type: 3}
-  - soundType: 7
+  - soundType: 8
     audioClip: {fileID: 8300000, guid: 9cfd8d6c2dc41454b9d5096f5039d89f, type: 3}
+  - soundType: 6
+    audioClip: {fileID: 8300000, guid: 4a97fe57258d6264f864651c8def241f, type: 3}
   skillsAudioSource: {fileID: 3421216011511303401}
   menuAudioSource: {fileID: 3421216011511303402}
   musicAudioSource: {fileID: 3421216011511303403}

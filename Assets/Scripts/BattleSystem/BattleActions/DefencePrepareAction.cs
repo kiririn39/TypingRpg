@@ -23,6 +23,8 @@ namespace DefaultNamespace.BattleActions
             var defenceEffect = DefenceEffect.Clone();
             defenceEffect.Initialize(Caster);
 
+            SoundManager.Instance.playSound(SoundType.BLOCK);
+
             return new FinishedWithEffectActionResult
             {
                 effect = defenceEffect
