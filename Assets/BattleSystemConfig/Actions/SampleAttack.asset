@@ -15,4 +15,5 @@ MonoBehaviour:
   action:
     Caster: {fileID: 0}
     AttackPoints: 1
-    ExecutionDelay: 3
+    ExecutionDelay: 1
+    DamageInflictedTime: 0.6666

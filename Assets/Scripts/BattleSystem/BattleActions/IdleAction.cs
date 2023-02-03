@@ -8,7 +8,7 @@ namespace DefaultNamespace.BattleActions
     {
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
-            Caster.playAnimationForBattleActionAsCaster(this);
+            Caster.playAnimation(BattleCharacterAnimator.AnimationType.IDLE);
             return GameBattleSystem.FinishedAction;
         }
 

@@ -38,8 +38,7 @@ namespace Managers
 
         private List<RuneSequenceForBattleAction> defaultSkillSentences = new List<RuneSequenceForBattleAction>()
         {
-            attackSkill,
-            defenceSkill
+            attackSkill
         };
 
         private IReadOnlyList<IReadOnlyList<RuneSequenceForBattleAction>> newSkillsPerLvl = new List<List<RuneSequenceForBattleAction>>()

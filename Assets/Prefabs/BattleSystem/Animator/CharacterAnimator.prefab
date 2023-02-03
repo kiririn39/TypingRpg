@@ -58,7 +58,7 @@ MonoBehaviour:
     overrideController: {fileID: 22100000, guid: b129e23624d170b43bcd0f55099953d7, type: 2}
   spriteRenderer: {fileID: 1897933445376525354}
   flashOnDamageMaterial: {fileID: 2100000, guid: b82ba21103d44b246bd9c55e1fb2e4b1, type: 2}
-  flashOnDamageDuration: 0.125
+  flashOnDamageDuration: 0.1
   poisonColor: {r: 0.03, g: 0.73, b: 0, a: 1}
   damageColor: {r: 0.73, g: 0, b: 0.11, a: 1}
 --- !u!95 &1764836973560918554
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1457130055, guid: 06b1dc03b9aba9e42937036db0ffb0fc, type: 3}
+  m_Sprite: {fileID: 1738603750, guid: 06b1dc03b9aba9e42937036db0ffb0fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
