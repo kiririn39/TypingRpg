@@ -16,7 +16,7 @@ namespace BattleSystem.BattleActions
         {
             float completesAt = InitializationTimestamp + ExecutionDelay;
 
-            Caster.statusBar.SetCurrentDelayNormalized((Time.time - InitializationTimestamp) / ExecutionDelay);
+            Caster.DelayNormalized = (Time.time - InitializationTimestamp) / ExecutionDelay;
             if (completesAt > Time.time)
                 return GameBattleSystem.InProgressAction;
 

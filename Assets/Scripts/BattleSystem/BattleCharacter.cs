@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BattleSystem.BattleActions;
+using Common;
 using DefaultNamespace.BattleActions;
 using System;
 using UnityEngine;
@@ -9,12 +10,15 @@ namespace DefaultNamespace
 {
     public class BattleCharacter : MonoBehaviour
     {
-        public event Action<float> onHealthChanged = delegate {};
+        public event Action onInit = delegate {};
+
+        public event Action<float, float> onHealthChanged = delegate {};
+        public event Action<float, float> onDelayNormalizedChanged = delegate {};
 
 
         [FormerlySerializedAs("controller")]
-        [SerializeField] [SerializeReference] protected BattleCharacterControllerBase controllerBase;
-        [SerializeField] [SerializeReference] public CharacterStatusBar statusBar;
+        [SerializeField] [SerializeReference] public Transform trHealthBarPlace;
+        [SerializeField] [SerializeReference] public BattleCharacterControllerBase controllerBase;
         [SerializeField] [SerializeReference] public List<ActionModificatorBase> actionModificators;
         [SerializeField] [SerializeReference] protected BattleCharacterAnimator battleCharacterAnimator;
 
@@ -24,23 +28,37 @@ namespace DefaultNamespace
         public float HealthPoints
         {
             get => _HealthPoints;
-            private set
+            set
             {
-                float delta = value - _HealthPoints;
-                _HealthPoints = value;
-                onHealthChanged(delta);
+                float oldValue = _HealthPoints;
+                _HealthPoints = value.withMin(0).withMax(MaxHealthPoints);
+                onHealthChanged(oldValue, _HealthPoints);
             }
         }
+
+        private float _DelayNormalized = 0;
+        public float DelayNormalized
+        {
+            get => _DelayNormalized;
+            set
+            {
+                float oldValue = _DelayNormalized;
+                _DelayNormalized = value.withMin(0).withMax(1);
+                onDelayNormalizedChanged(oldValue, _DelayNormalized);
+            }
+        }
+
         protected BattleActionBase battleAction;
 
 
         private void Awake()
         {
             _HealthPoints = MaxHealthPoints;
-            statusBar.SetMaxHealth(HealthPoints);
             
             //TODO
             battleCharacterAnimator.init(controllerBase is PlayerCharacterController ? BattleCharacterAnimator.Character.PLAYER : BattleCharacterAnimator.Character.MAG);
+
+            onInit();
         }
 
         public BattleActionBase GetAction()
@@ -59,16 +77,11 @@ namespace DefaultNamespace
         public void DealDamage(float value, Type battleActionType )
         {
             HealthPoints -= value;
-
-            statusBar.SetCurrentHealth(HealthPoints);
         }
 
         public void Heal(float value, Type battleActionType )
         {
             HealthPoints += value;
-            HealthPoints = Math.Clamp(HealthPoints, 0, MaxHealthPoints);
-
-            statusBar.SetCurrentHealth(HealthPoints);
         }
 
         public void playAnimation(BattleCharacterAnimator.AnimationType animationType)

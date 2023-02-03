@@ -38,8 +38,8 @@ public class UIFlyTextController : MonoBehaviour
 
    public void init()
    {
-      battleCharacterPlayer.onHealthChanged += delta => spawnFlyText(toScreenCoords(battleCharacterPlayer.transform.position), Mathf.Abs(delta), delta > 0);
-      battleCharacterAI    .onHealthChanged += delta => spawnFlyText(toScreenCoords(battleCharacterAI    .transform.position), Mathf.Abs(delta), delta > 0);
+      battleCharacterPlayer.onHealthChanged += (oldVal, newVal) => spawnFlyText(toScreenCoords(battleCharacterPlayer.transform.position), Mathf.Abs(newVal - oldVal), newVal - oldVal > 0);
+      battleCharacterAI    .onHealthChanged += (oldVal, newVal) => spawnFlyText(toScreenCoords(battleCharacterAI    .transform.position), Mathf.Abs(newVal - oldVal), newVal - oldVal > 0);
 
       flyTextsPoolStack = new Stack<UIFlyText>(flyTextsPoolDefault);
    }

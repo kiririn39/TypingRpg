@@ -1,36 +1,37 @@
+using Common;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Utilities
 {
     public class ProgressBar : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer bar;
-        [SerializeField] private float barMaxWidth;
+        [SerializeField] private Slider bar = null;
 
-        public float MaxValue;
-        public float CurrentValue;
+        public void init(float curValue, float maxValue)
+        {
+            bar.maxValue  = maxValue;
+            bar.value     = curValue;
+        }
+
+        public void initNormalized(float value)
+        {
+            bar.normalizedValue = value;
+        }
+
+        public void SetMaxValue(float value)
+        {
+            bar.maxValue = value;
+        }
 
         public void SetValue(float value)
         {
-            CurrentValue = value;
-            CurrentValue = CurrentValue > 0 ? CurrentValue : 0;
-            var widthFactor = CurrentValue / MaxValue;
-            widthFactor = float.IsInfinity(widthFactor) ? 0 : widthFactor;
-
-            var scale = bar.size;
-            scale.x = widthFactor;
-
-            bar.size = scale;
+            bar.value = value;
         }
 
         public void SetValueNormalized(float value)
         {
-            var widthFactor = Mathf.Clamp(value, 0.0f, 1.0f);
-
-            var scale = bar.size;
-            scale.x = widthFactor;
-
-            bar.size = scale;
+            bar.normalizedValue = value;
         }
     }
 }

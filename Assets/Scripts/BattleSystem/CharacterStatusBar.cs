@@ -8,25 +8,20 @@ namespace DefaultNamespace
         [SerializeField] private ProgressBar HealthBar;
         [SerializeField] private ProgressBar ActionDelayBar;
 
+        public void init(float curHealth, float maxHealth, float delayNormalized)
+        {
+            HealthBar     .init(curHealth, maxHealth);
+            ActionDelayBar.initNormalized(delayNormalized);
+        }
 
         public void SetMaxHealth(float value)
         {
-            HealthBar.MaxValue = value;
+            HealthBar.SetMaxValue(value);
         }
 
         public void SetCurrentHealth(float value)
         {
             HealthBar.SetValue(value);
-        }
-
-        public void SetMaxDelay(float value)
-        {
-            ActionDelayBar.MaxValue = value;
-        }
-
-        public void SetCurrentDelay(float value)
-        {
-            ActionDelayBar.SetValue(value);
         }
 
         public void SetCurrentHealthNormalized(float value) => HealthBar.SetValueNormalized(value);

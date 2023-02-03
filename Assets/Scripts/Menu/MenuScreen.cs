@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Managers;
+using System;
 using UnityEngine;
 
 namespace Menu
@@ -10,6 +11,11 @@ namespace Menu
         [SerializeField] private CanvasGroup   canvasGroup;
 
         private StageManager stageManager;
+
+        private void Awake()
+        {
+            canvasGroup.alpha = 1;
+        }
 
 
         public void startGame()

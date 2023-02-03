@@ -25,7 +25,7 @@ namespace RuneStack
         [SerializeField] private List<UIRuneKey> uiRuneKeys = new List<UIRuneKey>();
         [SerializeField] private UIBattleActionIcon uiResultBattleAction = null;
         [FormerlySerializedAs("playerController")]
-        [SerializeField] private PlayerCharacterController playerControllerBase = null;
+        [SerializeField] private BattleCharacter playerCharacter = null;
 
         private RuneBattleActionInfo runeBattleActionInfo = null;
         private List<RuneKey> selectedRuneKeys = new List<RuneKey>();
@@ -36,7 +36,7 @@ namespace RuneStack
 
         public void init(RuneTree runeTree)
         {
-            playerControllerBase.init(this);
+            (playerCharacter.controllerBase as PlayerCharacterController).init(this);
 
             this.runeTree = runeTree;
             updateData();
@@ -109,8 +109,13 @@ namespace RuneStack
 
         private void handleInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-                tryUseBattleAction();
+            if (playerCharacter.DelayNormalized > 0.9999)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                    tryUseBattleAction();
+            }else
+                Debug.Log("COOLDOWN");
+            
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 clearSelected();

@@ -29,7 +29,7 @@ namespace DefaultNamespace.BattleActions
             float completesAt = InitializationTimestamp + ExecutionDelay;
             float damageInflictedTime = InitializationTimestamp + DamageInflictedTime;
 
-            Caster.statusBar.SetCurrentDelayNormalized((Time.time - InitializationTimestamp) / ExecutionDelay);
+            Caster.DelayNormalized = (Time.time - InitializationTimestamp) / ExecutionDelay;
 
             if (damageInflictedTime < Time.time && !isDamageInflicted)
             {
