@@ -19,13 +19,30 @@ namespace Managers
 
         private Vector3 _current_node_pos;
 
+        private Vector2 _basic_anchored_holder_position = Vector2.negativeInfinity;
+
         private ParalaxObjectsController _paralax_objects_controller;
 
         private Dictionary<int, UIMapNode> _nodes_with_ids = new Dictionary<int, UIMapNode>();
 
 
+        public void resetMap()
+        {
+            if (_basic_anchored_holder_position.Equals(Vector2.negativeInfinity))
+                _basic_anchored_holder_position = uiNodesHolder.anchoredPosition;
+            else
+                uiNodesHolder.anchoredPosition = _basic_anchored_holder_position;
+
+            foreach (UIMapNode ui_map_node in _nodes_with_ids.Values)
+            {
+                Destroy(ui_map_node.gameObject);
+            }
+        }
+
         public void spawnMap(List<Stage> stages)
         {
+            resetMap();
+
             foreach (Stage stage in stages)
             {
                 UIMapNode ui_map_node = Instantiate(uiMapNodePrefab, uiNodesHolder);

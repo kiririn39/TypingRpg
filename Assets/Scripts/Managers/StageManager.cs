@@ -17,6 +17,8 @@ namespace Managers
 
         private GameBattleSystem gameBattleSystem;
 
+        private int monstersKilled;
+
         public int curStageIndex { get; private set; } = -1;
 
         public event Action stageChangeStarted;
@@ -25,8 +27,25 @@ namespace Managers
        public Stage curStage => stages.FirstOrDefault(x => x.id == curStageIndex) ?? throw new IndexOutOfRangeException($"No stage with {nameof(curStageIndex)} {curStageIndex}");
 
 
+       public void prepareGame()
+       {
+           curStageIndex = -1;
+           monstersKilled = 0;
+           MapManager.Instance.spawnMap(stages);
+       }
+
+       public void startGame()
+       {
+           nextStage();
+           gameBattleSystem = FindObjectOfType<GameBattleSystem>();
+           gameBattleSystem.OnBattleEnded += onBattleEnded;
+       }
+
         public void nextStage()
         {
+            if (curStageIndex >=0 && curStage.type == StageType.FIGHT)
+                ++monstersKilled;
+
             ++curStageIndex;
             stageChangeStarted?.Invoke();
         }
@@ -44,6 +63,17 @@ namespace Managers
             else
             {
                 gameBattleSystem.StartBattle();
+            }
+        }
+
+        private void onBattleEnded(BattleResult battle_result)
+        {
+            switch (battle_result)
+            {
+                case PlayerVictoryResult: nextStage(); break;
+                case PlayerLostResult:
+                    FindObjectOfType<LoseScreen>().show(monstersKilled);
+                    break;
             }
         }
 
@@ -67,10 +97,6 @@ namespace Managers
 
         private void Start()
         {
-            MapManager.Instance.spawnMap(stages);
-            nextStage();
-            gameBattleSystem = FindObjectOfType<GameBattleSystem>();
-            gameBattleSystem.OnBattleEnded += _ => nextStage();
         }
     }
 }
