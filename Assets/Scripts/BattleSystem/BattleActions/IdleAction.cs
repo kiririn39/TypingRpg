@@ -6,7 +6,7 @@ namespace DefaultNamespace.BattleActions
     [Serializable]
     public class IdleAction : BattleActionBase, ITargetsSelf, IInterrruptable
     {
-        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
+        protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
             return GameBattleSystem.FinishedAction;
         }

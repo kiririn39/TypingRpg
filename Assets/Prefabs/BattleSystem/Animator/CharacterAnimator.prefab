@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7472372372053729793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6276308815617349140}
@@ -49,13 +49,16 @@ MonoBehaviour:
   animator: {fileID: 1764836973560918554}
   charactersOverrideControllers:
   - character: 1
-    overrideController: {fileID: 0}
+    overrideController: {fileID: 22100000, guid: c5728e3fa95dd1047acb6b2b36bc947b, type: 2}
   - character: 2
-    overrideController: {fileID: 0}
+    overrideController: {fileID: 22100000, guid: 13f816cc350175a4f8fa370a3da0707e, type: 2}
   - character: 3
-    overrideController: {fileID: 0}
+    overrideController: {fileID: 22100000, guid: 106d04f69349f7b439480dbb403a29c1, type: 2}
   - character: 4
-    overrideController: {fileID: 0}
+    overrideController: {fileID: 22100000, guid: b129e23624d170b43bcd0f55099953d7, type: 2}
+  spriteRenderer: {fileID: 1897933445376525354}
+  flashOnDamageMaterial: {fileID: 2100000, guid: b82ba21103d44b246bd9c55e1fb2e4b1, type: 2}
+  flashOnDamageDuration: 0.125
 --- !u!95 &1764836973560918554
 Animator:
   serializedVersion: 5
@@ -66,7 +69,7 @@ Animator:
   m_GameObject: {fileID: 7472372372053729793}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 95cc2ef015c313a4f8e4c5cb81a9788b, type: 2}
+  m_Controller: {fileID: 22100000, guid: c5728e3fa95dd1047acb6b2b36bc947b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -149,7 +152,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 838156152, guid: 56b2b96366c76fb4d918502b116630f9, type: 3}
+  m_Sprite: {fileID: 1738603750, guid: 06b1dc03b9aba9e42937036db0ffb0fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

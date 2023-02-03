@@ -12,7 +12,7 @@ namespace DefaultNamespace
         public PoisonEffect PoisonEffect;
 
 
-        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
+        protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
             float completesAt = InitializationTimestamp + ExecutionDelay;
 

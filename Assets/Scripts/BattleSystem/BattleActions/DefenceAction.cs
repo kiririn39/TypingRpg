@@ -9,7 +9,7 @@ namespace DefaultNamespace.BattleActions
     {
         [SerializeField] private float DefencePoints;
 
-        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
+        protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
             foreach (var battleCharacterBase in targets)
             {

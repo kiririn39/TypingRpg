@@ -13,7 +13,7 @@ namespace DefaultNamespace.BattleActions
         public float ExecutionDelay;
 
 
-        public override ActionResultBase ExecuteAction(List<BattleCharacter> targets)
+        protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
             float completesAt = InitializationTimestamp + ExecutionDelay;
 
@@ -31,7 +31,7 @@ namespace DefaultNamespace.BattleActions
                 foreach (var attackDefence in physicalAttackDefences)
                     attackPoint *= attackDefence.defencePercentage;
 
-                battleCharacterBase.DealDamage(attackPoint);
+                battleCharacterBase.DealDamage(attackPoint, GetType());
             }
 
             return GameBattleSystem.FinishedAction;
