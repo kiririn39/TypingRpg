@@ -9,7 +9,7 @@ AnimatorOverrideController:
   m_Name: CharacterAnimatorMag
   m_Controller: {fileID: 9100000, guid: 95cc2ef015c313a4f8e4c5cb81a9788b, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 0ecab54e750fd944c97f0ce571c5027c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 60fb45b9ac272a14d9eb5a2759e4224e, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 0ecab54e750fd944c97f0ce571c5027c, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: a1467ca9f721ba44da17347869bce258, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 91f17f1b0b4540f439a320f2e194125b, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: a1467ca9f721ba44da17347869bce258, type: 2}
