@@ -109,13 +109,13 @@ namespace RuneStack
 
         private void handleInput()
         {
-            if (playerCharacter.DelayNormalized > 0.9999)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (playerCharacter.DelayNormalized > 0.9999)
                     tryUseBattleAction();
-            }else
-                Debug.Log("COOLDOWN");
-            
+                else
+                    Debug.Log("COOLDOWN");
+            }
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 clearSelected();

@@ -54,6 +54,7 @@ namespace DefaultNamespace
         private void Awake()
         {
             _HealthPoints = MaxHealthPoints;
+            _DelayNormalized = 1;
             
             //TODO
             battleCharacterAnimator.init(controllerBase is PlayerCharacterController ? BattleCharacterAnimator.Character.PLAYER : BattleCharacterAnimator.Character.MAG);
