@@ -49,6 +49,13 @@ namespace DefaultNamespace
             statusBar.SetCurrentHealth(HealthPoints);
         }
 
+        public void Heal(float value, Type battleActionType )
+        {
+            HealthPoints += value;
+
+            statusBar.SetCurrentHealth(HealthPoints);
+        }
+
         public void playAnimation(BattleCharacterAnimator.AnimationType animationType)
         {
             battleCharacterAnimator.play(animationType);
