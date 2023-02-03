@@ -126,6 +126,32 @@ namespace Common
         {
             return new Vector3( data.x, data.y, z );
         }
+
+        public static Vector3 plusX( this Vector3 data, float x )
+        {
+            return new Vector3( data.x + x, data.y, data.z );
+        }
+
+        public static Vector3 plusY( this Vector3 data, float y )
+        {
+            return new Vector3( data.x, data.y + y, data.z );
+        }
+
+        public static Vector3 plusZ( this Vector3 data, float z )
+        {
+            return new Vector3( data.x, data.y, data.z + z );
+        }
+
+        public static Vector3 plusX( this Vector2 data, float x )
+        {
+            return new Vector3( data.x + x, data.y, 0.0f );
+        }
+
+        public static Vector3 plusY( this Vector2 data, float y )
+        {
+            return new Vector3( data.x, data.y + y, 0.0f );
+        }
+
         
         public static long withMin( this in long value, in long inclusiveMinimum )
         {
