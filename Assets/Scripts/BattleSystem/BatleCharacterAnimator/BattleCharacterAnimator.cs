@@ -47,11 +47,12 @@ public class BattleCharacterAnimator : MonoBehaviour
     [SerializeField] private Animator animator = null;
     [SerializeField] private List<AnimatorsForCharacters> charactersOverrideControllers = null;
     [SerializeField] private SpriteRenderer spriteRenderer = null;
-    [Header("Flash on damage effect")]
-    [SerializeField] private Material flashOnDamageMaterial = null;
+    //[Header("Flash on damage effect")]
+    // [SerializeField] private Material flashOnDamageMaterial = null;
     [SerializeField] private float flashOnDamageDuration = 0.125f;
     [Header("Other effects color")]
     [SerializeField] private Color poisonColor = new Color(0.03f, 0.73f, 0f);
+    [SerializeField] private Color damageColor = new Color(0.73f, 0f, 0.11f);
 
     private Character currentCharacter = Character.NONE;
     private Sequence flashCoroutine  = null;
@@ -90,30 +91,33 @@ public class BattleCharacterAnimator : MonoBehaviour
         switch (animationType)
         {
         case AnimationType.TAKE_DAMAGE:
-            DOTween.Kill(flashCoroutine);
+            colorSpriteCoroutine.Complete();
+            spriteRenderer.color = Color.white;
 
-            spriteRenderer.sharedMaterial = flashOnDamageMaterial;
-            flashCoroutine = DOTween.Sequence();
-            flashCoroutine.AppendInterval(flashOnDamageDuration);
-            flashCoroutine.onComplete += () => spriteRenderer.sharedMaterial = null;
-            flashCoroutine.Play();
+            colorSpriteCoroutine = DOTween.Sequence();
+            colorSpriteCoroutine.Append(spriteRenderer.DOColor(damageColor, flashOnDamageDuration/2));
+            colorSpriteCoroutine.Append(spriteRenderer.DOColor(Color.white, flashOnDamageDuration/2));
+            colorSpriteCoroutine.Play();
+
+            // Material oldMaterial = spriteRenderer.material;
+            // spriteRenderer.material = flashOnDamageMaterial;
+            // flashCoroutine = DOTween.Sequence();
+            // flashCoroutine.AppendInterval(flashOnDamageDuration);
+            // flashCoroutine.onComplete += () => spriteRenderer.material = oldMaterial;
+            // flashCoroutine.Play();
             break;
 
         case AnimationType.TAKE_DAMAGE_POISON:
-            DOTween.Kill(colorSpriteCoroutine);
+            colorSpriteCoroutine.Complete();
+            spriteRenderer.color = Color.white;
 
             colorSpriteCoroutine = DOTween.Sequence();
-            colorSpriteCoroutine.Append(spriteRenderer.DOColor(poisonColor, flashOnDamageDuration));
+            colorSpriteCoroutine.Append(spriteRenderer.DOColor(poisonColor, flashOnDamageDuration/2));
+            colorSpriteCoroutine.Append(spriteRenderer.DOColor(Color.white, flashOnDamageDuration/2));
             colorSpriteCoroutine.Play();
 
             break;
         }
-
-        spriteRenderer.sharedMaterial = flashOnDamageMaterial;
-        flashCoroutine = DOTween.Sequence();
-        flashCoroutine.AppendInterval(flashOnDamageDuration);
-        flashCoroutine.onComplete += () => spriteRenderer.sharedMaterial = null;
-        flashCoroutine.Play();
 
         return true;
     }
