@@ -55,7 +55,9 @@ namespace BattleSystem.BattleActions
                 AttacksCount = this.AttacksCount,
                 DelayBetweenAttacks = this.DelayBetweenAttacks,
                 LastAttackTimestamp = this.LastAttackTimestamp,
-                Caster = this.Caster
+                Caster = this.Caster,
+                InitializationTimestamp = this.InitializationTimestamp
+                
             };
 
             return result;

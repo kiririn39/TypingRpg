@@ -9,7 +9,7 @@ namespace DefaultNamespace
     public class BattleActionBase
     {
         [HideInInspector] public BattleCharacter Caster;
-        protected float InitializationTimestamp;
+        public float InitializationTimestamp;
 
         public virtual void Initialize(BattleCharacter Caster)
         {

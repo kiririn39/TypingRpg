@@ -51,7 +51,7 @@ MonoBehaviour:
   statusBar: {fileID: 7895764731286243375}
   actionModificators: []
   battleCharacterAnimator: {fileID: 5640117654256677778}
-  MaxHealthPoints: 10
+  MaxHealthPoints: 25
 --- !u!114 &2220129015083992234
 MonoBehaviour:
   m_ObjectHideFlags: 0

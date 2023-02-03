@@ -56,7 +56,8 @@ namespace BattleSystem.BattleActions
             {
                 Defence = this.Defence,
                 DefenceDuration = this.DefenceDuration,
-                Caster = this.Caster
+                Caster = this.Caster,
+                InitializationTimestamp = this.InitializationTimestamp
             };
 
             return result;
