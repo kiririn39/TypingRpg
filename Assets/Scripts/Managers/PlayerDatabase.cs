@@ -26,7 +26,6 @@ namespace Managers
         public static readonly RuneSequenceForBattleAction poisonSkill     = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.W,RuneKey.O, RuneKey.Q, RuneKey.O}, RuneBattleActionInfo = new RuneBattleActionInfo(new PoisonPrepareAction()) };
         public static readonly RuneSequenceForBattleAction healSkill       = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.I,RuneKey.E, RuneKey.E, RuneKey.P, RuneKey.Q}, RuneBattleActionInfo = new RuneBattleActionInfo(new HealPrepareAction()) };
         public static readonly RuneSequenceForBattleAction evasionSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.E,RuneKey.E, RuneKey.O, RuneKey.Q}, RuneBattleActionInfo = new RuneBattleActionInfo(new EvasionPrepareAction()) };
-
         public IReadOnlyList<RuneSequenceForBattleAction> myCurrentSkillSentences
         {
             get
@@ -48,7 +47,9 @@ namespace Managers
             poisonSkill,
             healSkill,
             evasionSkill,
-            penetratingAttackSkill
+            penetratingAttackSkill,
+            magicFireSkill,
+            magicFrostSkill
         };
 
         private IReadOnlyList<IReadOnlyList<RuneSequenceForBattleAction>> newSkillsPerLvl = new List<List<RuneSequenceForBattleAction>>()

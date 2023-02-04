@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 namespace BattleSystem.BattleActions
 {
+    [Serializable]
     public class MagicFireAction : BattleActionBase, ITargetsOpposingCharacter
     {
         public float AttackPoints;
@@ -33,32 +35,11 @@ namespace BattleSystem.BattleActions
             {
                 foreach (var battleCharacter in targets)
                 {
-                    var evasions = battleCharacter.actionModificators.OfType<PhysicalEvasion>();
-                    bool hasEvaded = false;
-
-                    foreach (var evasion in evasions)
-                    {
-                        hasEvaded = evasion.EvasionRate >= Random.value;
-                        if (!hasEvaded)
-                            continue;
-
-                        break;
-                    }
-
-                    if (hasEvaded)
-                    {
-                        Debug.Log($"{battleCharacter.name} evaded {Caster.name}'s attack ");
-                        break;
-                        // play defefnce animation or whatever 
-                    }
-
-                    Debug.Log($"Caster {Caster.name} Attacking {battleCharacter.name}");
-                    var physicalAttackDefences =
-                        battleCharacter.actionModificators.OfType<PhysicalAttackDefence>();
+                    var fireDefences = battleCharacter.actionModificators.OfType<FireDefence>();
                     var attackPoint = AttackPoints;
 
-                    foreach (var attackDefence in physicalAttackDefences)
-                        attackPoint *= attackDefence.defencePercentage;
+                    foreach (var attackDefence in fireDefences)
+                        attackPoint *= attackDefence.damageMultiplier;
 
                     battleCharacter.DealDamage(attackPoint, GetType());
                     battleCharacter.playAnimation(BattleCharacterAnimator.AnimationType.TAKE_DAMAGE);
@@ -76,7 +57,7 @@ namespace BattleSystem.BattleActions
 
         public override BattleActionBase Clone()
         {
-            return new AttackAction
+            return new MagicFireAction
             {
                 Caster = base.Caster,
                 AttackPoints = this.AttackPoints,
