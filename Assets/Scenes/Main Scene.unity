@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -666,6 +666,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcesManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8400572854367007759, guid: 84101f86d44e3af4e8d817d104387e9e, type: 3}
+      propertyPath: imgsMapNodeIcon.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c47666ea11b59141b33f3743e04d7c9, type: 3}
+    - target: {fileID: 8400572854367007759, guid: 84101f86d44e3af4e8d817d104387e9e, type: 3}
+      propertyPath: imgsMapNodeIcon.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 933ab740c9584c64bb236effd31dc4f2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1282,10 +1290,6 @@ PrefabInstance:
       propertyPath: playerCharacter
       value: 
       objectReference: {fileID: 7209202346148521047}
-    - target: {fileID: 191385935434622474, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: playerControllerBase
-      value: 
-      objectReference: {fileID: 7209202346148521045}
     - target: {fileID: 346959779178931135, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1558,70 +1562,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[1].id
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[2].id
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[3].id
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[4].id
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[5].id
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[6].id
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[2].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[3].type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[0].enemyConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0a1ed2152064d18b09438c5feaa9ab, type: 2}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[1].enemyConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0a1ed2152064d18b09438c5feaa9ab, type: 2}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[2].enemyConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0a1ed2152064d18b09438c5feaa9ab, type: 2}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[3].enemyConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0a1ed2152064d18b09438c5feaa9ab, type: 2}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[4].enemyConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0a1ed2152064d18b09438c5feaa9ab, type: 2}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[5].enemyConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0a1ed2152064d18b09438c5feaa9ab, type: 2}
-    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
-      propertyPath: stages.Array.data[6].enemyConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0a1ed2152064d18b09438c5feaa9ab, type: 2}
     - target: {fileID: 2857428545302151385, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1814,8 +1754,7 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 923010553792010675, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1974,17 +1913,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
---- !u!114 &7209202346148521045 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
-  m_PrefabInstance: {fileID: 7209202346148521044}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78745456c61b407399a9e63def628b78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7209202346148521046 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6974113494796090867, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}

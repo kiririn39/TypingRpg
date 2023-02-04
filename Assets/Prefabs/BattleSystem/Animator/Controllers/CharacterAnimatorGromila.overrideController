@@ -9,7 +9,21 @@ AnimatorOverrideController:
   m_Name: CharacterAnimatorGromila
   m_Controller: {fileID: 9100000, guid: 95cc2ef015c313a4f8e4c5cb81a9788b, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 0ecab54e750fd944c97f0ce571c5027c, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 0ecab54e750fd944c97f0ce571c5027c, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: a1467ca9f721ba44da17347869bce258, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: a1467ca9f721ba44da17347869bce258, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 60fb45b9ac272a14d9eb5a2759e4224e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2ddcdfb580218d444b14370eb7d3b7af, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 28224c8aaf41ef84d96bc726637c5186, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eecd17c5e2405af44bf3a90efba537e6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 73d89d103861f2f4caa15f48723d4747, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1e3fe9ddc7d39d7459d288cc7ec72a72, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 91f17f1b0b4540f439a320f2e194125b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 77bf8367f3aeaa741a3906e2a957be74, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9eb07e327d4cd66458cfa23dbc81452e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2ddcdfb580218d444b14370eb7d3b7af, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0c2990419fdf6fa449b532410b45c53e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2ddcdfb580218d444b14370eb7d3b7af, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cd0a87b57e40ada438b9938bb7ff75d1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2ddcdfb580218d444b14370eb7d3b7af, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5856017d53e5dd64b87ff7957304231a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2ddcdfb580218d444b14370eb7d3b7af, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8545d45253e9b784485513b474779798, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eecd17c5e2405af44bf3a90efba537e6, type: 2}

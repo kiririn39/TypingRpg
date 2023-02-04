@@ -21,8 +21,8 @@ namespace DefaultNamespace
 
         public void InitializeEnemy(EnemyConfig enemyConfig)
         {
-            character.HealthPoints = enemyConfig.healthPoints;
             character.MaxHealthPoints = enemyConfig.healthPoints;
+            character.HealthPoints = enemyConfig.healthPoints;
 
             character.ClearModificators();
             character.AddModificators(enemyConfig.modificators);

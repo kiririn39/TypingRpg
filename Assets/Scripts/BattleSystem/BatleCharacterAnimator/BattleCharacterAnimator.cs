@@ -103,8 +103,6 @@ public class BattleCharacterAnimator : MonoBehaviour
 
             flashCoroutine?.Complete();
 
-            FindObjectOfType<CameraScript>().tweenDamageTaken();
-
             Material oldMaterial = spriteRenderer.material;
             spriteRenderer.material = flashOnDamageMaterial;
             flashCoroutine = DOTween.Sequence();
@@ -133,20 +131,22 @@ public class BattleCharacterAnimator : MonoBehaviour
 
     private string getAnimationStringKey(AnimationType animationType)
     {
+        string animationStringKey = "Idle";
         switch (animationType)
         {
         case AnimationType.ATTACK:         return "Attack";
-        case AnimationType.ATTACK_FORCE:   return "AttackForce";
-        case AnimationType.DEFENCE:        return "Defence";
-        case AnimationType.ATTACK_FIRE:    return "MagicAttackFire";
-        case AnimationType.ATTACK_FROST:   return "MagicAttackFrost";
+        case AnimationType.ATTACK_FORCE:   return "Attack";
+        case AnimationType.ATTACK_FIRE:    return "AttackFire";
+        case AnimationType.ATTACK_FROST:   return "AttackFrost";
         case AnimationType.ATTACK_PSYONIC: return "AttackPsyonic";
-        case AnimationType.ATTACK_POISON:  return "Psyonic";
+        case AnimationType.ATTACK_POISON:  return "AttackPoison";
+
+        case AnimationType.DEFENCE:        return "Block";
         case AnimationType.HEAL:           return "Heal";
         case AnimationType.DEATH:          return "Death";
         }
 
-        return "Idle";
+        return animationStringKey;
     }
     
     

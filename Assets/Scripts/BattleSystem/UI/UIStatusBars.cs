@@ -21,7 +21,10 @@ public class UIStatusBars : MonoBehaviour
 
         playerCharacter.onHealthChanged += (oldVal, newVal) => playerStatusBar.SetCurrentHealth(newVal);
         aiCharacter    .onHealthChanged += (oldVal, newVal) => aiStatusBar    .SetCurrentHealth(newVal);
-        
+
+        playerCharacter.onMaxHealthChanged += (oldVal, newVal) => playerStatusBar.SetMaxHealth(newVal);
+        aiCharacter    .onMaxHealthChanged += (oldVal, newVal) => aiStatusBar    .SetMaxHealth(newVal);
+
         playerCharacter.onDelayNormalizedChanged += (oldVal, newVal) => playerStatusBar.SetCurrentDelayNormalized(newVal);
         aiCharacter    .onDelayNormalizedChanged += (oldVal, newVal) => aiStatusBar    .SetCurrentDelayNormalized(newVal);
         

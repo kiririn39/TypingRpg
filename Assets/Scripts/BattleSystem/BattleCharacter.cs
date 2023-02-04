@@ -13,6 +13,7 @@ namespace DefaultNamespace
         public event Action onInit = delegate {};
 
         public event Action<float, float> onHealthChanged = delegate {};
+        public event Action<float, float> onMaxHealthChanged = delegate {};
         public event Action<float, float> onDelayNormalizedChanged = delegate {};
         public event Action<List<ActionModificatorBase>> onEffectsChanged = delegate {};
 
@@ -23,7 +24,17 @@ namespace DefaultNamespace
         [SerializeField] [SerializeReference] public List<ActionModificatorBase> actionModificators;
         [SerializeField] [SerializeReference] protected BattleCharacterAnimator battleCharacterAnimator;
 
-        public float MaxHealthPoints = 10f;
+        [SerializeField]private float _MaxHealthPoints = 10f;
+        public float MaxHealthPoints
+        {
+            get => _MaxHealthPoints;
+            set
+            {
+                float oldValue = _MaxHealthPoints;
+                _MaxHealthPoints = value.withMin(0);
+                onMaxHealthChanged(oldValue, _MaxHealthPoints);
+            }
+        }
 
         [SerializeField]private float _HealthPoints = 0;
         public float HealthPoints
