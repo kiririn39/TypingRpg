@@ -23,6 +23,8 @@ namespace DefaultNamespace
         {
             enabled = true;
             _passiveActions.Clear();
+
+            (enemyCharacter.controllerBase as AiCharacterController).InitializeEnemy(enemyConfig);
         }
 
         public void PauseBattle()
