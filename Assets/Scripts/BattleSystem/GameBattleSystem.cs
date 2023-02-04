@@ -19,7 +19,7 @@ namespace DefaultNamespace
         public Action<BattleResult> OnBattleEnded = delegate { };
 
 
-        public void StartBattle(object enemyConfig)
+        public void StartBattle(EnemyConfig enemyConfig)
         {
             enabled = true;
             _passiveActions.Clear();
