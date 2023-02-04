@@ -16,7 +16,7 @@ namespace DefaultNamespace
         public static readonly FinishedActionResult FinishedAction = new FinishedActionResult();
         public static readonly InProcessActionResult InProgressAction = new InProcessActionResult();
 
-        public Action<BattleResult> OnBattleEnded;
+        public Action<BattleResult> OnBattleEnded = delegate {};
 
 
         public void StartBattle()
