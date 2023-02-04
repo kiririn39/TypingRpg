@@ -14,6 +14,7 @@ namespace DefaultNamespace
 
         public event Action<float, float> onHealthChanged = delegate {};
         public event Action<float, float> onDelayNormalizedChanged = delegate {};
+        public event Action<List<ActionModificatorBase>> onEffectsChanged = delegate {};
 
 
         [FormerlySerializedAs("controller")]
@@ -88,6 +89,30 @@ namespace DefaultNamespace
         public void playAnimation(BattleCharacterAnimator.AnimationType animationType)
         {
             battleCharacterAnimator.play(animationType);
+        }
+
+        public void AddModificator(ActionModificatorBase modificatorBase)
+        {
+            actionModificators.Add(modificatorBase);
+            onEffectsChanged?.Invoke(actionModificators);
+        }
+        
+        public void AddModificators(IEnumerable<ActionModificatorBase> modificators)
+        {
+            actionModificators.AddRange(modificators);
+            onEffectsChanged?.Invoke(actionModificators);
+        }
+
+        public void ClearModificators()
+        {
+            actionModificators.Clear();
+            onEffectsChanged?.Invoke(actionModificators);
+        }
+
+        public void RemoveModificator(ActionModificatorBase modificatorBase)
+        {
+            actionModificators.Remove(modificatorBase);
+            onEffectsChanged?.Invoke(actionModificators);
         }
 
         public void playAnimationForBattleActionAsTarget(BattleActionBase battleActionBase)

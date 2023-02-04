@@ -13,6 +13,8 @@ namespace BattleSystem.BattleActions
         public float AttacksCount;
         public float DelayBetweenAttacks;
         [HideInInspector] public float LastAttackTimestamp;
+        [SerializeField] private PoisonTag tag;
+
 
         private List<BattleActionBase> _battleEffects = null;
 
@@ -25,8 +27,11 @@ namespace BattleSystem.BattleActions
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
+            if (!Caster.actionModificators.Contains(tag))
+                Caster.AddModificator(tag);
+
             if (AttacksCount <= 0)
-                return GameBattleSystem.FinishedAction;
+                return FinishActionAndCleanUp(GameBattleSystem.FinishedAction);
             if (LastAttackTimestamp + DelayBetweenAttacks > Time.time)
                 return GameBattleSystem.InProgressAction;
 
@@ -44,7 +49,17 @@ namespace BattleSystem.BattleActions
             LastAttackTimestamp = Time.time;
             AttacksCount--;
 
-            return AttacksCount <= 0 ? GameBattleSystem.FinishedAction : GameBattleSystem.InProgressAction;
+            return AttacksCount <= 0
+                ? FinishActionAndCleanUp(GameBattleSystem.FinishedAction)
+                : GameBattleSystem.InProgressAction;
+        }
+
+        private FinishedActionResult FinishActionAndCleanUp(FinishedActionResult result)
+        {
+            if (Caster.actionModificators.Contains(tag))
+                Caster.RemoveModificator(tag);
+
+            return result;
         }
 
         public override BattleActionBase Clone()
@@ -57,7 +72,6 @@ namespace BattleSystem.BattleActions
                 LastAttackTimestamp = this.LastAttackTimestamp,
                 Caster = this.Caster,
                 InitializationTimestamp = this.InitializationTimestamp
-                
             };
 
             return result;

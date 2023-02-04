@@ -24,8 +24,8 @@ namespace DefaultNamespace
             character.HealthPoints = enemyConfig.healthPoints;
             character.MaxHealthPoints = enemyConfig.healthPoints;
 
-            character.actionModificators.Clear();
-            character.actionModificators.AddRange(enemyConfig.modificators);
+            character.ClearModificators();
+            character.AddModificators(enemyConfig.modificators);
 
             possibleActions.Clear();
             possibleActions.AddRange(enemyConfig.possibleActions);

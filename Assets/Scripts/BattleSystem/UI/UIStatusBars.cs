@@ -24,6 +24,9 @@ public class UIStatusBars : MonoBehaviour
         
         playerCharacter.onDelayNormalizedChanged += (oldVal, newVal) => playerStatusBar.SetCurrentDelayNormalized(newVal);
         aiCharacter    .onDelayNormalizedChanged += (oldVal, newVal) => aiStatusBar    .SetCurrentDelayNormalized(newVal);
+        
+        playerCharacter.onEffectsChanged += playerStatusBar.DisplayModificators;
+        aiCharacter    .onEffectsChanged += aiStatusBar.DisplayModificators;
     }
 
     public void Update()

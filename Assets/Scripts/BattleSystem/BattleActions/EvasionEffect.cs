@@ -30,7 +30,7 @@ namespace BattleSystem.BattleActions
                 foreach (var character in targets)
                 {
                     if (!character.actionModificators.Contains(Evasion))
-                        character.actionModificators.Add(Evasion);
+                        character.AddModificator(Evasion);
 
                     Debug.Log($"Caster {Caster.name} is evading");
                 }
@@ -41,7 +41,7 @@ namespace BattleSystem.BattleActions
             foreach (var character in targets)
             {
                 if (character.actionModificators.Contains(Evasion))
-                    character.actionModificators.Remove(Evasion);
+                    character.RemoveModificator(Evasion);
 
                 Debug.Log($"Caster {Caster.name} stopped evasion");
             }

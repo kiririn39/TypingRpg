@@ -13,6 +13,7 @@ namespace BattleSystem.BattleActions
         public float HealsCount;
         public float DelayBetweenHeals;
         [HideInInspector] public float LastHealTimestamp;
+        [SerializeField] private HealTag tag;
 
         private List<BattleActionBase> _battleEffects = null;
 
@@ -25,8 +26,11 @@ namespace BattleSystem.BattleActions
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
+            if (!Caster.actionModificators.Contains(tag))
+                Caster.AddModificator(tag);
+
             if (HealsCount <= 0)
-                return GameBattleSystem.FinishedAction;
+                return FinishActionAndCleanUp(GameBattleSystem.FinishedAction);
             if (LastHealTimestamp + DelayBetweenHeals > Time.time)
                 return GameBattleSystem.InProgressAction;
 
@@ -44,7 +48,17 @@ namespace BattleSystem.BattleActions
             LastHealTimestamp = Time.time;
             HealsCount--;
 
-            return HealsCount <= 0 ? GameBattleSystem.FinishedAction : GameBattleSystem.InProgressAction;
+            return HealsCount <= 0
+                ? FinishActionAndCleanUp(GameBattleSystem.FinishedAction)
+                : GameBattleSystem.InProgressAction;
+        }
+
+        private FinishedActionResult FinishActionAndCleanUp(FinishedActionResult result)
+        {
+            if (Caster.actionModificators.Contains(tag))
+                Caster.RemoveModificator(tag);
+
+            return result;
         }
 
         public override BattleActionBase Clone()

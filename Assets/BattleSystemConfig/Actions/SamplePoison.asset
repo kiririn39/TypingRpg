@@ -23,3 +23,4 @@ MonoBehaviour:
       AttacksCount: 10
       DelayBetweenAttacks: 3
       LastAttackTimestamp: 0
+      tag: {fileID: 11400000, guid: 3f055223a0e3d45d29c60e60fb24f229, type: 2}
