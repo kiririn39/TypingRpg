@@ -51,6 +51,7 @@ namespace DefaultNamespace.BattleActions
                     if (hasEvaded)
                     {
                         Debug.Log($"{battleCharacter.name} evaded {Caster.name}'s attack ");
+                        SoundManager.Instance.playSound(SoundType.EVASION);
                         break;
                         // play defefnce animation or whatever 
                     }

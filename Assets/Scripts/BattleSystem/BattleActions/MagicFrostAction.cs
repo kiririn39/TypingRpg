@@ -43,7 +43,8 @@ namespace BattleSystem.BattleActions
 
                     battleCharacter.DealDamage(attackPoint, GetType());
                     battleCharacter.playAnimation(BattleCharacterAnimator.AnimationType.TAKE_DAMAGE);
-                    SoundManager.Instance.playSound(SoundType.BASIC_ATTACK);
+                    SoundManager.Instance.playSound(SoundType.FIREBALL);
+                    SoundManager.Instance.shakeCamera();
                 }
 
                 isDamageInflicted = true;
