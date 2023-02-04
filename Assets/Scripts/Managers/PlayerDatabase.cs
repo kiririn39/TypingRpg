@@ -18,6 +18,7 @@ namespace Managers
 
         public static readonly RuneSequenceForBattleAction idleSkill       = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.W, RuneKey.E},                                 RuneBattleActionInfo = new RuneBattleActionInfo(new IdleAction()) };
         public static readonly RuneSequenceForBattleAction attackSkill     = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.P},                                 RuneBattleActionInfo = new RuneBattleActionInfo(new AttackAction()) };
+        public static readonly RuneSequenceForBattleAction penetratingAttackSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.E,RuneKey.W},             RuneBattleActionInfo = new RuneBattleActionInfo(new PenetratingAttackAction()) };
         public static readonly RuneSequenceForBattleAction defenceSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.W, RuneKey.E,RuneKey.I, RuneKey.O, RuneKey.P}, RuneBattleActionInfo = new RuneBattleActionInfo(new DefencePrepareAction()) };
         public static readonly RuneSequenceForBattleAction magicFireSkill  = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.P,RuneKey.Q, RuneKey.W, RuneKey.E}, RuneBattleActionInfo = new RuneBattleActionInfo(new MagicFireAction()) };
         public static readonly RuneSequenceForBattleAction magicFrostSkill = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.E, RuneKey.W, RuneKey.Q,RuneKey.I, RuneKey.I},            RuneBattleActionInfo = new RuneBattleActionInfo(new MagicFrostAction()) };
@@ -46,7 +47,8 @@ namespace Managers
             defenceSkill,
             poisonSkill,
             healSkill,
-            evasionSkill
+            evasionSkill,
+            penetratingAttackSkill
         };
 
         private IReadOnlyList<IReadOnlyList<RuneSequenceForBattleAction>> newSkillsPerLvl = new List<List<RuneSequenceForBattleAction>>()

@@ -1907,12 +1907,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
       propertyPath: possibleActions.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
       propertyPath: possibleActions.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: fb54ae5da3a06494a901a18175e1fe87, type: 2}
+    - target: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+      propertyPath: possibleActions.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d8b443ab850f4727a313ad32db14a5f, type: 2}
     - target: {fileID: 6974113494796090867, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
       propertyPath: actionModificators.Array.size
       value: 0

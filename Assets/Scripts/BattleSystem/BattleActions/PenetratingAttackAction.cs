@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using DefaultNamespace.BattleActions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace BattleSystem.BattleActions
 {
-    public class MagicFireAction : BattleActionBase, ITargetsOpposingCharacter
+    [Serializable]
+    public class PenetratingAttackAction : BattleActionBase, ITargetsOpposingCharacter
     {
         public float AttackPoints;
         public float ExecutionDelay;
@@ -52,15 +55,7 @@ namespace BattleSystem.BattleActions
                         // play defefnce animation or whatever 
                     }
 
-                    Debug.Log($"Caster {Caster.name} Attacking {battleCharacter.name}");
-                    var physicalAttackDefences =
-                        battleCharacter.actionModificators.OfType<PhysicalAttackDefence>();
-                    var attackPoint = AttackPoints;
-
-                    foreach (var attackDefence in physicalAttackDefences)
-                        attackPoint *= attackDefence.defencePercentage;
-
-                    battleCharacter.DealDamage(attackPoint, GetType());
+                    battleCharacter.DealDamage(AttackPoints, GetType());
                     battleCharacter.playAnimation(BattleCharacterAnimator.AnimationType.TAKE_DAMAGE);
                     SoundManager.Instance.playSound(SoundType.BASIC_ATTACK);
                 }
@@ -76,7 +71,7 @@ namespace BattleSystem.BattleActions
 
         public override BattleActionBase Clone()
         {
-            return new AttackAction
+            return new PenetratingAttackAction
             {
                 Caster = base.Caster,
                 AttackPoints = this.AttackPoints,
