@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Map;
+using UnityEditor;
 using UnityEngine;
 
 namespace Managers
@@ -36,7 +37,7 @@ namespace Managers
 
         [SerializeField] private Sprite undefinedBattleActionIcon = null;
 
-        [SerializeField] private List<SpriteForBattleAction> imgsBattleActionIcon =
+        [SerializeField] public List<SpriteForBattleAction> imgsBattleActionIcon =
             CommonExtensions.GetAllInheritorsOf<BattleActionBase>()
                 .Select(it => new SpriteForBattleAction(it.Name, null))
                 .ToList();
@@ -126,4 +127,28 @@ namespace Managers
         }
         #endregion
     }
+
+    #if UNITY_EDITOR
+    [CustomEditor(typeof(ResourcesManager))]
+    public class ResourcesManagerEditor :Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            if (GUILayout.Button("Update imgsBattleActionIcon"))
+            {
+                List<ResourcesManager.SpriteForBattleAction> curTypeNames = (target as ResourcesManager).imgsBattleActionIcon;
+                List<string> allTypeNames = CommonExtensions.GetAllInheritorsOf<BattleActionBase>().Select(it => it.Name).ToList();
+                foreach (string className in allTypeNames)
+                {
+                    if (curTypeNames.All(it => it.className != className))
+                        curTypeNames.Add(new ResourcesManager.SpriteForBattleAction(className, null));
+                }
+            }
+                
+        }
+    }
+    #endif
 }
+

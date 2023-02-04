@@ -36,7 +36,7 @@ namespace RuneStack
 
         public void init(RuneTree runeTree)
         {
-            (playerCharacter.controllerBase as PlayerCharacterController).init(this);
+            (playerCharacter?.controllerBase as PlayerCharacterController)?.init(this);
 
             this.runeTree = runeTree;
             updateData();
@@ -111,6 +111,12 @@ namespace RuneStack
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if (playerCharacter == null)
+                {
+                    Debug.Log("DEBUG USE");
+                    tryUseBattleAction();
+                }
+                else
                 if (playerCharacter.DelayNormalized > 0.9999)
                     tryUseBattleAction();
                 else

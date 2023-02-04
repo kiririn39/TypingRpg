@@ -45,6 +45,9 @@ namespace DefaultNamespace
                 float oldValue = _HealthPoints;
                 _HealthPoints = value.withMin(0).withMax(MaxHealthPoints);
                 onHealthChanged(oldValue, _HealthPoints);
+
+                if (_HealthPoints == 0)
+                    battleCharacterAnimator.play(BattleCharacterAnimator.AnimationType.DEATH);
             }
         }
 

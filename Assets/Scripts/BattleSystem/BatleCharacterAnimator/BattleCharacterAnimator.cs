@@ -44,7 +44,7 @@ public class BattleCharacterAnimator : MonoBehaviour
         DEATH              = 11,
     }
 
-    [SerializeField] private Animator animator = null;
+    [SerializeField] public Animator animator = null;
     [SerializeField] private List<AnimatorsForCharacters> charactersOverrideControllers = null;
     [SerializeField] private SpriteRenderer spriteRenderer = null;
     [Header("Flash on damage effect")]
