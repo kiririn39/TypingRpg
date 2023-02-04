@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b2733e7c88dc6f4fa9abe4e52aa887f
+guid: 4c9dd37f00c88664a8abdfeaf8482ee5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glomila_attack_0
+      name: khight_block_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8202c179b816f4c81285e91b325bed
-      internalID: -2133885307
+      spriteID: 2840a6098a1b0c544be51e4da644094a
+      internalID: -1520718004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glomila_attack_1
+      name: khight_block_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,29 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa4ce9cb896feff48832a57e94ad10bc
-      internalID: -372427134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glomila_attack_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 480269f663354b54387a7b82c508a595
-      internalID: 1224361369
+      spriteID: 932a87d6c15382f45bdaa9a09331ccea
+      internalID: -1129454359
       vertices: []
       indices: 
       edges: []
@@ -180,9 +159,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      glomila_attack_0: -2133885307
-      glomila_attack_1: -372427134
-      glomila_attack_2: 1224361369
+      khight_block_0: -1520718004
+      khight_block_1: -1129454359
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b2733e7c88dc6f4fa9abe4e52aa887f
+guid: 9cd3624f4b59b394a9078f106ab55a0a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glomila_attack_0
+      name: khight_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8202c179b816f4c81285e91b325bed
-      internalID: -2133885307
+      spriteID: adfe5dce3710b624c8325e7d2ca32f8c
+      internalID: 1859902255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glomila_attack_1
+      name: khight_attack_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa4ce9cb896feff48832a57e94ad10bc
-      internalID: -372427134
+      spriteID: 8cc3d63b338d58e42a10ef18a7ef2e16
+      internalID: 264277411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glomila_attack_2
+      name: khight_attack_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 480269f663354b54387a7b82c508a595
-      internalID: 1224361369
+      spriteID: 1d20c9f08c72461429e799193fe362ea
+      internalID: -247384684
       vertices: []
       indices: 
       edges: []
@@ -180,9 +180,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      glomila_attack_0: -2133885307
-      glomila_attack_1: -372427134
-      glomila_attack_2: 1224361369
+      khight_attack_2: -247384684
+      khight_attack_0: 1859902255
+      khight_attack_1: 264277411
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b2733e7c88dc6f4fa9abe4e52aa887f
+guid: 832ec46fb0b16ce48b6bc6812cc27a7b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glomila_attack_0
+      name: player_force_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8202c179b816f4c81285e91b325bed
-      internalID: -2133885307
+      spriteID: ab85eeba2ca2bde408d28e6f3176a96e
+      internalID: 1918410659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glomila_attack_1
+      name: player_force_attack_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa4ce9cb896feff48832a57e94ad10bc
-      internalID: -372427134
+      spriteID: 4604d5d83a84f184d935679cac6c411a
+      internalID: -595356524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glomila_attack_2
+      name: player_force_attack_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 480269f663354b54387a7b82c508a595
-      internalID: 1224361369
+      spriteID: 5f18128a227773d42ae21ca07a60692e
+      internalID: -1534562890
       vertices: []
       indices: 
       edges: []
@@ -180,9 +180,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      glomila_attack_0: -2133885307
-      glomila_attack_1: -372427134
-      glomila_attack_2: 1224361369
+      player_force_attack_2: -1534562890
+      player_force_attack_1: -595356524
+      player_force_attack_0: 1918410659
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

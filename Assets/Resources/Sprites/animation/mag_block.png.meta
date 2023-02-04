@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b2733e7c88dc6f4fa9abe4e52aa887f
+guid: ef831cc6ae133ff4c8c28256e0491db4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glomila_attack_0
+      name: mag_block_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8202c179b816f4c81285e91b325bed
-      internalID: -2133885307
+      spriteID: 9fb3a3d4a2197404089a22a63a55befa
+      internalID: -871697980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: glomila_attack_1
+      name: mag_block_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,29 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa4ce9cb896feff48832a57e94ad10bc
-      internalID: -372427134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glomila_attack_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 480269f663354b54387a7b82c508a595
-      internalID: 1224361369
+      spriteID: 38ad5cd9a9d9b274fb1985857547955a
+      internalID: 1989546297
       vertices: []
       indices: 
       edges: []
@@ -180,9 +159,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      glomila_attack_0: -2133885307
-      glomila_attack_1: -372427134
-      glomila_attack_2: 1224361369
+      mag_block_1: 1989546297
+      mag_block_0: -871697980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
