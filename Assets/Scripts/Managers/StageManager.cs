@@ -24,26 +24,28 @@ namespace Managers
         public event Action stageChangeStarted;
         public event Action stageChangeFinished;
 
-       public Stage curStage => stages.FirstOrDefault(x => x.id == curStageIndex) ?? throw new IndexOutOfRangeException($"No stage with {nameof(curStageIndex)} {curStageIndex}");
+        public Stage curStage => stages.FirstOrDefault(x => x.id == curStageIndex) ??
+                                 throw new IndexOutOfRangeException(
+                                     $"No stage with {nameof(curStageIndex)} {curStageIndex}");
 
 
-       public void prepareGame()
-       {
-           curStageIndex = -1;
-           monstersKilled = 0;
-           MapManager.Instance.spawnMap(stages);
-       }
+        public void prepareGame()
+        {
+            curStageIndex = -1;
+            monstersKilled = 0;
+            MapManager.Instance.spawnMap(stages);
+        }
 
-       public void startGame()
-       {
-           nextStage();
-           gameBattleSystem = FindObjectOfType<GameBattleSystem>();
-           gameBattleSystem.OnBattleEnded += onBattleEnded;
-       }
+        public void startGame()
+        {
+            nextStage();
+            gameBattleSystem = FindObjectOfType<GameBattleSystem>();
+            gameBattleSystem.OnBattleEnded += onBattleEnded;
+        }
 
         public void nextStage()
         {
-            if (curStageIndex >=0 && curStage.type == StageType.FIGHT)
+            if (curStageIndex >= 0 && curStage.type == StageType.FIGHT)
                 ++monstersKilled;
 
             ++curStageIndex;
@@ -62,7 +64,7 @@ namespace Managers
             }
             else
             {
-                gameBattleSystem.StartBattle();
+                gameBattleSystem.StartBattle(new());
             }
         }
 
@@ -70,7 +72,9 @@ namespace Managers
         {
             switch (battle_result)
             {
-                case PlayerVictoryResult: nextStage(); break;
+                case PlayerVictoryResult:
+                    nextStage();
+                    break;
                 case PlayerLostResult:
                     FindObjectOfType<LoseScreen>().show(monstersKilled);
                     break;
