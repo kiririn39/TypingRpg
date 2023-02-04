@@ -148,13 +148,6 @@ public class BattleCharacterAnimator : MonoBehaviour
         case AnimationType.DEATH:          return "Death";
         }
 
-        bool animationExist = animator.runtimeAnimatorController.animationClips.Any(it => it.name == animationStringKey );
-        if (!animationExist)
-        {
-            Debug.LogError($"Animation {animationType} not exist for {animator.runtimeAnimatorController.name}");
-            animationStringKey = animationType.ToString().Contains("ATTACK") ? "Attack" : "Heal";
-        }
-
         return animationStringKey;
     }
     
