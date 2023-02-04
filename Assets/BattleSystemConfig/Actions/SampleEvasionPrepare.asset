@@ -9,17 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad34b5a8ccd4309b1061342889d7e2e, type: 3}
-  m_Name: SampleHeal
+  m_Script: {fileID: 11500000, guid: 664e160bc8c84a2c815747545adcee38, type: 3}
+  m_Name: SampleEvasionPrepare
   m_EditorClassIdentifier: 
-  healEffect:
+  evasionEffect:
     Caster: {fileID: 0}
     InitializationTimestamp: 0
     ExecutionDelay: 4
-    HealEffect:
+    EvasionEffect:
       Caster: {fileID: 0}
       InitializationTimestamp: 0
-      HealPoints: 10
-      HealsCount: 3
-      DelayBetweenHeals: 4
-      LastHealTimestamp: 0
+      Evasion: {fileID: 11400000, guid: 88a6e5afe9f0c4aeaace51ca971d78e6, type: 2}
+      EvasionDuration: 5

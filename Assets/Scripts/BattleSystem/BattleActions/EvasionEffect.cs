@@ -7,10 +7,10 @@ using UnityEngine;
 namespace BattleSystem.BattleActions
 {
     [Serializable]
-    public class DefenceEffect : BattleActionBase, IEffect, ITargetsSelf
+    public class EvasionEffect : BattleActionBase, IEffect, ITargetsSelf
     {
-        public PhysicalAttackDefence Defence;
-        public float DefenceDuration;
+        public PhysicalEvasion Evasion;
+        public float EvasionDuration;
 
         private List<BattleActionBase> _battleEffects = null;
 
@@ -22,28 +22,28 @@ namespace BattleSystem.BattleActions
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
-            var mostPowerfulDefence = _battleEffects.OfType<DefenceEffect>()
+            var mostPowerfulEvasion = _battleEffects.OfType<EvasionEffect>()
                 .Where(action => action.Caster == this.Caster)
-                .OrderBy(action => action.Defence.defencePercentage).FirstOrDefault();
+                .OrderBy(action => action.Evasion.EvasionRate).FirstOrDefault();
 
-            if (mostPowerfulDefence == this)
+            if (mostPowerfulEvasion == this)
                 foreach (var character in targets)
                 {
-                    if (!character.actionModificators.Contains(Defence))
-                        character.actionModificators.Add(Defence);
+                    if (!character.actionModificators.Contains(Evasion))
+                        character.actionModificators.Add(Evasion);
 
-                    Debug.Log($"Caster {Caster.name} Protected themself");
+                    Debug.Log($"Caster {Caster.name} is evading");
                 }
 
-            if (DefenceDuration + InitializationTimestamp > Time.time)
+            if (EvasionDuration + InitializationTimestamp > Time.time)
                 return GameBattleSystem.InProgressAction;
 
             foreach (var character in targets)
             {
-                if (character.actionModificators.Contains(Defence))
-                    character.actionModificators.Remove(Defence);
+                if (character.actionModificators.Contains(Evasion))
+                    character.actionModificators.Remove(Evasion);
 
-                Debug.Log($"Caster {Caster.name} Protect ended");
+                Debug.Log($"Caster {Caster.name} stopped evasion");
             }
 
             return GameBattleSystem.FinishedAction;
@@ -51,10 +51,10 @@ namespace BattleSystem.BattleActions
 
         public override BattleActionBase Clone()
         {
-            var result = new DefenceEffect
+            var result = new EvasionEffect()
             {
-                Defence = this.Defence,
-                DefenceDuration = this.DefenceDuration,
+                Evasion = this.Evasion,
+                EvasionDuration = this.EvasionDuration,
                 Caster = this.Caster,
                 InitializationTimestamp = this.InitializationTimestamp
             };

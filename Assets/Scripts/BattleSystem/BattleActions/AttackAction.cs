@@ -4,6 +4,7 @@ using System.Linq;
 using BattleSystem.BattleActions;
 using Common;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace.BattleActions
 {
@@ -33,18 +34,37 @@ namespace DefaultNamespace.BattleActions
 
             if (damageInflictedTime < Time.time && !isDamageInflicted)
             {
-                foreach (var battleCharacterBase in targets)
+                foreach (var battleCharacter in targets)
                 {
-                    Debug.Log($"Caster {Caster.name} Attacking {battleCharacterBase.name}");
+                    var evasions = battleCharacter.actionModificators.OfType<PhysicalEvasion>();
+                    bool hasEvaded = false;
+
+                    foreach (var evasion in evasions)
+                    {
+                        hasEvaded = evasion.EvasionRate >= Random.value;
+                        if (!hasEvaded)
+                            continue;
+
+                        break;
+                    }
+
+                    if (hasEvaded)
+                    {
+                        Debug.Log($"{battleCharacter.name} evaded {Caster.name}'s attack ");
+                        break;
+                        // play defefnce animation or whatever 
+                    }
+
+                    Debug.Log($"Caster {Caster.name} Attacking {battleCharacter.name}");
                     var physicalAttackDefences =
-                        battleCharacterBase.actionModificators.OfType<PhysicalAttackDefence>();
+                        battleCharacter.actionModificators.OfType<PhysicalAttackDefence>();
                     var attackPoint = AttackPoints;
 
                     foreach (var attackDefence in physicalAttackDefences)
                         attackPoint *= attackDefence.defencePercentage;
 
-                    battleCharacterBase.DealDamage(attackPoint, GetType());
-                    battleCharacterBase.playAnimation(BattleCharacterAnimator.AnimationType.TAKE_DAMAGE);
+                    battleCharacter.DealDamage(attackPoint, GetType());
+                    battleCharacter.playAnimation(BattleCharacterAnimator.AnimationType.TAKE_DAMAGE);
                     SoundManager.Instance.playSound(SoundType.BASIC_ATTACK);
                 }
 
