@@ -49,6 +49,10 @@ namespace Managers
                 ++monstersKilled;
 
             ++curStageIndex;
+
+            if (curStageIndex >= stages.Count)
+                FindObjectOfType<WinScreen>().show(monstersKilled);
+
             stageChangeStarted?.Invoke();
         }
 

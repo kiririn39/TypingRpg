@@ -19,7 +19,7 @@ MonoBehaviour:
     HealEffect:
       Caster: {fileID: 0}
       InitializationTimestamp: 0
-      HealPoints: 10
-      HealsCount: 3
+      HealPoints: 4
+      HealsCount: 1
       DelayBetweenHeals: 4
       LastHealTimestamp: 0

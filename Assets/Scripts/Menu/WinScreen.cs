@@ -1,11 +1,11 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Menu;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class LoseScreen : MonoBehaviour
+public class WinScreen : MonoBehaviour
 {
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private TMP_Text      statisticsText;
@@ -19,7 +19,7 @@ public class LoseScreen : MonoBehaviour
     {
         SoundManager.Instance.stopAllMusic();
         rectTransform.anchoredPosition = Vector2.zero;
-        statisticsText.SetText($"... {(killed_count > 0 ? "but" : "and")} took {killed_count} monster{(killed_count > 1 ? "s" : "")} with you");
+        statisticsText.SetText($"And slayed {killed_count} monster{(killed_count > 1 ? "s" : "")} on the way");
         Sequence sequence = DOTween.Sequence();
         sequence.Append(canvasGroup.DOFade(1.0f, 2.5f));
         sequence.AppendInterval(0.5f);
