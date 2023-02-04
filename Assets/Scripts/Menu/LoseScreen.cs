@@ -17,7 +17,7 @@ public class LoseScreen : MonoBehaviour
 
     public void show(int killed_count)
     {
-        SoundManager.Instance.fadeToMenuMusic();
+        SoundManager.Instance.stopAllMusic();
         rectTransform.anchoredPosition = Vector2.zero;
         // ui_panel_runes_go ??= FindObjectOfType<UIPanelRunes>(true).gameObject;
         // ui_panel_runes_go.SetActive(false);
@@ -38,6 +38,7 @@ public class LoseScreen : MonoBehaviour
     public void showMenu()
     {
         Debug.Log("Leave button clicked");
+        SoundManager.Instance.fadeToMenuMusic();
         rectTransform.DOAnchorPosX(-2560, 2.0f).SetEase(Ease.InOutQuad);
         FindObjectOfType<MenuScreen>().showAfterLost();
         menuButtonCanvasGroup.blocksRaycasts = false;
