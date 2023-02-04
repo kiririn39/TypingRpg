@@ -24,7 +24,7 @@ namespace DefaultNamespace
 
         public float MaxHealthPoints = 10f;
 
-        private float _HealthPoints = 0;
+        [SerializeField]private float _HealthPoints = 0;
         public float HealthPoints
         {
             get => _HealthPoints;

@@ -17,4 +17,6 @@ MonoBehaviour:
   possibleActions:
   - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
   - {fileID: 11400000, guid: e429f881dafd145f5a41431af709d8fc, type: 2}
+  - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
+  - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
   modificators: []
