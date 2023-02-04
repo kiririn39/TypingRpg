@@ -58,6 +58,24 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: f574731d068eaea459a7e4d06e1485af, type: 3}
   - className: PsyonicAction
     sprite: {fileID: 21300000, guid: 1d3a3ee2d4413ef4f8724f7f27570599, type: 3}
+  - className: PoisonPrepareAction
+    sprite: {fileID: 21300000, guid: 4855d6be3b311ad4daff6137f7b717c7, type: 3}
+  - className: DefencePrepareAction
+    sprite: {fileID: 21300000, guid: a05b0e35dfa3a0647a426fce3225187c, type: 3}
+  - className: DefenceEffect
+    sprite: {fileID: 21300000, guid: a05b0e35dfa3a0647a426fce3225187c, type: 3}
+  - className: EvasionEffect
+    sprite: {fileID: 21300000, guid: 39e345247bb706741a05e34522f9230b, type: 3}
+  - className: EvasionPrepareAction
+    sprite: {fileID: 21300000, guid: 39e345247bb706741a05e34522f9230b, type: 3}
+  - className: HealEffect
+    sprite: {fileID: 21300000, guid: 84539ab2c3ff1f047a589691cb883517, type: 3}
+  - className: HealPrepareAction
+    sprite: {fileID: 21300000, guid: 84539ab2c3ff1f047a589691cb883517, type: 3}
+  - className: PenetratingAttackAction
+    sprite: {fileID: 21300000, guid: a5507ec70fdcf8144b3a2eb6479adbd6, type: 3}
+  - className: PoisonEffect
+    sprite: {fileID: 21300000, guid: 4855d6be3b311ad4daff6137f7b717c7, type: 3}
   imgsMapNodeIcon:
   - stageType: 0
     sprite: {fileID: 21300000, guid: a05b0e35dfa3a0647a426fce3225187c, type: 3}
