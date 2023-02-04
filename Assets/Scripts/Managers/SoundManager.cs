@@ -65,7 +65,13 @@ public class SoundManager : MonoBehaviour
         fadeMusic(SoundType.GAME_MUSIC);
     }
 
-    public void setVolume(float volume) => audioMixer.SetFloat("Volume", volume < -38 ? -80 : volume);
+    public void stopAllMusic()
+    {
+        musicAudioSource.DOFade(0.0f, 1.0f);
+    }
+
+    public void setMusicVolume(float volume) => audioMixer.SetFloat("MusicVolume", volume < -38 ? -80 : volume);
+    public void setSFXVolume(float volume) => audioMixer.SetFloat("SFXVolume", volume < -38 ? -80 : volume);
 
     private void fadeMusic(SoundType end_music)
     {

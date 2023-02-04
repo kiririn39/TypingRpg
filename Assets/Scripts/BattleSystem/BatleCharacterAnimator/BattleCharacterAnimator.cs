@@ -103,6 +103,8 @@ public class BattleCharacterAnimator : MonoBehaviour
 
             flashCoroutine?.Complete();
 
+            FindObjectOfType<CameraScript>().tweenDamageTaken();
+
             Material oldMaterial = spriteRenderer.material;
             spriteRenderer.material = flashOnDamageMaterial;
             flashCoroutine = DOTween.Sequence();
