@@ -1218,6 +1218,10 @@ PrefabInstance:
       propertyPath: possibleActions.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: fb54ae5da3a06494a901a18175e1fe87, type: 2}
+    - target: {fileID: 6974113494796090867, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+      propertyPath: actionModificators.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7209202345927924178, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
       propertyPath: m_Name
       value: Battle

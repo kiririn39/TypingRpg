@@ -64,7 +64,7 @@ namespace Managers
             }
             else
             {
-                gameBattleSystem.StartBattle(new());
+                gameBattleSystem.StartBattle(null);
             }
         }
 
