@@ -17,6 +17,7 @@ public class LoseScreen : MonoBehaviour
 
     public void show(int killed_count)
     {
+        SoundManager.Instance.fadeToMenuMusic();
         rectTransform.anchoredPosition = Vector2.zero;
         // ui_panel_runes_go ??= FindObjectOfType<UIPanelRunes>(true).gameObject;
         // ui_panel_runes_go.SetActive(false);

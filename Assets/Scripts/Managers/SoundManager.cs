@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource             skillsAudioSource;
     [SerializeField] private AudioSource             menuAudioSource;
     [SerializeField] private AudioSource             musicAudioSource;
+    [SerializeField] private AudioMixer              audioMixer;
 
     private Dictionary<SoundType, AudioClip> _audio_clips = new Dictionary<SoundType, AudioClip>();
 
@@ -32,7 +35,7 @@ public class SoundManager : MonoBehaviour
 
         if (sound_type is > SoundType.SKILL_BEFORE_FIRST and < SoundType.SKILL_AFTER_LAST)
             skillsAudioSource.PlayOneShot(clip);
-        else if (sound_type == SoundType.MUSIC)
+        else if (sound_type >= SoundType.GAME_MUSIC && sound_type <= SoundType.MENU_MUSIC)
         {
             musicAudioSource.clip = clip;
             musicAudioSource.loop = true;
@@ -47,6 +50,37 @@ public class SoundManager : MonoBehaviour
     public void playSoundTest(string name) => playSound(Enum.Parse<SoundType>(name));
 
     public void playClickSound() => playSound(SoundType.CLICK);
+
+    public void playMenuMusic() => playSound(SoundType.MENU_MUSIC);
+
+    public void playGameMusic() => playSound(SoundType.GAME_MUSIC);
+
+    public void fadeToMenuMusic()
+    {
+        fadeMusic(SoundType.MENU_MUSIC);
+    }
+
+    public void fadeToGameMusic()
+    {
+        fadeMusic(SoundType.GAME_MUSIC);
+    }
+
+    public void setVolume(float volume) => audioMixer.SetFloat("Volume", volume < -38 ? -80 : volume);
+
+    private void fadeMusic(SoundType end_music)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(musicAudioSource.DOFade(0.0f, 0.3f));
+        sequence.AppendCallback(musicAudioSource.Stop);
+        sequence.AppendCallback(() => 
+            {
+                musicAudioSource.clip = audioClipsWithTypes.FirstOrDefault(x => x.soundType == end_music)?.audioClip;
+                musicAudioSource.Play();
+            }
+        );
+        sequence.Append(musicAudioSource.DOFade(1.0f, 1.7f));
+        sequence.Play();
+    }
 
     private void Awake()
     {
@@ -77,7 +111,8 @@ public enum SoundType
 
     CLICK,
 
-    MUSIC
+    GAME_MUSIC,
+    MENU_MUSIC
 }
 
 [Serializable]

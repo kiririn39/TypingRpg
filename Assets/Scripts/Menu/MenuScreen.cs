@@ -2,6 +2,8 @@
 using Managers;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 namespace Menu
 {
@@ -9,6 +11,7 @@ namespace Menu
     {
         [SerializeField] private RectTransform rectTransform;
         [SerializeField] private CanvasGroup   canvasGroup;
+        [SerializeField] private Slider        volumeSlider;
 
         private StageManager stageManager;
 
@@ -17,9 +20,16 @@ namespace Menu
             canvasGroup.alpha = 1;
         }
 
+        private void Start()
+        {
+            SoundManager.Instance.playMenuMusic();
+            volumeSlider.onValueChanged.AddListener(SoundManager.Instance.setVolume);
+        }
+
 
         public void startGame()
         {
+            SoundManager.Instance.fadeToGameMusic();
             canvasGroup.blocksRaycasts = false;
             // ui_panel_runes_go ??= FindObjectOfType<UIPanelRunes>(true).gameObject;
             // ui_panel_runes_go.SetActive(true);

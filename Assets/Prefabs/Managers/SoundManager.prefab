@@ -56,12 +56,14 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 8847cf2010e7b8040aa82798d596bb54, type: 3}
   - soundType: 5
     audioClip: {fileID: 8300000, guid: b00ca8444430181458d19a546b26d854, type: 3}
-  - soundType: 9
+  - soundType: 10
     audioClip: {fileID: 8300000, guid: 4d22eb1567db83d4a965d657a414dbdf, type: 3}
   - soundType: 8
     audioClip: {fileID: 8300000, guid: 9cfd8d6c2dc41454b9d5096f5039d89f, type: 3}
   - soundType: 6
     audioClip: {fileID: 8300000, guid: 4a97fe57258d6264f864651c8def241f, type: 3}
+  - soundType: 9
+    audioClip: {fileID: 8300000, guid: 732ceb8d4db1f7849875a19ba3c352de, type: 3}
   skillsAudioSource: {fileID: 3421216011511303401}
   menuAudioSource: {fileID: 3421216011511303402}
   musicAudioSource: {fileID: 3421216011511303403}
