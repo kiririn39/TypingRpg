@@ -38,6 +38,7 @@ namespace DefaultNamespace
             if (lastTimeReturnedAnAction + aiIdleTime > Time.time)
                 return chachedIdle;
 
+            lastTimeReturnedAnAction = Time.time;
             var action = possibleActions.Select(container => container.CloneAction()).ToList().randomElement();
 
             action.Initialize(character);

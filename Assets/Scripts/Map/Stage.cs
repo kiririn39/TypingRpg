@@ -1,18 +1,16 @@
-﻿using Managers;
+﻿using System;
+using DefaultNamespace;
+using Managers;
 
 namespace Map
 {
+    [Serializable]
     public class Stage
     {
-        public int       id   { get; private set; }
-        public StageType type { get; private set; }
-
-
-        public Stage(int id, StageType stage_type)
-        {
-            this.id = id;
-            this.type = stage_type;
-        }
+        public int id;
+        public StageType type;
+        public EnemyConfig enemyConfig;
+        
 
         public NodeType getNodeType()
         {

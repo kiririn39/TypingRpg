@@ -13,7 +13,7 @@ namespace Managers
         public static StageManager Instance { get; private set; }
 
 
-        private List<Stage> stages = new List<Stage>();
+        [SerializeField] private List<Stage> stages = new List<Stage>();
 
         private GameBattleSystem gameBattleSystem;
 
@@ -64,7 +64,7 @@ namespace Managers
             }
             else
             {
-                gameBattleSystem.StartBattle(null);
+                gameBattleSystem.StartBattle(curStage.enemyConfig);
             }
         }
 
@@ -90,12 +90,6 @@ namespace Managers
             else
             {
                 Instance = this;
-            }
-
-            for (int i = 0; i < 7; i++)
-            {
-                Stage stage = new Stage(i, i == 3 ? StageType.TOWN : StageType.FIGHT);
-                stages.Add(stage);
             }
         }
 
