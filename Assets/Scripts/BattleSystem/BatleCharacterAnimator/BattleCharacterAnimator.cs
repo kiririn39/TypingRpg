@@ -133,20 +133,29 @@ public class BattleCharacterAnimator : MonoBehaviour
 
     private string getAnimationStringKey(AnimationType animationType)
     {
+        string animationStringKey = "Idle";
         switch (animationType)
         {
         case AnimationType.ATTACK:         return "Attack";
-        case AnimationType.ATTACK_FORCE:   return "AttackForce";
-        case AnimationType.DEFENCE:        return "Defence";
-        case AnimationType.ATTACK_FIRE:    return "MagicAttackFire";
-        case AnimationType.ATTACK_FROST:   return "MagicAttackFrost";
+        case AnimationType.ATTACK_FORCE:   return "Attack";
+        case AnimationType.ATTACK_FIRE:    return "AttackFire";
+        case AnimationType.ATTACK_FROST:   return "AttackFrost";
         case AnimationType.ATTACK_PSYONIC: return "AttackPsyonic";
-        case AnimationType.ATTACK_POISON:  return "Psyonic";
+        case AnimationType.ATTACK_POISON:  return "AttackPoison";
+
+        case AnimationType.DEFENCE:        return "Block";
         case AnimationType.HEAL:           return "Heal";
         case AnimationType.DEATH:          return "Death";
         }
 
-        return "Idle";
+        bool animationExist = animator.runtimeAnimatorController.animationClips.Any(it => it.name == animationStringKey );
+        if (!animationExist)
+        {
+            Debug.LogError($"Animation {animationType} not exist for {animator.runtimeAnimatorController.name}");
+            animationStringKey = animationType.ToString().Contains("ATTACK") ? "Attack" : "Heal";
+        }
+
+        return animationStringKey;
     }
     
     
