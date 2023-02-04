@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1490,6 +1490,10 @@ PrefabInstance:
       propertyPath: battleCharacterPlayer
       value: 
       objectReference: {fileID: 7209202346148521047}
+    - target: {fileID: 1461071227341733580, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: m_Name
+      value: ProgressBarSliderPlayerHealth
+      objectReference: {fileID: 0}
     - target: {fileID: 1506527954140170473, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1509,6 +1513,10 @@ PrefabInstance:
     - target: {fileID: 1506527954140170473, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572504253547558835, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: m_Name
+      value: ProgressBarSliderEnemyHealth
       objectReference: {fileID: 0}
     - target: {fileID: 1763712476892716382, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1733,6 +1741,14 @@ PrefabInstance:
     - target: {fileID: 5315171140912884120, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947753376743228811, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: m_Name
+      value: ProgressBarBackgroundEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989443274738781428, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: m_Name
+      value: ProgressBarBackgroundPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 7105942643618565227, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchorMax.y
