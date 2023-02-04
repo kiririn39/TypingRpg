@@ -7,12 +7,15 @@ namespace Utilities
 {
     public class ProgressBar : MonoBehaviour
     {
-        [SerializeField] private Slider bar           = null;
-        [SerializeField] private Image  barFill       = null;
-        [SerializeField] private Slider barBackground = null;
-        [SerializeField] private float  tweenTime     = 0.1f;
-        [SerializeField] private float  flashTime     = 0.1f;
+        [SerializeField] private Slider bar               = null;
+        [SerializeField] private Image  barFill           = null;
+        [SerializeField] private Slider barBackground     = null;
+        [SerializeField] private Image  barBackgroundFill = null;
+        [SerializeField] private float  tweenTime         = 0.1f;
+        [SerializeField] private float  flashTime         = 0.1f;
 
+        [SerializeField] private Color increaseTweenColor = Color.clear;
+        [SerializeField] private Color decreaseTweenColor = Color.clear;
         [SerializeField] private Material flashMaterial = null;
 
         private Sequence tweenCoroutine = null;
@@ -25,8 +28,11 @@ namespace Utilities
             bar.maxValue  = maxValue;
             bar.value     = curValue;
 
-            barBackground.maxValue = maxValue;
-            barBackground.value    = curValue;
+            if (barBackground)
+            {
+                barBackground.maxValue = maxValue;
+                barBackground.value    = curValue;
+            }
         }
 
         public void initNormalized(float value)
@@ -37,7 +43,8 @@ namespace Utilities
         public void SetMaxValue(float value)
         {
             bar.maxValue = value;
-            barBackground.maxValue = value;
+            if (barBackground)
+                barBackground.maxValue = value;
         }
 
         public void SetValue(float value)
@@ -54,32 +61,40 @@ namespace Utilities
 
         private void tween(float value)
         {
-            DOTween.Kill(tweenCoroutine);
+            if (barBackground)
+            {
+                tweenCoroutine?.Complete();
 
-            tweenCoroutine = DOTween.Sequence();
-            tweenCoroutine.AppendInterval(tweenTime);
-            tweenCoroutine.Append(barBackground.DOValue(value, tweenTime));
-            tweenCoroutine.Play();
-            
-    
-            flashCoroutine?.Complete();
+                Color oldColor = barBackgroundFill.color;
+                barBackgroundFill.color = value - barBackground.value > 0 ? increaseTweenColor : decreaseTweenColor;
+                tweenCoroutine = DOTween.Sequence();
+                tweenCoroutine.AppendInterval(tweenTime*4);
+                tweenCoroutine.Append(barBackground.DOValue(value, tweenTime));
+                tweenCoroutine.onComplete += () => barBackgroundFill.color = oldColor;
+                tweenCoroutine.Play();
+            }
 
-            Material oldMaterial = barFill.material;
-            barFill.material = flashMaterial;
-            flashCoroutine = DOTween.Sequence();
-            flashCoroutine.AppendInterval(flashTime);
-            flashCoroutine.onComplete += () => barFill.material = oldMaterial;
-            flashCoroutine.Play();
+            if (barFill)
+            {
+                flashCoroutine?.Complete();
+
+                Material oldMaterial = barFill.material;
+                barFill.material = flashMaterial;
+                flashCoroutine = DOTween.Sequence();
+                flashCoroutine.AppendInterval(flashTime);
+                flashCoroutine.onComplete += () => barFill.material = oldMaterial;
+                flashCoroutine.Play();
 
 
-            flashColorCoroutine?.Complete();
+                flashColorCoroutine?.Complete();
 
-            Color oldColor = barFill.color;
-            flashColorCoroutine = DOTween.Sequence();
-            flashColorCoroutine.Append(barFill.DOColor(Color.white, flashTime / 2));
-            flashColorCoroutine.Append(barFill.DOColor(oldColor, flashTime / 2));
-            flashColorCoroutine.onComplete += () => barFill.color = oldColor;
-            flashColorCoroutine.Play();
+                Color oldColor = barFill.color;
+                flashColorCoroutine = DOTween.Sequence();
+                flashColorCoroutine.Append(barFill.DOColor(Color.white, flashTime / 2));
+                flashColorCoroutine.Append(barFill.DOColor(oldColor, flashTime / 2));
+                flashColorCoroutine.onComplete += () => barFill.color = oldColor;
+                flashColorCoroutine.Play();
+            }
         }
     }
 }

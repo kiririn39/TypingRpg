@@ -535,6 +535,9 @@ MonoBehaviour:
   bar: {fileID: 6889175415666391896}
   barFill: {fileID: 6546417801251909943}
   barBackground: {fileID: 758277195044981921}
+  barBackgroundFill: {fileID: 2561016986495067603}
   tweenTime: 0.1
   flashTime: 0.1
+  increaseTweenColor: {r: 0.7311321, g: 1, b: 0.7429137, a: 1}
+  decreaseTweenColor: {r: 1, g: 0.7028302, b: 0.7028302, a: 1}
   flashMaterial: {fileID: 2100000, guid: b82ba21103d44b246bd9c55e1fb2e4b1, type: 2}
