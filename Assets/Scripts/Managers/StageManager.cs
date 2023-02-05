@@ -4,6 +4,7 @@ using System.Linq;
 using DefaultNamespace;
 using DG.Tweening;
 using Map;
+using RuneStack;
 using UnityEditor;
 using UnityEngine;
 
@@ -70,6 +71,7 @@ namespace Managers
                 gameBattleSystem.PrepareBattle(curStage.enemyConfig);
                 
             stageChangeStarted?.Invoke();
+            FindObjectOfType<UIRuneStack>()?.clearSelected();
         }
 
         public void invokeStageMovementStarted()
