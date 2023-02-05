@@ -6614,21 +6614,24 @@ PrefabInstance:
         and learning new skills.
 
         On battle stages, enter rune combinations
-        using Q, W, E, I, O, P buttons to use skills. Each skill can damage your
-        opponent, protect or heal you. Press Enter to use the typed runes combination
-        or Space to reset runes.
+        using Q, W, E, I, O, P buttons to use skills. Each skill has a cooldown displayed
+        under your health bar, during which you can''t cast any spells. Skills can
+        damage your opponent, protect or heal you. Press Enter to use the typed runes
+        combination or Space to reset runes.
 
-        You can press Tab anytime to see your skills.
+        You can press Tab anytime to
+        see your skills.
 
-        Try
-        to predict, what your opponent will do next and counterplay him.
+        Try to predict, what your opponent will do next
+        and counterplay him.
 
-        On
-        the bonfire, you can learn a new skill from suggestions.
+        On the bonfire, you can learn a new skill from
+        suggestions.
 
-        As you
-        progress through each stage, your opponents become stronger, but you will
-        not regenerate your health.'
+        As you progress through each stage, your opponents
+        become stronger, but you will not regenerate your health.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 5517729436388096428, guid: 6e67637c95bf0484dad54488702f7eb7, type: 3}
       propertyPath: m_fontSize
