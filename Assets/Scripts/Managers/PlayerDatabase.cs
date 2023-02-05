@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Managers
 {
@@ -37,14 +38,33 @@ namespace Managers
 
         private List<RuneSequenceForBattleAction> _myCurrentSkillSentences = null;
 
-        public List<RuneSequenceForBattleAction> availableSkillsForNextLvl => newSkillsPerLvl.safeGet(playerLvl).ToList();
+        public List<RuneSequenceForBattleAction> availableSkillsForNextLvl
+        {
+            get
+            {
+                var result = allPossibleSkills.Except(_myCurrentSkillSentences).Take(2).ToList();
+                result.Sort((_, _) => Random.Range(-1, 1));
+                return result;
+            }
+        }
 
 
         private List<RuneSequenceForBattleAction> defaultSkillSentences = new List<RuneSequenceForBattleAction>()
         {
             attackSkill,
-            defenceSkill,
+            //defenceSkill,
             //poisonSkill,
+            //healSkill,
+            //evasionSkill,
+            //penetratingAttackSkill,
+            //magicFireSkill,
+            //magicFrostSkill
+        };
+
+        private List<RuneSequenceForBattleAction> allPossibleSkills = new()
+        {
+            attackSkill,
+            defenceSkill,
             healSkill,
             evasionSkill,
             penetratingAttackSkill,
@@ -52,11 +72,11 @@ namespace Managers
             magicFrostSkill
         };
 
-        private IReadOnlyList<IReadOnlyList<RuneSequenceForBattleAction>> newSkillsPerLvl = new List<List<RuneSequenceForBattleAction>>()
-        {
-            new []{magicFireSkill,magicFrostSkill}.ToList(),
-            new []{psyonicSkill}.ToList(),
-        };
+        // private IReadOnlyList<IReadOnlyList<RuneSequenceForBattleAction>> newSkillsPerLvl = new List<List<RuneSequenceForBattleAction>>()
+        // {
+        //     new []{magicFireSkill,magicFrostSkill}.ToList(),
+        //     new []{psyonicSkill}.ToList(),
+        // };
 
 
         public void addNewSkill(RuneSequenceForBattleAction newSkill)
