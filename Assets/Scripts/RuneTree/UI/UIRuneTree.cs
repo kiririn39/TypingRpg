@@ -78,33 +78,33 @@ namespace Assets.Scripts.SkillTree
 
         public RuneBattleActionInfo trySelectSequence( IEnumerable<RuneKey> sequence, bool isSuccess = false )
         {
-            if (!isSuccess)
-            {
-                Color colorWrongCombination = new Color(0.67f, 0f, 0f);
-
-                foreach (UIRuneNode uiRuneNode in PoolRuneTreeNodes)
-                {
-                    if (uiRuneNode.isSelected)
-                    {
-                        var image = uiRuneNode?.GetComponentInChildren<UIRuneKey>()?.GetComponent<Image>();
-
-                        if(!image)
-                            continue;
-
-                        var coroutine = DOTween.Sequence();
-                        coroutine.Append(image?.DOColor(colorWrongCombination, 0.1f));
-                        coroutine.AppendInterval(0.3f);
-                        coroutine.onComplete += () =>
-                        {
-                            var image1 = image?.GetComponent<Image>();
-                            if( image1)
-                                image1.color = Color.white;
-                        };
-                        coroutine.Play();
-                    }
-                }
-                ;
-            }
+            // if (!isSuccess)
+            // {
+            //     Color colorWrongCombination = new Color(0.67f, 0f, 0f);
+            //
+            //     foreach (UIRuneNode uiRuneNode in PoolRuneTreeNodes)
+            //     {
+            //         if (uiRuneNode.isSelected)
+            //         {
+            //             var image = uiRuneNode?.GetComponentInChildren<UIRuneKey>()?.GetComponent<Image>();
+            //
+            //             if(!image)
+            //                 continue;
+            //
+            //             var coroutine = DOTween.Sequence();
+            //             coroutine.Append(image?.DOColor(colorWrongCombination, 0.1f));
+            //             coroutine.AppendInterval(0.3f);
+            //             coroutine.onComplete += () =>
+            //             {
+            //                 var image1 = image?.GetComponent<Image>();
+            //                 if( image1)
+            //                     image1.color = Color.white;
+            //             };
+            //             coroutine.Play();
+            //         }
+            //     }
+            //     ;
+            // }
 
             unselectAllRunes();
 
