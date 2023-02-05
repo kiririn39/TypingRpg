@@ -36,7 +36,6 @@ public class BattleCharacterAnimator : MonoBehaviour
         DEFENCE            = 3,
         ATTACK_FIRE        = 4,
         ATTACK_FROST       = 5,
-        ATTACK_PSYONIC     = 6,
         ATTACK_POISON      = 7,
         TAKE_DAMAGE        = 8,
         TAKE_DAMAGE_POISON = 9,
@@ -139,7 +138,6 @@ public class BattleCharacterAnimator : MonoBehaviour
         case AnimationType.ATTACK_FORCE:   return "AttackPenetration";
         case AnimationType.ATTACK_FIRE:    return "AttackFire";
         case AnimationType.ATTACK_FROST:   return "AttackFrost";
-        case AnimationType.ATTACK_PSYONIC: return "AttackPsyonic";
         case AnimationType.ATTACK_POISON:  return "AttackPoison";
 
         case AnimationType.DEFENCE:        return "Block";

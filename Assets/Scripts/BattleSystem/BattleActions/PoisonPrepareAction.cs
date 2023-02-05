@@ -11,6 +11,11 @@ namespace DefaultNamespace
         public float ExecutionDelay;
         public PoisonEffect PoisonEffect;
 
+        public override void Initialize(BattleCharacter Caster)
+        {
+            base.Initialize(Caster);
+            Caster.playAnimation(BattleCharacterAnimator.AnimationType.ATTACK_POISON);
+        }
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
