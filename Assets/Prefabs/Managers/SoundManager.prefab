@@ -53,7 +53,7 @@ MonoBehaviour:
   - soundType: 3
     audioClip: {fileID: 8300000, guid: 6786107b1e0adbe4193a90a428a97c28, type: 3}
   - soundType: 4
-    audioClip: {fileID: 8300000, guid: 8847cf2010e7b8040aa82798d596bb54, type: 3}
+    audioClip: {fileID: 8300000, guid: f552102e030a43c4eba1e785e5e3627f, type: 3}
   - soundType: 5
     audioClip: {fileID: 8300000, guid: b00ca8444430181458d19a546b26d854, type: 3}
   - soundType: 12
