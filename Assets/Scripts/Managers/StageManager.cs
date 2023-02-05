@@ -69,7 +69,7 @@ namespace Managers
 
             if (curStage.type == StageType.FIGHT)
                 gameBattleSystem.PrepareBattle(curStage.enemyConfig);
-                
+
             stageChangeStarted?.Invoke();
             FindObjectOfType<UIRuneStack>()?.clearSelected();
         }

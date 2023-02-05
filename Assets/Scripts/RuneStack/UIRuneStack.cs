@@ -1,11 +1,13 @@
 ﻿using Assets.Scripts.SkillTree;
 using DefaultNamespace;
+using DG.Tweening;
 using Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using RuneKey = Assets.Scripts.SkillTree.RuneKey;
 
 namespace RuneStack
@@ -19,7 +21,7 @@ namespace RuneStack
 
 
         public event Action<RuneBattleActionInfo> OnUseBattleAction = delegate { };
-        public event Action<List<RuneKey>> OnStackChanged = delegate { };
+        public event Action<List<RuneKey>, bool> OnStackChanged = delegate { };
 
 
         [SerializeField] private bool isAutoUse = false;
@@ -46,14 +48,30 @@ namespace RuneStack
             updateUI();
         }
 
-        public void clearSelected()
+        public void clearSelected(bool tweenAsWrongCombination = false)
         {
             Debug.Log("Runes stack was cleared");
+            if (tweenAsWrongCombination)
+            {
+                Color colorWrongCombination = new Color(0.67f, 0f, 0f);
+
+                foreach (UIRuneKey t in uiRuneKeys.Where(it=> it.GetComponent<CanvasGroup>().alpha > 0.9f))
+                {
+                    var coroutine = DOTween.Sequence();
+                    coroutine.Append(t.GetComponent<Image>().DOColor(colorWrongCombination, 0.1f));
+                    coroutine.AppendInterval(0.3f);
+                    coroutine.onComplete += () => t.GetComponent<Image>().color = Color.white;
+                    coroutine.Play();
+                }
+            }
+
             selectedRuneKeys.Clear();
             updateData();
             updateUI();
 
-            OnStackChanged(selectedRuneKeys);
+            OnStackChanged(selectedRuneKeys, !tweenAsWrongCombination);
+
+            
         }
 
         public void tryUseBattleAction()
@@ -78,7 +96,11 @@ namespace RuneStack
                 updateData();
                 updateUI();
 
-                OnStackChanged(selectedRuneKeys);
+                OnStackChanged(selectedRuneKeys, true);
+            }
+            else
+            {
+                clearSelected(true);
             }
         }
 
@@ -138,10 +160,7 @@ namespace RuneStack
             if (Input.GetKeyDown(KeyCode.Escape))
                 clearSelected();
 
-            if (availableAsNextRuneKeys == null || !availableAsNextRuneKeys.Any())
-                return;
-
-            foreach (RuneKey runeKey in availableAsNextRuneKeys)
+            foreach (RuneKey runeKey in RuneKeyHelper.allValues)
             {
                 if (Input.GetKeyDown(runeKey.ToKeyCode()))
                 {

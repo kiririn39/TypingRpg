@@ -25,7 +25,7 @@ public class UIPanelRunes : MonoBehaviour
       uiRuneTree.init();
 
       uiRuneStack.init(uiRuneTree.RuneTree);
-      uiRuneStack.OnStackChanged += runes => uiRuneTree.trySelectSequence(runes);
+      uiRuneStack.OnStackChanged += (runes, isSuccess) => uiRuneTree.trySelectSequence(runes, isSuccess);
       uiRuneStack.OnUseBattleAction += skill => OnUseBattleAction(skill);
 
       uiSkillSelector.gameObject.SetActive(false);
