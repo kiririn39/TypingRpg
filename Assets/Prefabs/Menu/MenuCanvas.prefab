@@ -5957,9 +5957,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 18d9b056d9e62574d803aec58f5274af, type: 2}
     - target: {fileID: 5517729436388096428, guid: 6e67637c95bf0484dad54488702f7eb7, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517729436388096428, guid: 6e67637c95bf0484dad54488702f7eb7, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517729436388096428, guid: 6e67637c95bf0484dad54488702f7eb7, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517729436388096428, guid: 6e67637c95bf0484dad54488702f7eb7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -5490342236034508333, guid: 18d9b056d9e62574d803aec58f5274af, type: 2}
+    - target: {fileID: 5517729436388096428, guid: 6e67637c95bf0484dad54488702f7eb7, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4281874488
+      objectReference: {fileID: 0}
     - target: {fileID: 8083904121919657268, guid: 6e67637c95bf0484dad54488702f7eb7, type: 3}
       propertyPath: m_Name
       value: GameNameText
