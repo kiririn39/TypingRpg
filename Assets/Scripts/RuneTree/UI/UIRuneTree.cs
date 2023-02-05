@@ -1,5 +1,6 @@
 ﻿using Common;
 using DefaultNamespace.BattleActions;
+using DG.Tweening;
 using Managers;
 using System;
 using System.Collections;
@@ -75,8 +76,28 @@ namespace Assets.Scripts.SkillTree
         //     }
         // }
 
-        public RuneBattleActionInfo trySelectSequence( IEnumerable<RuneKey> sequence )
+        public RuneBattleActionInfo trySelectSequence( IEnumerable<RuneKey> sequence, bool isSuccess = false )
         {
+            if (!isSuccess)
+            {
+                Color colorWrongCombination = new Color(0.67f, 0f, 0f);
+
+                foreach (UIRuneNode uiRuneNode in PoolRuneTreeNodes)
+                {
+                    if (uiRuneNode.isSelected)
+                    {
+                        var image = uiRuneNode.GetComponentInChildren<UIRuneKey>().GetComponent<Image>();
+
+                        var coroutine = DOTween.Sequence();
+                        coroutine.Append(image.DOColor(colorWrongCombination, 0.1f));
+                        coroutine.AppendInterval(0.3f);
+                        coroutine.onComplete += () => image.GetComponent<Image>().color = Color.white;
+                        coroutine.Play();
+                    }
+                }
+                ;
+            }
+
             unselectAllRunes();
 
             if (sequence == null || !sequence.Any())
@@ -96,6 +117,8 @@ namespace Assets.Scripts.SkillTree
                 curNode = curNode.DirectChildren.Nodes.FirstOrDefault(it => it.Data?.runeKey == sequenceList[i]);
                 DataAndUIPairs.safeGet(curNode?.Data)?.setRuneSelected(true);
             }
+
+            
 
             //StartCoroutine(updateRuneTreeUI());
             return runeBattleActionInfo;

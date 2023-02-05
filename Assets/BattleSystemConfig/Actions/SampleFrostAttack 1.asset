@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f27cad6fb094d6394c09f0ceea698f7, type: 3}
-  m_Name: MagicianFireAttack
+  m_Script: {fileID: 11500000, guid: 49aaf90da76c4e9cac0342ce164b498e, type: 3}
+  m_Name: SampleFrostAttack 1
   m_EditorClassIdentifier: 
   action:
     Caster: {fileID: 0}
     InitializationTimestamp: 0
-    AttackPoints: 4
-    ExecutionDelay: 3.2
-    DamageInflictedTime: 0.666
+    AttackPoints: 6.4
+    ExecutionDelay: 5
+    DamageInflictedTime: 0

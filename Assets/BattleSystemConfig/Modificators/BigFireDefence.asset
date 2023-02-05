@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f27cad6fb094d6394c09f0ceea698f7, type: 3}
-  m_Name: MagicianFireAttack
+  m_Script: {fileID: 11500000, guid: 3aac7b1858894805baffb4ab8c27720c, type: 3}
+  m_Name: BigFireDefence
   m_EditorClassIdentifier: 
-  action:
-    Caster: {fileID: 0}
-    InitializationTimestamp: 0
-    AttackPoints: 4
-    ExecutionDelay: 3.2
-    DamageInflictedTime: 0.666
+  damageMultiplier: 0.2
