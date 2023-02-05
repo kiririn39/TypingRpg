@@ -21,6 +21,8 @@ namespace Managers
 
         private int monstersKilled;
 
+        private bool isSubscribed;
+
         public int curStageIndex { get; private set; } = -1;
 
         public event Action stageChangeStarted;
@@ -38,7 +40,11 @@ namespace Managers
             MapManager.Instance.spawnMap(stages);
             gameBattleSystem = FindObjectOfType<GameBattleSystem>();
             gameBattleSystem.resetGame();
-            gameBattleSystem.OnBattleEnded += onBattleEnded;
+            if (!isSubscribed)
+            {
+                gameBattleSystem.OnBattleEnded += onBattleEnded;
+                isSubscribed = true;
+            }
             gameReset?.Invoke();
         }
 
