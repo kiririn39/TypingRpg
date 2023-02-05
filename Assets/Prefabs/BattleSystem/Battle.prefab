@@ -73,7 +73,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9110526548084901435}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ed87d30467145f0b4018d3bab4917b7, type: 3}
   m_Name: 
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4516539049537989187, guid: 131a97173b48de044a1b3426cca43e75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.33225
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4516539049537989187, guid: 131a97173b48de044a1b3426cca43e75, type: 3}
       propertyPath: m_LocalPosition.y
@@ -134,6 +134,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4516539049537989187, guid: 131a97173b48de044a1b3426cca43e75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581931641325999356, guid: 131a97173b48de044a1b3426cca43e75, type: 3}
+      propertyPath: actionModificators.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -215,12 +219,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597408222548181612, guid: 8e5dd6a4439d7ce4994268d65c81f0c2, type: 3}
       propertyPath: possibleActions.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6597408222548181612, guid: 8e5dd6a4439d7ce4994268d65c81f0c2, type: 3}
       propertyPath: possibleActions.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: e429f881dafd145f5a41431af709d8fc, type: 2}
+    - target: {fileID: 6597408222548181612, guid: 8e5dd6a4439d7ce4994268d65c81f0c2, type: 3}
+      propertyPath: possibleActions.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: fb54ae5da3a06494a901a18175e1fe87, type: 2}
+    - target: {fileID: 6597408222548181612, guid: 8e5dd6a4439d7ce4994268d65c81f0c2, type: 3}
+      propertyPath: possibleActions.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d8b443ab850f4727a313ad32db14a5f, type: 2}
+    - target: {fileID: 6597408222548181612, guid: 8e5dd6a4439d7ce4994268d65c81f0c2, type: 3}
+      propertyPath: possibleActions.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e7cba227fe5545f98cef26aaeae5c00, type: 2}
+    - target: {fileID: 6597408222548181612, guid: 8e5dd6a4439d7ce4994268d65c81f0c2, type: 3}
+      propertyPath: possibleActions.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b68e88038a164c30821320cefa82ca7, type: 2}
     - target: {fileID: 8071304270228138203, guid: 8e5dd6a4439d7ce4994268d65c81f0c2, type: 3}
       propertyPath: MaxHealthPoints
       value: 35

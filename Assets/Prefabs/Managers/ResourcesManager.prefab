@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8400572854367007759
 MonoBehaviour:
@@ -78,6 +78,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 4855d6be3b311ad4daff6137f7b717c7, type: 3}
   imgsMapNodeIcon:
   - stageType: 0
-    sprite: {fileID: 21300000, guid: a05b0e35dfa3a0647a426fce3225187c, type: 3}
+    sprite: {fileID: 21300000, guid: 3cdcd4c14d14998499818e47b4ec46cd, type: 3}
   - stageType: 1
-    sprite: {fileID: 21300000, guid: a32b45a0129f71d418a401f563f95e0d, type: 3}
+    sprite: {fileID: 21300000, guid: 330d8429c1307c247b518cbc7d65afd2, type: 3}

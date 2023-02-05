@@ -67,6 +67,7 @@ MonoBehaviour:
   skillsAudioSource: {fileID: 3421216011511303401}
   menuAudioSource: {fileID: 3421216011511303402}
   musicAudioSource: {fileID: 3421216011511303403}
+  audioMixer: {fileID: 24100000, guid: c4c256d88c489104283a87d942afd01c, type: 2}
 --- !u!82 &3421216011511303401
 AudioSource:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8763821475563481783, guid: c4c256d88c489104283a87d942afd01c, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -174,7 +175,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7408192375520418447, guid: c4c256d88c489104283a87d942afd01c, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -270,7 +271,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 742301125831990295, guid: c4c256d88c489104283a87d942afd01c, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
