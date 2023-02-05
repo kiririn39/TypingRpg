@@ -27,11 +27,8 @@ namespace BattleSystem.BattleActions
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
-            if (!Caster.actionModificators.Contains(tag))
-                Caster.AddModificator(tag);
-
             if (AttacksCount <= 0)
-                return FinishActionAndCleanUp(GameBattleSystem.FinishedAction);
+                return FinishActionAndCleanUp(GameBattleSystem.FinishedAction, targets);
             if (LastAttackTimestamp + DelayBetweenAttacks > Time.time)
                 return GameBattleSystem.InProgressAction;
 
@@ -42,6 +39,9 @@ namespace BattleSystem.BattleActions
             if (mostPowerfulPoison == this)
                 foreach (var character in targets)
                 {
+                    if (!character.actionModificators.Contains(tag))
+                        character.AddModificator(tag);
+
                     character.DealDamage(AttackPoints, GetType());
                     Debug.Log($"Caster {Caster.name} Poisoning {character.name}");
                     SoundManager.Instance.playSound(SoundType.POISON);
@@ -51,14 +51,15 @@ namespace BattleSystem.BattleActions
             AttacksCount--;
 
             return AttacksCount <= 0
-                ? FinishActionAndCleanUp(GameBattleSystem.FinishedAction)
+                ? FinishActionAndCleanUp(GameBattleSystem.FinishedAction, targets)
                 : GameBattleSystem.InProgressAction;
         }
 
-        private FinishedActionResult FinishActionAndCleanUp(FinishedActionResult result)
+        private FinishedActionResult FinishActionAndCleanUp(FinishedActionResult result, List<BattleCharacter> targets)
         {
-            if (Caster.actionModificators.Contains(tag))
-                Caster.RemoveModificator(tag);
+            foreach (var character in targets)
+                if (character.actionModificators.Contains(tag))
+                    character.RemoveModificator(tag);
 
             return result;
         }
@@ -72,7 +73,8 @@ namespace BattleSystem.BattleActions
                 DelayBetweenAttacks = this.DelayBetweenAttacks,
                 LastAttackTimestamp = this.LastAttackTimestamp,
                 Caster = this.Caster,
-                InitializationTimestamp = this.InitializationTimestamp
+                InitializationTimestamp = this.InitializationTimestamp,
+                tag = this.tag
             };
 
             return result;

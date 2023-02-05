@@ -71,7 +71,8 @@ namespace BattleSystem.BattleActions
                 DelayBetweenHeals = this.DelayBetweenHeals,
                 LastHealTimestamp = this.LastHealTimestamp,
                 Caster = this.Caster,
-                InitializationTimestamp = this.InitializationTimestamp
+                InitializationTimestamp = this.InitializationTimestamp,
+                tag = this.tag
             };
 
             return result;
