@@ -876,6 +876,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7209202346148521050}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[2].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].enemyConfig
       value: 
       objectReference: {fileID: 11400000, guid: af6a87113e67949b7a7395be8c37ed4e, type: 2}
