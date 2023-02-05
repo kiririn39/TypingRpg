@@ -18,8 +18,8 @@ public class UIRuneNode : MonoBehaviour
     [SerializeField] private List<UIRuneNode> children = new List<UIRuneNode>();
 
     private RuneNodeData runeNodeData = null;
-    private bool isSelected = false;
-    
+    public bool isSelected { get; private set; } = false;
+
 
     public void preinit(RuneNodeData runeNodeData )
     {
