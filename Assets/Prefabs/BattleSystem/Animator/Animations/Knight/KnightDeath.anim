@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MagDeath
+  m_Name: KnightDeath
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -28,7 +28,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.33333334
-        value: {x: 0, y: 0, z: -80.9}
+        value: {x: 0, y: 0, z: -81.24}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -172,8 +172,8 @@ AnimationClip:
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
-    - time: 0.016666668
-      value: {fileID: 838156152, guid: 56b2b96366c76fb4d918502b116630f9, type: 3}
+    - time: 0
+      value: {fileID: 225557237, guid: b8623023244f3f444b31e54713496f64, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -250,7 +250,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 838156152, guid: 56b2b96366c76fb4d918502b116630f9, type: 3}
+    - {fileID: 225557237, guid: b8623023244f3f444b31e54713496f64, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -347,7 +347,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -80.9
+        value: -81.24
         inSlope: 0
         outSlope: 0
         tangentMode: 136
