@@ -142,46 +142,6 @@ namespace DefaultNamespace
             onEffectsChanged?.Invoke(actionModificators);
         }
 
-        public void playAnimationForBattleActionAsTarget(BattleActionBase battleActionBase)
-        {
-            if (HealthPoints <= 0)
-            {
-                battleCharacterAnimator.play(BattleCharacterAnimator.AnimationType.DEATH);
-                return;
-            }
-
-            var animationType = battleActionBase switch
-            {
-              MagicFireAction  magicFireAction  => BattleCharacterAnimator.AnimationType.TAKE_DAMAGE
-            , MagicFrostAction magicFrostAction => BattleCharacterAnimator.AnimationType.TAKE_DAMAGE
-            , PoisonEffect     poisonEffect     => BattleCharacterAnimator.AnimationType.TAKE_DAMAGE_POISON
-            , PsyonicAction    psyonicAction    => BattleCharacterAnimator.AnimationType.TAKE_DAMAGE
-            , AttackAction     attackAction     => BattleCharacterAnimator.AnimationType.TAKE_DAMAGE
-
-            , _ => battleActionBase is ITargetsSelf ? BattleCharacterAnimator.AnimationType.IDLE : BattleCharacterAnimator.AnimationType.TAKE_DAMAGE
-            };
-
-            battleCharacterAnimator.play(animationType);
-        }
-
-        public void playAnimationForBattleActionAsCaster(BattleActionBase battleActionBase)
-        {
-            var animationType = battleActionBase switch
-            {
-              MagicFireAction     magicFireAction     => BattleCharacterAnimator.AnimationType.ATTACK_FIRE
-            , MagicFrostAction    magicFrostAction    => BattleCharacterAnimator.AnimationType.ATTACK_FROST
-            , PsyonicAction       psyonicAction       => BattleCharacterAnimator.AnimationType.ATTACK_PSYONIC
-            , AttackAction        attackAction        => BattleCharacterAnimator.AnimationType.ATTACK
-            , DefencePrepareAction       defenceAction       => BattleCharacterAnimator.AnimationType.DEFENCE
-            , IdleAction          idleAction          => BattleCharacterAnimator.AnimationType.IDLE
-            , PoisonPrepareAction poisonPrepareAction => BattleCharacterAnimator.AnimationType.ATTACK_POISON
-
-            , _ => battleActionBase is ITargetsSelf ? BattleCharacterAnimator.AnimationType.IDLE : BattleCharacterAnimator.AnimationType.ATTACK
-            };
-
-            battleCharacterAnimator.play(animationType);
-        }
-
         public bool CanInterruptCurrentAction() => battleAction is IInterrruptable;
         public void InterruptCurrentAction() => (battleAction as IInterrruptable)?.Interrupt();
     }

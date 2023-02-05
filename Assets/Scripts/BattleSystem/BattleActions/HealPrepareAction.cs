@@ -11,6 +11,11 @@ namespace BattleSystem.BattleActions
         public float ExecutionDelay;
         public HealEffect HealEffect;
 
+        public override void Initialize(BattleCharacter Caster)
+        {
+            base.Initialize(Caster);
+            Caster.playAnimation(BattleCharacterAnimator.AnimationType.HEAL);
+        }
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {

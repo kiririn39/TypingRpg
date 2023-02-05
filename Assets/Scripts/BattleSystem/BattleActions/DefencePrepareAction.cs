@@ -11,7 +11,12 @@ namespace DefaultNamespace.BattleActions
         public float ExecutionDelay;
         public DefenceEffect DefenceEffect;
 
-
+        public override void Initialize(BattleCharacter Caster)
+        {
+            base.Initialize(Caster);
+            
+            Caster.playAnimation(BattleCharacterAnimator.AnimationType.DEFENCE);
+        }
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
         {
             float completesAt = InitializationTimestamp + ExecutionDelay;

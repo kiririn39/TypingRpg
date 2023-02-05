@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepareAction:
     Caster: {fileID: 0}
-    ExecutionDelay: 1
+    InitializationTimestamp: 0
+    ExecutionDelay: 2
     DefenceEffect:
       Caster: {fileID: 0}
+      InitializationTimestamp: 0
       Defence: {fileID: 11400000, guid: 740fc2efac1cb4a49b65654a55eeb19d, type: 2}
-      DefenceDuration: 3
+      DefenceDuration: 4
