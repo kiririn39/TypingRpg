@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.SkillTree;
+using BattleSystem.BattleActions;
 using Common;
 using DefaultNamespace;
 using DefaultNamespace.BattleActions;
@@ -72,20 +73,25 @@ namespace Managers
             if (battleActionBase == null)
                 return "NULL";
 
-            return $"Skill title for {battleActionBase.GetType().Name}";
-            //TODO
+            string result = "";
             switch (battleActionBase)
             {
-            case AttackAction attackAction:
-                break;
-            case DefencePrepareAction defenceAction:
-                break;
-            case IdleAction idleAction:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(battleActionBase));
+            case DefenceEffect           : result = "Defence Effect"; break;
+            case EvasionEffect           : result = "Evasion Effect"; break;
+            case EvasionPrepareAction    : result = "Evasion Effect"; break;
+            case HealEffect              : result = "Heal Effect";    break;
+            case HealPrepareAction       : result = "Heal Effect";    break;
+            case MagicFireAction         : result = "Fire Attack";    break;
+            case MagicFrostAction        : result = "Frost Attack";   break;
+            case PenetratingAttackAction : result = "Force Attack";   break;
+            case PoisonEffect            : result = "Poison Effect";  break;
+            case AttackAction            : result = "Attack";         break;
+            case DefencePrepareAction    : result = "Defence Effect"; break;
+            case PoisonPrepareAction     : result = "Poison Effect";  break;
 
             }
+
+            return result;
         }
 
         public string getSkillDescription(BattleActionBase battleActionBase, List<RuneKey> runeKeys)
@@ -93,20 +99,26 @@ namespace Managers
             if (battleActionBase == null)
                 return "NULL";
 
-            return $"Skill description for {battleActionBase.GetType().Name}\n[{string.Join("", runeKeys)}]";
-            //TODO
+            string result = "";
             switch (battleActionBase)
             {
-            case AttackAction attackAction:
-                break;
-            case DefencePrepareAction defenceAction:
-                break;
-            case IdleAction idleAction:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(battleActionBase));
+            case DefenceEffect           : result = "Protects you from incoming physical damage";      break;
+            case EvasionEffect           : result = "Gives you a temporary physical evasion bonus";    break;
+            case EvasionPrepareAction    : result = "Gives you a temporary physical evasion bonus";    break;
+            case HealEffect              : result = "Heals you over a period of time";                 break;
+            case HealPrepareAction       : result = "Heals you over a period of time";                 break;
+            case MagicFireAction         : result = "Throws a ball of fire on to the enemy";           break;
+            case MagicFrostAction        : result = "Freezes an enemy to death";                       break;
+            case PenetratingAttackAction : result = "Deals less damage but does not count protection"; break;
+            case PoisonEffect            : result = "Deals damage to the target over period of time";  break;
+            case AttackAction            : result = "Deals physical damage";                           break;
+            case DefencePrepareAction    : result = "Protects you from incoming physical damage";      break;
+            case PoisonPrepareAction     : result = "Deals damage to the target over period of time";  break;
 
             }
+
+            result += $"\n{string.Join("", runeKeys)}";
+            return result;
         }
         #endregion
 
