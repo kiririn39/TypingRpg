@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 7209202346148521050}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].id
@@ -944,6 +944,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[12].id
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].type
       value: 0
       objectReference: {fileID: 0}
@@ -989,7 +993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[11].type
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[12].type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].enemyConfig
@@ -1039,6 +1047,10 @@ PrefabInstance:
       propertyPath: stages.Array.data[11].enemyConfig
       value: 
       objectReference: {fileID: 11400000, guid: 8f825d3cf95b441219d2e45d6f398200, type: 2}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[12].enemyConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cfda3ae481794625a9b0b7851758541, type: 2}
     - target: {fileID: 2857428545302151385, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

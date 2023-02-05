@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee1ab0eb40ab40fc800663bcbc5bb6df, type: 3}
-  m_Name: Frost Defence
+  m_Name: BigFrost Defence
   m_EditorClassIdentifier: 
-  damageMultiplier: 0.3
+  damageMultiplier: 0.2

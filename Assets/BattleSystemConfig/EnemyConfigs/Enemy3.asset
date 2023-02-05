@@ -19,5 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
   - {fileID: 11400000, guid: fb54ae5da3a06494a901a18175e1fe87, type: 2}
   - {fileID: 11400000, guid: 7674d55c751ad439985ae89e234f9193, type: 2}
-  modificators: []
+  modificators:
+  - {fileID: 11400000, guid: b4f51bf349497440db0cee5b3099369f, type: 2}
+  - {fileID: 11400000, guid: d3f0b285ae0894961b17208e25a16ace, type: 2}
   character: 4
