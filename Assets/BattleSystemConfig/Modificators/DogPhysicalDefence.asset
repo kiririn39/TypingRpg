@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccf8900b25b849428866cc52fb0b0bcd, type: 3}
-  m_Name: SamplePenetratingAttack
+  m_Script: {fileID: 11500000, guid: 09f3a26700e04bc997923ca2c6f00f79, type: 3}
+  m_Name: DogPhysicalDefence
   m_EditorClassIdentifier: 
-  action:
-    Caster: {fileID: 0}
-    InitializationTimestamp: 0
-    AttackPoints: 1.6
-    ExecutionDelay: 2
-    DamageInflictedTime: 0.6666
+  defencePercentage: 0.6

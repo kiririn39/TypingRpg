@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy5
   m_EditorClassIdentifier: 
   healthPoints: 10
-  idleTime: 6
+  idleTime: 7
   possibleActions:
   - {fileID: 11400000, guid: e285d52e5cee74d919fc7631e0acb96b, type: 2}
   modificators:
