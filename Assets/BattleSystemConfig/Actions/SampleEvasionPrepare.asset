@@ -20,4 +20,4 @@ MonoBehaviour:
       Caster: {fileID: 0}
       InitializationTimestamp: 0
       Evasion: {fileID: 11400000, guid: 88a6e5afe9f0c4aeaace51ca971d78e6, type: 2}
-      EvasionDuration: 5
+      EvasionDuration: 10
