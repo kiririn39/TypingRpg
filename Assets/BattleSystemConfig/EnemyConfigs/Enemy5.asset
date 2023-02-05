@@ -17,5 +17,5 @@ MonoBehaviour:
   possibleActions:
   - {fileID: 11400000, guid: e285d52e5cee74d919fc7631e0acb96b, type: 2}
   modificators:
-  - {fileID: 11400000, guid: 740fc2efac1cb4a49b65654a55eeb19d, type: 2}
+  - {fileID: 11400000, guid: 9fbda27e5ae3d4e0dadeadd0d70fda38, type: 2}
   character: 3

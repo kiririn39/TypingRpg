@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f3a26700e04bc997923ca2c6f00f79, type: 3}
   m_Name: DogPhysicalDefence
   m_EditorClassIdentifier: 
-  defencePercentage: 0.6
+  defencePercentage: 0.5
