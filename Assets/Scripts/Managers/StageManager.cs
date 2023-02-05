@@ -66,7 +66,9 @@ namespace Managers
                 return;
             }
 
-            gameBattleSystem.PrepareBattle(curStage.enemyConfig);
+            if (curStage.type == StageType.FIGHT)
+                gameBattleSystem.PrepareBattle(curStage.enemyConfig);
+                
             stageChangeStarted?.Invoke();
         }
 
