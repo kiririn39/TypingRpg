@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Managers
 {
@@ -22,8 +23,7 @@ namespace Managers
         public static readonly RuneSequenceForBattleAction defenceSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.W, RuneKey.E,RuneKey.I, RuneKey.O, RuneKey.P}, RuneBattleActionInfo = new RuneBattleActionInfo(new DefencePrepareAction()) };
         public static readonly RuneSequenceForBattleAction magicFireSkill  = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.P,RuneKey.Q, RuneKey.W, RuneKey.E}, RuneBattleActionInfo = new RuneBattleActionInfo(new MagicFireAction()) };
         public static readonly RuneSequenceForBattleAction magicFrostSkill = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.E, RuneKey.W, RuneKey.Q,RuneKey.I, RuneKey.I},            RuneBattleActionInfo = new RuneBattleActionInfo(new MagicFrostAction()) };
-        public static readonly RuneSequenceForBattleAction psyonicSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.I,RuneKey.P},                       RuneBattleActionInfo = new RuneBattleActionInfo(new PsyonicAction()) };
-        //public static readonly RuneSequenceForBattleAction poisonSkill     = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.W,RuneKey.O, RuneKey.Q, RuneKey.O}, RuneBattleActionInfo = new RuneBattleActionInfo(new PoisonPrepareAction()) };
+        public static readonly RuneSequenceForBattleAction poisonSkill     = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.W,RuneKey.O, RuneKey.Q, RuneKey.O}, RuneBattleActionInfo = new RuneBattleActionInfo(new PoisonPrepareAction()) };
         public static readonly RuneSequenceForBattleAction healSkill       = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.I,RuneKey.E, RuneKey.E, RuneKey.P, RuneKey.Q}, RuneBattleActionInfo = new RuneBattleActionInfo(new HealPrepareAction()) };
         public static readonly RuneSequenceForBattleAction evasionSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.E,RuneKey.E, RuneKey.O, RuneKey.Q}, RuneBattleActionInfo = new RuneBattleActionInfo(new EvasionPrepareAction()) };
         public IReadOnlyList<RuneSequenceForBattleAction> myCurrentSkillSentences
@@ -37,27 +37,33 @@ namespace Managers
 
         private List<RuneSequenceForBattleAction> _myCurrentSkillSentences = null;
 
-        public List<RuneSequenceForBattleAction> availableSkillsForNextLvl => newSkillsPerLvl.safeGet(playerLvl).ToList();
+        public List<RuneSequenceForBattleAction> availableSkillsForNextLvl
+        {
+            get
+            {
+                var result = allPossibleSkills.Except(_myCurrentSkillSentences).Take(2).ToList();
+                result.Sort((_, _) => Random.Range(-1, 1));
+                return result;
+            }
+        }
 
 
-        private List<RuneSequenceForBattleAction> defaultSkillSentences = new List<RuneSequenceForBattleAction>()
+        private List<RuneSequenceForBattleAction> defaultSkillSentences = new()
+        {
+            attackSkill,
+        };
+
+        private List<RuneSequenceForBattleAction> allPossibleSkills = new()
         {
             attackSkill,
             defenceSkill,
-            //poisonSkill,
             healSkill,
             evasionSkill,
             penetratingAttackSkill,
             magicFireSkill,
-            magicFrostSkill
+            magicFrostSkill,
+            poisonSkill
         };
-
-        private IReadOnlyList<IReadOnlyList<RuneSequenceForBattleAction>> newSkillsPerLvl = new List<List<RuneSequenceForBattleAction>>()
-        {
-            new []{magicFireSkill,magicFrostSkill}.ToList(),
-            new []{psyonicSkill}.ToList(),
-        };
-
 
         public void addNewSkill(RuneSequenceForBattleAction newSkill)
         {

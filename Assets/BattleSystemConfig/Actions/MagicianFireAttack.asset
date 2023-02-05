@@ -9,15 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ddb54ced3e3484aaa00e3fb7fd3a11e, type: 3}
-  m_Name: SampleDefence
+  m_Script: {fileID: 11500000, guid: 5f27cad6fb094d6394c09f0ceea698f7, type: 3}
+  m_Name: MagicianFireAttack
   m_EditorClassIdentifier: 
-  prepareAction:
+  action:
     Caster: {fileID: 0}
     InitializationTimestamp: 0
-    ExecutionDelay: 2
-    DefenceEffect:
-      Caster: {fileID: 0}
-      InitializationTimestamp: 0
-      Defence: {fileID: 11400000, guid: 740fc2efac1cb4a49b65654a55eeb19d, type: 2}
-      DefenceDuration: 4
+    AttackPoints: 4
+    ExecutionDelay: 3.2
+    DamageInflictedTime: 0

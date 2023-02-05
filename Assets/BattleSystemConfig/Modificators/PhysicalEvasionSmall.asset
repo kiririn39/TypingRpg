@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f3a26700e04bc997923ca2c6f00f79, type: 3}
-  m_Name: PhysicalDefenceSmall
+  m_Script: {fileID: 11500000, guid: 9dbee36439db49c4aff4068de6e67664, type: 3}
+  m_Name: PhysicalEvasionSmall
   m_EditorClassIdentifier: 
-  defencePercentage: 0.7
+  EvasionRate: 0.7

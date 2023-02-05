@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f3a26700e04bc997923ca2c6f00f79, type: 3}
-  m_Name: PhysicalDefenceSmall
+  m_Script: {fileID: 11500000, guid: 0d328a70d65b4a94b120acd7679bca42, type: 3}
+  m_Name: Enemy1
   m_EditorClassIdentifier: 
-  defencePercentage: 0.7
+  healthPoints: 10
+  idleTime: 6
+  possibleActions:
+  - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
+  modificators: []
+  character: 4

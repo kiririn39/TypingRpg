@@ -4,6 +4,7 @@ using System.Linq;
 using DefaultNamespace;
 using DG.Tweening;
 using Map;
+using RuneStack;
 using UnityEditor;
 using UnityEngine;
 
@@ -66,8 +67,11 @@ namespace Managers
                 return;
             }
 
-            gameBattleSystem.PrepareBattle(curStage.enemyConfig);
+            if (curStage.type == StageType.FIGHT)
+                gameBattleSystem.PrepareBattle(curStage.enemyConfig);
+                
             stageChangeStarted?.Invoke();
+            FindObjectOfType<UIRuneStack>()?.clearSelected();
         }
 
         public void invokeStageMovementStarted()

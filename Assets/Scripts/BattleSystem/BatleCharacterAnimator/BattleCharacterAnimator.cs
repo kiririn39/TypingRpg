@@ -47,6 +47,7 @@ public class BattleCharacterAnimator : MonoBehaviour
     [SerializeField] public Animator animator = null;
     [SerializeField] private List<AnimatorsForCharacters> charactersOverrideControllers = null;
     [SerializeField] private SpriteRenderer spriteRenderer = null;
+    [SerializeField] private List<Transform> someMagicVar_DontTouchIt = null;
     [Header("Flash on damage effect")]
     [SerializeField] private Material flashOnDamageMaterial = null;
     [SerializeField] private float flashOnDamageDuration = 0.125f;
@@ -72,7 +73,11 @@ public class BattleCharacterAnimator : MonoBehaviour
         bool isPlayer = character == Character.PLAYER;
         spriteRenderer.flipX = isPlayer;
         float absScaleX = Mathf.Abs(transform.localScale.x);
-        transform.localScale = transform.localScale.setX(isPlayer ? -absScaleX : absScaleX);
+        float newXScale = isPlayer ? -absScaleX : absScaleX;
+        transform.localScale = transform.localScale.setX(newXScale);
+        
+        someMagicVar_DontTouchIt.forEach(it => it.transform.localScale.setY(isPlayer ? it.transform.localScale.y : -it.transform.localScale.y));
+
     }
 
     public void play( AnimationType animationType )

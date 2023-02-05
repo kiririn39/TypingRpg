@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using BattleSystem.BattleActions;
 using Common;
 using DefaultNamespace.BattleActions;
 using UnityEngine;
@@ -41,7 +42,16 @@ namespace DefaultNamespace
                 return chachedIdle;
 
             lastTimeReturnedAnAction = Time.time;
-            var action = possibleActions.Select(container => container.CloneAction()).ToList().randomElement();
+
+            var actions = possibleActions.Select(container => container.CloneAction());
+            if (Math.Abs(character.HealthPoints - character.MaxHealthPoints) < 0.1f || character.actionModificators.OfType<HealTag>().Any())
+                actions = actions.Where(action => action is not HealPrepareAction);
+            if (character.actionModificators.OfType<PhysicalAttackDefence>().Any())
+                actions = actions.Where(action => action is not DefencePrepareAction);
+            if (character.actionModificators.OfType<PhysicalEvasion>().Any())
+                actions = actions.Where(action => action is not EvasionPrepareAction);
+            
+            var action = actions.ToList().randomElement();
 
             action.Initialize(character);
 
