@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.SkillTree;
 using DefaultNamespace;
+using Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace RuneStack
         [SerializeField] private UIBattleActionIcon uiResultBattleAction = null;
         [FormerlySerializedAs("playerController")]
         [SerializeField] private BattleCharacter playerCharacter = null;
+
+        [SerializeField] private UINewSkillSelector playerSkillList = null;
 
         private RuneBattleActionInfo runeBattleActionInfo = null;
         private List<RuneKey> selectedRuneKeys = new List<RuneKey>();
@@ -108,6 +111,16 @@ namespace RuneStack
 
         private void handleInput()
         {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                playerSkillList.gameObject.SetActive(true);
+                playerSkillList.init(PlayerDatabase.Instance.myCurrentSkillSentences.ToList());
+            }
+            else if (Input.GetKeyUp(KeyCode.Tab))
+            {
+                playerSkillList.gameObject.SetActive(false);
+            }
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (playerCharacter == null)

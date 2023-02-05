@@ -18,7 +18,7 @@ public class UINewSkillSelector : MonoBehaviour
         isSkillAlreadySelected = false;
         for (int i = 0; i < btnsSelectNewSkill.Count; i++)
         {
-            bool isVisible = i < skillsInfos.Count;
+            bool isVisible = i < skillsInfos.Count && btnsSelectNewSkill[i] != null;
             btnsSelectNewSkill[i].gameObject.SetActive(isVisible);
             if (!isVisible)
                 continue;
