@@ -44,6 +44,7 @@ namespace BattleSystem.BattleActions
                 {
                     character.DealDamage(AttackPoints, GetType());
                     Debug.Log($"Caster {Caster.name} Poisoning {character.name}");
+                    SoundManager.Instance.playSound(SoundType.POISON);
                 }
 
             LastAttackTimestamp = Time.time;

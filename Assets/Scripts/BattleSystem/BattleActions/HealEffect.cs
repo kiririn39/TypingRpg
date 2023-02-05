@@ -43,6 +43,7 @@ namespace BattleSystem.BattleActions
                 {
                     character.Heal(HealPoints, GetType());
                     Debug.Log($"Caster {Caster.name} Healing self");
+                    SoundManager.Instance.playSound(SoundType.HEAL);
                 }
 
             LastHealTimestamp = Time.time;

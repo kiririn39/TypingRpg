@@ -109,10 +109,12 @@ public enum SoundType
 
     SKILL_BEFORE_FIRST,
     BASIC_ATTACK,
-    STRONG_ATTACK, //add
-    EVASION, //add
+    STRONG_ATTACK,
+    EVASION,
     BLOCK,
-    FIREBALL, //add
+    FIREBALL,
+    HEAL,
+    POISON,
 
 
     SKILL_AFTER_LAST,

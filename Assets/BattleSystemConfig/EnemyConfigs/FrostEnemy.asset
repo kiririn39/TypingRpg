@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf582498a1aa4bdba371cf622dc4620b, type: 3}
-  m_Name: SampleAttack
+  m_Script: {fileID: 11500000, guid: 0d328a70d65b4a94b120acd7679bca42, type: 3}
+  m_Name: FrostEnemy
   m_EditorClassIdentifier: 
-  action:
-    Caster: {fileID: 0}
-    InitializationTimestamp: 0
-    AttackPoints: 1
-    ExecutionDelay: 1
-    DamageInflictedTime: 0.6666
+  healthPoints: 10
+  idleTime: 2
+  possibleActions:
+  - {fileID: 11400000, guid: 1e7cba227fe5545f98cef26aaeae5c00, type: 2}
+  modificators: []
+  character: 2

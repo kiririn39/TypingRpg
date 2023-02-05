@@ -12,5 +12,6 @@ namespace DefaultNamespace
         public float idleTime;
         public List<ActionContainerBase> possibleActions;
         public List<ActionModificatorBase> modificators;
+        public BattleCharacterAnimator.Character character;
     }
 }

@@ -77,7 +77,12 @@ namespace DefaultNamespace
             onInit();
         }
 
-        public void reset()
+        public void SetCharacter(BattleCharacterAnimator.Character character)
+        {
+            battleCharacterAnimator.init(character);
+        }
+
+        public void Reset()
         {
             _HealthPoints = MaxHealthPoints;
             _DelayNormalized = 1;

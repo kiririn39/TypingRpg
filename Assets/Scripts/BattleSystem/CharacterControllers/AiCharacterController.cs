@@ -31,6 +31,8 @@ namespace DefaultNamespace
             possibleActions.AddRange(enemyConfig.possibleActions);
 
             aiIdleTime = enemyConfig.idleTime;
+
+            character.SetCharacter(enemyConfig.character);
         }
 
         public override BattleActionBase GenerateNextAction()

@@ -21,7 +21,7 @@ namespace DefaultNamespace
 
         public void resetGame()
         {
-            playerCharacter.reset();
+            playerCharacter.Reset();
         }
 
         public void PrepareBattle(EnemyConfig enemyConfig)
