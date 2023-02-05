@@ -19,12 +19,22 @@ namespace DefaultNamespace
         public Action<BattleResult> OnBattleEnded = delegate { };
 
 
-        public void StartBattle(EnemyConfig enemyConfig)
+        public void resetGame()
         {
-            enabled = true;
+            playerCharacter.reset();
+        }
+
+        public void PrepareBattle(EnemyConfig enemyConfig)
+        {
             _passiveActions.Clear();
 
             (enemyCharacter.controllerBase as AiCharacterController).InitializeEnemy(enemyConfig);
+            
+        }
+
+        public void StartBattle()
+        {
+            enabled = true;
         }
 
         public void PauseBattle()

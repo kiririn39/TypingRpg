@@ -15,6 +15,7 @@ namespace DefaultNamespace
         public event Action<float, float> onHealthChanged = delegate {};
         public event Action<float, float> onMaxHealthChanged = delegate {};
         public event Action<float, float> onDelayNormalizedChanged = delegate {};
+        public event Action<List<ActionModificatorBase>> onEffectsChanged = delegate {};
 
 
         [FormerlySerializedAs("controller")]
@@ -44,6 +45,9 @@ namespace DefaultNamespace
                 float oldValue = _HealthPoints;
                 _HealthPoints = value.withMin(0).withMax(MaxHealthPoints);
                 onHealthChanged(oldValue, _HealthPoints);
+
+                if (_HealthPoints == 0)
+                    battleCharacterAnimator.play(BattleCharacterAnimator.AnimationType.DEATH);
             }
         }
 
@@ -73,6 +77,14 @@ namespace DefaultNamespace
             onInit();
         }
 
+        public void reset()
+        {
+            _HealthPoints = MaxHealthPoints;
+            _DelayNormalized = 1;
+
+            onInit?.Invoke();
+        }
+
         public BattleActionBase GetAction()
         {
             if (battleAction == null)
@@ -99,6 +111,30 @@ namespace DefaultNamespace
         public void playAnimation(BattleCharacterAnimator.AnimationType animationType)
         {
             battleCharacterAnimator.play(animationType);
+        }
+
+        public void AddModificator(ActionModificatorBase modificatorBase)
+        {
+            actionModificators.Add(modificatorBase);
+            onEffectsChanged?.Invoke(actionModificators);
+        }
+        
+        public void AddModificators(IEnumerable<ActionModificatorBase> modificators)
+        {
+            actionModificators.AddRange(modificators);
+            onEffectsChanged?.Invoke(actionModificators);
+        }
+
+        public void ClearModificators()
+        {
+            actionModificators.Clear();
+            onEffectsChanged?.Invoke(actionModificators);
+        }
+
+        public void RemoveModificator(ActionModificatorBase modificatorBase)
+        {
+            actionModificators.Remove(modificatorBase);
+            onEffectsChanged?.Invoke(actionModificators);
         }
 
         public void playAnimationForBattleActionAsTarget(BattleActionBase battleActionBase)

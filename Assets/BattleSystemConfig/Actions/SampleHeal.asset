@@ -23,3 +23,4 @@ MonoBehaviour:
       HealsCount: 1
       DelayBetweenHeals: 4
       LastHealTimestamp: 0
+      tag: {fileID: 11400000, guid: 4751ea66de5204a88a801ec32c83c1f6, type: 2}

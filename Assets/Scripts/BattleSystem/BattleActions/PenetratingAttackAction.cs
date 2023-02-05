@@ -21,7 +21,7 @@ namespace BattleSystem.BattleActions
         {
             base.Initialize(Caster);
 
-            Caster.playAnimation(BattleCharacterAnimator.AnimationType.ATTACK);
+            Caster.playAnimation(BattleCharacterAnimator.AnimationType.ATTACK_FORCE);
             isDamageInflicted = false;
         }
 

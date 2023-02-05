@@ -42,9 +42,10 @@ public class BattleCharacterAnimator : MonoBehaviour
         TAKE_DAMAGE_POISON = 9,
         HEAL               = 10,
         DEATH              = 11,
+        WALK               = 12
     }
 
-    [SerializeField] private Animator animator = null;
+    [SerializeField] public Animator animator = null;
     [SerializeField] private List<AnimatorsForCharacters> charactersOverrideControllers = null;
     [SerializeField] private SpriteRenderer spriteRenderer = null;
     [Header("Flash on damage effect")]
@@ -135,7 +136,7 @@ public class BattleCharacterAnimator : MonoBehaviour
         switch (animationType)
         {
         case AnimationType.ATTACK:         return "Attack";
-        case AnimationType.ATTACK_FORCE:   return "Attack";
+        case AnimationType.ATTACK_FORCE:   return "AttackPenetration";
         case AnimationType.ATTACK_FIRE:    return "AttackFire";
         case AnimationType.ATTACK_FROST:   return "AttackFrost";
         case AnimationType.ATTACK_PSYONIC: return "AttackPsyonic";
@@ -144,6 +145,8 @@ public class BattleCharacterAnimator : MonoBehaviour
         case AnimationType.DEFENCE:        return "Block";
         case AnimationType.HEAL:           return "Heal";
         case AnimationType.DEATH:          return "Death";
+
+        case AnimationType.WALK:           return "Walk";
         }
 
         return animationStringKey;

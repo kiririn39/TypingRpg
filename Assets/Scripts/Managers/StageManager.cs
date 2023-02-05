@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
+using DG.Tweening;
 using Map;
 using UnityEditor;
 using UnityEngine;
@@ -13,20 +14,23 @@ namespace Managers
         public static StageManager Instance { get; private set; }
 
 
+        [SerializeField] private Transform   enemyTransform;
         [SerializeField] private List<Stage> stages = new List<Stage>();
 
         private GameBattleSystem gameBattleSystem;
 
         private int monstersKilled;
 
+        private bool isSubscribed;
+
         public int curStageIndex { get; private set; } = -1;
 
         public event Action stageChangeStarted;
+        public event Action stageMovementStarted;
         public event Action stageChangeFinished;
+        public event Action gameReset;
 
-        public Stage curStage => stages.FirstOrDefault(x => x.id == curStageIndex) ??
-                                 throw new IndexOutOfRangeException(
-                                     $"No stage with {nameof(curStageIndex)} {curStageIndex}");
+        public Stage curStage => stages.FirstOrDefault(x => x.id == curStageIndex) ?? null;
 
 
         public void prepareGame()
@@ -34,13 +38,19 @@ namespace Managers
             curStageIndex = -1;
             monstersKilled = 0;
             MapManager.Instance.spawnMap(stages);
+            gameBattleSystem = FindObjectOfType<GameBattleSystem>();
+            gameBattleSystem.resetGame();
+            if (!isSubscribed)
+            {
+                gameBattleSystem.OnBattleEnded += onBattleEnded;
+                isSubscribed = true;
+            }
+            gameReset?.Invoke();
         }
 
         public void startGame()
         {
             nextStage();
-            gameBattleSystem = FindObjectOfType<GameBattleSystem>();
-            gameBattleSystem.OnBattleEnded += onBattleEnded;
         }
 
         public void nextStage()
@@ -51,9 +61,18 @@ namespace Managers
             ++curStageIndex;
 
             if (curStageIndex >= stages.Count)
+            {
                 FindObjectOfType<WinScreen>().show(monstersKilled);
+                return;
+            }
 
+            gameBattleSystem.PrepareBattle(curStage.enemyConfig);
             stageChangeStarted?.Invoke();
+        }
+
+        public void invokeStageMovementStarted()
+        {
+            stageMovementStarted?.Invoke();
         }
 
         public void invokeStageChangeFinished()
@@ -68,10 +87,9 @@ namespace Managers
             }
             else
             {
-                gameBattleSystem.StartBattle(curStage.enemyConfig);
+                gameBattleSystem.StartBattle();
             }
         }
-
         private void onBattleEnded(BattleResult battle_result)
         {
             switch (battle_result)

@@ -67,7 +67,7 @@ public class UIRuneNode : MonoBehaviour
         this.isSelected = isSelected;
         imgSelectedOutline.enabled = isSelected;
         if (parent != null)
-            imgLineConnectorToParent.color = isSelected ? Color.green : Color.gray;
+            imgLineConnectorToParent.color = isSelected ? Color.white : (new Color(0.36f, 0.36f, 0.36f));
     }
 
     private void OnDrawGizmos()

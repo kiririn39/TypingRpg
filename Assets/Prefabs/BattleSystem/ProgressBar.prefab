@@ -492,6 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6696717082660354860}
   - component: {fileID: 841174467924526550}
+  - component: {fileID: 6238238415182236569}
   m_Layer: 0
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -541,3 +542,15 @@ MonoBehaviour:
   increaseTweenColor: {r: 0.7311321, g: 1, b: 0.7429137, a: 1}
   decreaseTweenColor: {r: 1, g: 0.7028302, b: 0.7028302, a: 1}
   flashMaterial: {fileID: 2100000, guid: b82ba21103d44b246bd9c55e1fb2e4b1, type: 2}
+--- !u!225 &6238238415182236569
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500625351435690644}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1

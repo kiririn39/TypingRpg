@@ -36,7 +36,7 @@ namespace RuneStack
 
         public void init(RuneTree runeTree)
         {
-            (playerCharacter.controllerBase as PlayerCharacterController).init(this);
+            (playerCharacter?.controllerBase as PlayerCharacterController)?.init(this);
 
             this.runeTree = runeTree;
             updateData();
@@ -99,9 +99,8 @@ namespace RuneStack
             for (int i = 0; i < uiRuneKeys.Count; i++)
             {
                 bool curRuneAvailable = i < selectedRuneKeys.Count;
-                uiRuneKeys[i].gameObject.SetActive(curRuneAvailable);
-                if (curRuneAvailable)
-                    uiRuneKeys[i].init(selectedRuneKeys[i]);
+                uiRuneKeys[i].GetComponent<CanvasGroup>().alpha = curRuneAvailable ? 1 : 0.3f; 
+                uiRuneKeys[i].init(curRuneAvailable? selectedRuneKeys[i] : RuneKey.NONE);
             }
 
             uiResultBattleAction.init(runeBattleActionInfo?.battleActionBase);
@@ -111,6 +110,12 @@ namespace RuneStack
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if (playerCharacter == null)
+                {
+                    Debug.Log("DEBUG USE");
+                    tryUseBattleAction();
+                }
+                else
                 if (playerCharacter.DelayNormalized > 0.9999)
                     tryUseBattleAction();
                 else

@@ -30,7 +30,7 @@ namespace BattleSystem.BattleActions
                 foreach (var character in targets)
                 {
                     if (!character.actionModificators.Contains(Defence))
-                        character.actionModificators.Add(Defence);
+                        character.AddModificator(Defence);
 
                     Debug.Log($"Caster {Caster.name} Protected themself");
                 }
@@ -41,7 +41,7 @@ namespace BattleSystem.BattleActions
             foreach (var character in targets)
             {
                 if (character.actionModificators.Contains(Defence))
-                    character.actionModificators.Remove(Defence);
+                    character.RemoveModificator(Defence);
 
                 Debug.Log($"Caster {Caster.name} Protect ended");
             }
