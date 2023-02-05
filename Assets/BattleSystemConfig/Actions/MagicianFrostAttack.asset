@@ -15,6 +15,6 @@ MonoBehaviour:
   action:
     Caster: {fileID: 0}
     InitializationTimestamp: 0
-    AttackPoints: 5
-    ExecutionDelay: 4
+    AttackPoints: 4
+    ExecutionDelay: 3
     DamageInflictedTime: 0
