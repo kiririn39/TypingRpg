@@ -17,4 +17,4 @@ MonoBehaviour:
     InitializationTimestamp: 0
     AttackPoints: 4
     ExecutionDelay: 3.2
-    DamageInflictedTime: 0
+    DamageInflictedTime: 0.666
