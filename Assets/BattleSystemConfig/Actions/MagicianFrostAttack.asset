@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d328a70d65b4a94b120acd7679bca42, type: 3}
-  m_Name: Enemy1
+  m_Script: {fileID: 11500000, guid: 5f27cad6fb094d6394c09f0ceea698f7, type: 3}
+  m_Name: MagicianFrostAttack
   m_EditorClassIdentifier: 
-  healthPoints: 10
-  idleTime: 6
-  possibleActions:
-  - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
-  modificators: []
-  character: 4
+  action:
+    Caster: {fileID: 0}
+    InitializationTimestamp: 0
+    AttackPoints: 5
+    ExecutionDelay: 4
+    DamageInflictedTime: 0
