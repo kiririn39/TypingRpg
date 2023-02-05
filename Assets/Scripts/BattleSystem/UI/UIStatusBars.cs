@@ -61,10 +61,11 @@ public class UIStatusBars : MonoBehaviour
 
     public void tweenEnemy()
     {
-        if (StageManager.Instance.curStage.type == StageType.TOWN)
-                return;
-
         playerCharacter.GetComponentInChildren<BattleCharacterAnimator>().play(BattleCharacterAnimator.AnimationType.WALK);
+
+        if (StageManager.Instance.curStage.type == StageType.TOWN)
+            return;
+
         aiCharacter.gameObject.transform.DOLocalMoveX(2.33225012f, 2.0f).SetEase(Ease.InOutCubic);
     }
 
