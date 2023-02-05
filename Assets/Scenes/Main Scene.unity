@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 7209202346148521050}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.size
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].id
@@ -932,6 +932,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[10].id
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[11].id
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].type
       value: 0
       objectReference: {fileID: 0}
@@ -970,6 +978,14 @@ PrefabInstance:
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[9].type
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[10].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[11].type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].enemyConfig
@@ -1011,6 +1027,14 @@ PrefabInstance:
       propertyPath: stages.Array.data[9].enemyConfig
       value: 
       objectReference: {fileID: 11400000, guid: 799ba76ffa7324e7aaaf8c1f9b4a9275, type: 2}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[10].enemyConfig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[11].enemyConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f825d3cf95b441219d2e45d6f398200, type: 2}
     - target: {fileID: 2857428545302151385, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
