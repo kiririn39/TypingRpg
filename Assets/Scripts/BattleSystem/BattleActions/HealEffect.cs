@@ -21,7 +21,7 @@ namespace BattleSystem.BattleActions
         public override void Initialize(BattleCharacter caster)
         {
             base.Initialize(caster);
-            LastHealTimestamp = InitializationTimestamp;
+            LastHealTimestamp = -DelayBetweenHeals;
         }
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)

@@ -22,7 +22,7 @@ namespace BattleSystem.BattleActions
         public override void Initialize(BattleCharacter caster)
         {
             base.Initialize(caster);
-            LastAttackTimestamp = InitializationTimestamp;
+            LastAttackTimestamp = -DelayBetweenAttacks;
         }
 
         protected override ActionResultBase ExecuteActionImpl(List<BattleCharacter> targets)
