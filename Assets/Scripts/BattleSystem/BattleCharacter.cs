@@ -77,6 +77,14 @@ namespace DefaultNamespace
             onInit();
         }
 
+        public void reset()
+        {
+            _HealthPoints = MaxHealthPoints;
+            _DelayNormalized = 1;
+
+            onInit?.Invoke();
+        }
+
         public BattleActionBase GetAction()
         {
             if (battleAction == null)

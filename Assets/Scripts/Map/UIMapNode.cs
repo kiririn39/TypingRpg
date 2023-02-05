@@ -40,7 +40,8 @@ namespace Map
                 case NodeType.CURRENT:  colour = currentColor; break;
                 case NodeType.NEXT:     colour = nextColor; break;
             }
-            baseImage.color = colour;
+            if (baseImage)
+                baseImage.color = colour;
         }
 
         private void Awake()

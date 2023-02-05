@@ -78,6 +78,7 @@ namespace Managers
             var lol = uiNodesHolder.DOAnchorPosX(_current_node_pos.x * -1, 2.0f).SetEase(Ease.InOutCubic);
             lol.onPlay += disableNodeIcon;
             lol.onPlay += () => _paralax_objects_controller.move(-15000.0f);
+            lol.onPlay += StageManager.Instance.invokeStageMovementStarted;
             sequence.Append(lol);
             var player_drop_down_tween = uiPlayerToken.DOAnchorPosY(0, 1.0f).SetEase(Ease.OutCubic);
             player_drop_down_tween.onComplete += StageManager.Instance.invokeStageChangeFinished;

@@ -42,6 +42,7 @@ public class BattleCharacterAnimator : MonoBehaviour
         TAKE_DAMAGE_POISON = 9,
         HEAL               = 10,
         DEATH              = 11,
+        WALK               = 12
     }
 
     [SerializeField] public Animator animator = null;
@@ -144,6 +145,8 @@ public class BattleCharacterAnimator : MonoBehaviour
         case AnimationType.DEFENCE:        return "Block";
         case AnimationType.HEAL:           return "Heal";
         case AnimationType.DEATH:          return "Death";
+
+        case AnimationType.WALK:           return "Walk";
         }
 
         return animationStringKey;
