@@ -24,6 +24,8 @@ namespace Managers
 
         private bool isSubscribed;
 
+        private bool isSubscribedSkill;
+
         public int curStageIndex { get; private set; } = -1;
 
         public event Action stageChangeStarted;
@@ -87,7 +89,11 @@ namespace Managers
             {
                 UIPanelRunes ui_panel_runes = FindObjectOfType<UIPanelRunes>();
                 ui_panel_runes.openNewSkillSelectorPanel();
-                ui_panel_runes.uiSkillSelector.OnSkillSelected += _ => nextStage();
+                if (!isSubscribedSkill)
+                {
+                    ui_panel_runes.uiSkillSelector.OnSkillSelected += _ => nextStage();
+                    isSubscribedSkill = true;
+                }
             }
             else
             {
