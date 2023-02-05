@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf8900b25b849428866cc52fb0b0bcd, type: 3}
+  m_Name: DogPenetratingAttack
+  m_EditorClassIdentifier: 
+  action:
+    Caster: {fileID: 0}
+    InitializationTimestamp: 0
+    AttackPoints: 3.5
+    ExecutionDelay: 3
+    DamageInflictedTime: 0.6666
