@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d328a70d65b4a94b120acd7679bca42, type: 3}
-  m_Name: Enemy1
+  m_Name: Enemy3
   m_EditorClassIdentifier: 
-  healthPoints: 10
-  idleTime: 6
+  healthPoints: 12
+  idleTime: 5
   possibleActions:
   - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
+  - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
+  - {fileID: 11400000, guid: fb54ae5da3a06494a901a18175e1fe87, type: 2}
+  - {fileID: 11400000, guid: 7674d55c751ad439985ae89e234f9193, type: 2}
   modificators: []
   character: 4
