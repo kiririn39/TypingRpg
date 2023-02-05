@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 462569858299208826}
   - component: {fileID: 1992709476716705251}
   m_Layer: 0
-  m_Name: Effect1 (3)
+  m_Name: poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3e491f99ea3ad74f8731ca93e84c497, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88cbc73678b614640a214674a6181e2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6246330100194480926}
   - component: {fileID: 8213409814059446053}
   m_Layer: 0
-  m_Name: Effect1 (5)
+  m_Name: fireDefence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,14 +135,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.51627475, b: 0.10849059, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 120bf54dff785a0429b068b814e9c12a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7bc19c8c6d850c4c97f61cc957232d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 949884921657798513}
   - component: {fileID: 3397552476718333444}
   m_Layer: 0
-  m_Name: Effect1 (1)
+  m_Name: evasion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b85a4b2ec6433d04895612d791edc260, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02bf221941930514888defe607593d4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 3462874823399654175}
   - component: {fileID: 4204822443452725050}
   m_Layer: 0
-  m_Name: Effect1 (4)
+  m_Name: frostDefence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,14 +356,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4198113, g: 0.8376699, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b528c1b33a65cf94ea74f830b54c9acb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7bc19c8c6d850c4c97f61cc957232d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 4392752801820291629}
   - component: {fileID: 2716396522225194188}
   m_Layer: 0
-  m_Name: Effect1
+  m_Name: defence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -492,14 +492,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5679a74364f6b4440ab7e7aed55cd95e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7bc19c8c6d850c4c97f61cc957232d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 559530446041591879}
   - component: {fileID: 1025815648654701475}
   m_Layer: 0
-  m_Name: Effect1 (2)
+  m_Name: regen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 309b1d5a294fd6c43ae9cf77656c1852, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b776ad7acd3c6d4790bc53b9a290b3d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -600,6 +600,18 @@ PrefabInstance:
     - target: {fileID: 5923856828187032500, guid: 547d7679547e9a74d849935f09019395, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546417801251909943, guid: 547d7679547e9a74d849935f09019395, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18396229
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546417801251909943, guid: 547d7679547e9a74d849935f09019395, type: 3}
+      propertyPath: m_Color.g
+      value: 0.22231823
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546417801251909943, guid: 547d7679547e9a74d849935f09019395, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6696717082660354860, guid: 547d7679547e9a74d849935f09019395, type: 3}
       propertyPath: m_RootOrder
