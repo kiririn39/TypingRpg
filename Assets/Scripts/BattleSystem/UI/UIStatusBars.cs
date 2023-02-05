@@ -76,9 +76,6 @@ public class UIStatusBars : MonoBehaviour
 
     private void resetEnemy()
     {
-        if (StageManager.Instance.curStage?.type == StageType.TOWN)
-            return;
-
         playerStatusBar.gameObject.SetActive(false);
         aiStatusBar.gameObject.SetActive(false);
         teleportEnemy();
