@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 7209202346148521050}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].id
@@ -948,6 +948,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[13].id
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].type
       value: 0
       objectReference: {fileID: 0}
@@ -997,7 +1001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[12].type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[0].enemyConfig
@@ -1049,6 +1053,10 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8f825d3cf95b441219d2e45d6f398200, type: 2}
     - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
       propertyPath: stages.Array.data[12].enemyConfig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774060629601540693, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
+      propertyPath: stages.Array.data[13].enemyConfig
       value: 
       objectReference: {fileID: 11400000, guid: 0cfda3ae481794625a9b0b7851758541, type: 2}
     - target: {fileID: 2857428545302151385, guid: a587439c1f1a2bc4db36a8fc776e0ada, type: 3}
@@ -1221,6 +1229,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+      propertyPath: possibleActions.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 91b2882829aba4cd3affc3ff398d173c, type: 2}
+    - target: {fileID: 2220129015083992234, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+      propertyPath: possibleActions.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: abc534b1aea904f299022c979c0a5eca, type: 2}
+    - target: {fileID: 3837841184218017309, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
+      propertyPath: _MaxHealthPoints
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7209202345927924178, guid: c8bcaa3317bece943b6f8325000017ee, type: 3}
       propertyPath: m_Name
       value: Battle
