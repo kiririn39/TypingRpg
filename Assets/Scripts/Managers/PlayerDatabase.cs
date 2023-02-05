@@ -23,7 +23,7 @@ namespace Managers
         public static readonly RuneSequenceForBattleAction magicFireSkill  = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.P,RuneKey.Q, RuneKey.W, RuneKey.E}, RuneBattleActionInfo = new RuneBattleActionInfo(new MagicFireAction()) };
         public static readonly RuneSequenceForBattleAction magicFrostSkill = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.E, RuneKey.W, RuneKey.Q,RuneKey.I, RuneKey.I},            RuneBattleActionInfo = new RuneBattleActionInfo(new MagicFrostAction()) };
         public static readonly RuneSequenceForBattleAction psyonicSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.I,RuneKey.P},                       RuneBattleActionInfo = new RuneBattleActionInfo(new PsyonicAction()) };
-        public static readonly RuneSequenceForBattleAction poisonSkill     = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.W,RuneKey.O, RuneKey.Q, RuneKey.O}, RuneBattleActionInfo = new RuneBattleActionInfo(new PoisonPrepareAction()) };
+        //public static readonly RuneSequenceForBattleAction poisonSkill     = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.W,RuneKey.O, RuneKey.Q, RuneKey.O}, RuneBattleActionInfo = new RuneBattleActionInfo(new PoisonPrepareAction()) };
         public static readonly RuneSequenceForBattleAction healSkill       = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.Q, RuneKey.Q, RuneKey.I,RuneKey.E, RuneKey.E, RuneKey.P, RuneKey.Q}, RuneBattleActionInfo = new RuneBattleActionInfo(new HealPrepareAction()) };
         public static readonly RuneSequenceForBattleAction evasionSkill    = new RuneSequenceForBattleAction() {RuneKeys = new List<RuneKey>() {RuneKey.I, RuneKey.O, RuneKey.E,RuneKey.E, RuneKey.O, RuneKey.Q}, RuneBattleActionInfo = new RuneBattleActionInfo(new EvasionPrepareAction()) };
         public IReadOnlyList<RuneSequenceForBattleAction> myCurrentSkillSentences
@@ -44,7 +44,7 @@ namespace Managers
         {
             attackSkill,
             defenceSkill,
-            poisonSkill,
+            //poisonSkill,
             healSkill,
             evasionSkill,
             penetratingAttackSkill,
