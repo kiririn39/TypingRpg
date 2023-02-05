@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09f3a26700e04bc997923ca2c6f00f79, type: 3}
-  m_Name: DogPhysicalDefence
+  m_Name: PhysicalDefenceModerate
   m_EditorClassIdentifier: 
-  defencePercentage: 0.5
+  defencePercentage: 0.35

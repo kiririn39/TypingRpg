@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d328a70d65b4a94b120acd7679bca42, type: 3}
-  m_Name: Enemy5
+  m_Name: Enemy7
   m_EditorClassIdentifier: 
-  healthPoints: 10
-  idleTime: 7
+  healthPoints: 25
+  idleTime: 1.5
   possibleActions:
+  - {fileID: 11400000, guid: 5dd37d0c831924810851638d52ce850f, type: 2}
+  - {fileID: 11400000, guid: 0396fb7b9a28843fe9a6d34df6f97e80, type: 2}
+  - {fileID: 11400000, guid: 993506e4f891242da8f4530e869f195c, type: 2}
   - {fileID: 11400000, guid: e285d52e5cee74d919fc7631e0acb96b, type: 2}
-  modificators:
-  - {fileID: 11400000, guid: 9fbda27e5ae3d4e0dadeadd0d70fda38, type: 2}
+  modificators: []
   character: 3
