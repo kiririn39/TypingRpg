@@ -99,9 +99,8 @@ namespace RuneStack
             for (int i = 0; i < uiRuneKeys.Count; i++)
             {
                 bool curRuneAvailable = i < selectedRuneKeys.Count;
-                uiRuneKeys[i].gameObject.SetActive(curRuneAvailable);
-                if (curRuneAvailable)
-                    uiRuneKeys[i].init(selectedRuneKeys[i]);
+                uiRuneKeys[i].GetComponent<CanvasGroup>().alpha = curRuneAvailable ? 1 : 0.3f; 
+                uiRuneKeys[i].init(curRuneAvailable? selectedRuneKeys[i] : RuneKey.NONE);
             }
 
             uiResultBattleAction.init(runeBattleActionInfo?.battleActionBase);

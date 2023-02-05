@@ -136,7 +136,7 @@ public class BattleCharacterAnimator : MonoBehaviour
         switch (animationType)
         {
         case AnimationType.ATTACK:         return "Attack";
-        case AnimationType.ATTACK_FORCE:   return "Attack";
+        case AnimationType.ATTACK_FORCE:   return "AttackPenetration";
         case AnimationType.ATTACK_FIRE:    return "AttackFire";
         case AnimationType.ATTACK_FROST:   return "AttackFrost";
         case AnimationType.ATTACK_PSYONIC: return "AttackPsyonic";

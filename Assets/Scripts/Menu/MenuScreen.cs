@@ -45,7 +45,7 @@ namespace Menu
             stageManager ??= FindObjectOfType<StageManager>();
             stageManager.prepareGame();
             Sequence sequence = DOTween.Sequence();
-            sequence.Append(canvasGroup.DOFade(0.0f, 2.0f).SetEase(Ease.InQuart));
+            sequence.Append(canvasGroup.DOFade(0.0f, 0.4f).SetEase(Ease.InQuart));
             sequence.AppendCallback((() => {
                 stageManager.startGame();
             }));
@@ -61,38 +61,38 @@ namespace Menu
 
         public void showCredits()
         {
-            menuRectTransform.DOAnchorPosX(-2560.0f, 2.0f).SetEase(Ease.InOutQuad);
-            screenCredits.DOAnchorPosX(0, 2.0f).SetEase(Ease.InOutQuad);
+            menuRectTransform.DOAnchorPosX(-2560.0f, 0.4f).SetEase(Ease.InOutQuad);
+            screenCredits.DOAnchorPosX(0, 0.4f).SetEase(Ease.InOutQuad);
         }
 
         public void showControls()
         {
-            menuRectTransform.DOAnchorPosX(-2560.0f, 2.0f).SetEase(Ease.InOutQuad);
-            screenControls.DOAnchorPosX(0, 2.0f).SetEase(Ease.InOutQuad);
+            menuRectTransform.DOAnchorPosX(-2560.0f, 0.4f).SetEase(Ease.InOutQuad);
+            screenControls.DOAnchorPosX(0, 0.4f).SetEase(Ease.InOutQuad);
         }
 
         public void showSettings()
         {
-            menuRectTransform.DOAnchorPosX(-2560.0f, 2.0f).SetEase(Ease.InOutQuad);
-            screenSettings.DOAnchorPosX(0, 2.0f).SetEase(Ease.InOutQuad);
+            menuRectTransform.DOAnchorPosX(-2560.0f, 0.4f).SetEase(Ease.InOutQuad);
+            screenSettings.DOAnchorPosX(0, 0.4f).SetEase(Ease.InOutQuad);
         }
 
         public void backToMenuFromCredits()
         {
-            menuRectTransform.DOAnchorPosX(0.0f, 2.0f).SetEase(Ease.InOutQuad);
-            screenCredits.DOAnchorPosX(2560.0f, 2.0f).SetEase(Ease.InOutQuad);
+            menuRectTransform.DOAnchorPosX(0.0f, 0.4f).SetEase(Ease.InOutQuad);
+            screenCredits.DOAnchorPosX(2560.0f, 0.4f).SetEase(Ease.InOutQuad);
         }
 
         public void backToMenuFromControls()
         {
-            menuRectTransform.DOAnchorPosX(0.0f, 2.0f).SetEase(Ease.InOutQuad);
-            screenControls.DOAnchorPosX(2560.0f, 2.0f).SetEase(Ease.InOutQuad);
+            menuRectTransform.DOAnchorPosX(0.0f, 0.4f).SetEase(Ease.InOutQuad);
+            screenControls.DOAnchorPosX(2560.0f, 0.4f).SetEase(Ease.InOutQuad);
         }
 
         public void backToMenuFromSettings()
         {
-            menuRectTransform.DOAnchorPosX(0.0f, 2.0f).SetEase(Ease.InOutQuad);
-            screenSettings.DOAnchorPosX(2560.0f, 2.0f).SetEase(Ease.InOutQuad);
+            menuRectTransform.DOAnchorPosX(0.0f, 0.4f).SetEase(Ease.InOutQuad);
+            screenSettings.DOAnchorPosX(2560.0f, 0.4f).SetEase(Ease.InOutQuad);
         }
 
         private void tweenMenuStart()
@@ -107,15 +107,15 @@ namespace Menu
 
                     gameNameText.alpha = 0.0f;
                     buttonsCanvasGroup.alpha = 0.0f;
-                    buttonsCanvasGroup.interactable = false;
+                    //buttonsCanvasGroup.interactable = false;
                 })
-                .Append(gameNameText.DOFade(1.0f, 1.0f).SetEase(Ease.OutQuad))
-                .Join(gameNameRectTransform.DOAnchorPos(game_name_anchored_pos, 1.0f).SetEase(Ease.OutQuad))
-                .Append(menuButtonsRectTransform.DOAnchorPos(buttons_anchored_pos, 1.0f).SetEase(Ease.OutQuad))
-                .Join(buttonsCanvasGroup.DOFade(1.0f, 1.0f).SetEase(Ease.OutQuad))
+                .Append(gameNameText.DOFade(1.0f, 0.3f).SetEase(Ease.OutQuad))
+                .Join(gameNameRectTransform.DOAnchorPos(game_name_anchored_pos, 0.3f).SetEase(Ease.OutQuad))
+                .Append(menuButtonsRectTransform.DOAnchorPos(buttons_anchored_pos, 0.3f).SetEase(Ease.OutQuad))
+                .Join(buttonsCanvasGroup.DOFade(1.0f, 0.3f).SetEase(Ease.OutQuad))
                 .AppendCallback(
                     () => {
-                        buttonsCanvasGroup.interactable = true;
+                        //buttonsCanvasGroup.interactable = true;
                     })
                 .Play();
         }
